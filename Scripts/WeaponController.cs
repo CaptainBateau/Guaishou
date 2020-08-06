@@ -7,13 +7,13 @@ public class WeaponController : MonoBehaviour
 {
     public Light2D _pointLight;
     public float _toAdd;
+
     [Range(0,360f)]
     public float _minAngle, _maxAngle;
-    public float _rotationSpeed = 1;
 
     Camera _camera;
-    public Vector3 _orientation;
-    public Vector3 _direction;
+    Vector3 _orientation;
+    Vector3 _direction;
     public Transform _parent;
     float _lightAngleRange = 120f;
 
@@ -81,16 +81,10 @@ public class WeaponController : MonoBehaviour
 
     IEnumerator ShootWithSpread(float spreadAngle, int numberOfPellets, Quaternion transformRotation, Vector3 spawnerPosition)
     {
-        //Debug.Log(spreadAngle);
         for(int i = 0; i < numberOfPellets; i++)
         {
             GameObject pellet = Instantiate(_projectile, spawnerPosition, transformRotation);
-            //if (GameState._isCharacterFlipped == false)
-            //{
-               // Debug.Log(transform.rotation.eulerAngles.z);
-                pellet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, transformRotation.eulerAngles.z + Random.Range(-spreadAngle, spreadAngle)));
-                //Debug.Log(pellet.transform.rotation.eulerAngles.z);
-            //}
+            pellet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, transformRotation.eulerAngles.z + Random.Range(-spreadAngle, spreadAngle)));
             pellet.GetComponent<Rigidbody2D>().AddForce(pellet.transform.right * _firePower);
             Destroy(pellet, 2f);
             yield return new WaitForEndOfFrame();
