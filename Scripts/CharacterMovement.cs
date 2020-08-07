@@ -19,7 +19,7 @@ public class CharacterMovement : MonoBehaviour
         GetInput();
         if (_upPressed)
         {
-            Debug.Log("Je monte");
+
         }
     }
 

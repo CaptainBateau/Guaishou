@@ -40,21 +40,25 @@ public class WeaponController : MonoBehaviour
         _orientation = _orientation - _parent.position;
         _direction = (_camera.ScreenToWorldPoint(temp) - transform.position).normalized;
         float tempAngle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
-
+        Debug.Log(tempAngle);
         if (_orientation.x < 0)
         {
             GameState._isCharacterFlipped = true;
-            _parent.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
-            if(_orientation.y < transform.localPosition.y)
-                transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, -180, -180 + _lightAngleRange/2));
+            _parent.transform.localScale = new Vector3(-1, 1, 1);
+            //_parent.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            if (_orientation.y < transform.localPosition.y)
+                transform.eulerAngles = new Vector3(0, 0, (Mathf.Clamp(tempAngle, -180,-180 + _lightAngleRange/2))-180);
+                //transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, -180, -180 + _lightAngleRange/2));
             else
-                transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, 180 - _lightAngleRange / 2, 180));
+                transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, 180 - _lightAngleRange / 2, 180)-180);
         }
         else
         {
 
             GameState._isCharacterFlipped = false;
-            _parent.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+
+            _parent.transform.localScale = new Vector3(1, 1, 1);
+            //_parent.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
             transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, - _lightAngleRange / 2, _lightAngleRange / 2));
         }
 
@@ -95,7 +99,10 @@ public class WeaponController : MonoBehaviour
         for(int i = 0; i < numberOfPellets; i++)
         {
             GameObject pellet = Instantiate(_projectile, spawnerPosition, transformRotation);
-            pellet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, transformRotation.eulerAngles.z + Random.Range(-spreadAngle, spreadAngle)));
+            if(GameState._isCharacterFlipped)
+                pellet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, transformRotation.eulerAngles.z + Random.Range(-spreadAngle, spreadAngle)+180));
+            else
+                pellet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, transformRotation.eulerAngles.z + Random.Range(-spreadAngle, spreadAngle)));
             pellet.GetComponent<Rigidbody2D>().AddForce(pellet.transform.right * _firePower);
             Destroy(pellet, 2f);
             yield return new WaitForEndOfFrame();
