@@ -25,6 +25,8 @@ public class WeaponController : MonoBehaviour
     public int _pelletNumber=3;
 
     float _spreadAngle;
+    bool _canShoot = false;
+
     void Start()
     {
         _camera = Camera.main;
@@ -58,18 +60,27 @@ public class WeaponController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse1))
         {
+            _canShoot = true;
             _pointLight.pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle -=_toAdd, _minAngle, _maxAngle);
             _pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle -=_toAdd, _minAngle + 10, _maxAngle);
-        }
-        else if(_pointLight.pointLightInnerAngle != _maxAngle) 
-        {
             _spreadAngle = _pointLight.pointLightInnerAngle;
-            _pointLight.pointLightInnerAngle =  _maxAngle;
-            _pointLight.pointLightOuterAngle =  _maxAngle;
         }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        else
+        {
+            _pointLight.pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle += _toAdd/3f, _minAngle, _maxAngle);
+            _pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle += _toAdd/3f, _minAngle + 10, _maxAngle);
+            _spreadAngle = _pointLight.pointLightInnerAngle;
+            if(_pointLight.pointLightInnerAngle == _maxAngle)
+            {
+                _canShoot = false;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0) && _canShoot)
         {
             StartCoroutine(ShootWithSpread(_spreadAngle, _pelletNumber, transform.rotation, _spawner.position));
+            _canShoot = false;
+            _pointLight.pointLightOuterAngle = _maxAngle;
+            _pointLight.pointLightOuterAngle = _maxAngle;
         }
     }
     private void OnValidate()
@@ -88,6 +99,7 @@ public class WeaponController : MonoBehaviour
             pellet.GetComponent<Rigidbody2D>().AddForce(pellet.transform.right * _firePower);
             Destroy(pellet, 2f);
             yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(.01f);
 
         }
     }
