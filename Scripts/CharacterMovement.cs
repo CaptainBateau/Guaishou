@@ -43,7 +43,7 @@ public class CharacterMovement : MonoBehaviour
         {
             _upPressed = false;
         }
-        Debug.Log(_upPressed);
+
     }
 
     public void ChangeUpInput()

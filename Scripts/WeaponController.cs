@@ -56,7 +56,7 @@ public class WeaponController : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, - _lightAngleRange / 2, _lightAngleRange / 2));
         }
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse1))
         {
             _pointLight.pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle -=_toAdd, _minAngle, _maxAngle);
             _pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle -=_toAdd, _minAngle + 10, _maxAngle);
