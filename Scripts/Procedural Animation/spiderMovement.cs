@@ -16,18 +16,36 @@ public class spiderMovement : MonoBehaviour
     Vector2 _dir = Vector2.left;
     float heightPosition;
     [SerializeField] bool inversed;
+    [SerializeField] bool shiftToFacePlayer;
     SpiderDetectionsEvent detectionEvent;
 
     private void Start()
     {
         detectionEvent = GetComponent<SpiderDetectionsEvent>();
         detectionEvent.OnWallIsNextBy += OnWallIsNextHandler;
-
-        detectionEvent.ShiftDirection(new SpiderDetectionsEvent.ShiftDirectionEventArgs { newDir = _dir });
-
+        detectionEvent.OnPlayerDetected += OnPlayerDetectedHandler;        
         heightPosition = transform.position.y;
         if (inversed)
             _dir = Vector2.right;
+
+        detectionEvent.ShiftDirection(new SpiderDetectionsEvent.ShiftDirectionEventArgs { newDir = _dir });
+    }
+
+    private void OnPlayerDetectedHandler(object sender, SpiderDetectionsEvent.PlayerDetectedEventArgs e)
+    {
+        if (shiftToFacePlayer)
+        {
+            if (e.player.transform.position.x < transform.position.x && _dir == Vector2.right)
+            {
+                ShiftDirection(_dir);
+                detectionEvent.ShiftDirection(new SpiderDetectionsEvent.ShiftDirectionEventArgs { newDir = _dir });
+            }
+            if (e.player.transform.position.x > transform.position.x && _dir == Vector2.left)
+            {
+                ShiftDirection(_dir);
+                detectionEvent.ShiftDirection(new SpiderDetectionsEvent.ShiftDirectionEventArgs { newDir = _dir });
+            }
+        }        
     }
 
     private void OnWallIsNextHandler(object sender, SpiderDetectionsEvent.WallIsNextByEventArgs e)
@@ -71,7 +89,7 @@ public class spiderMovement : MonoBehaviour
     private void Breath()
     {
         breathTimer += Time.deltaTime;
-        if (breathTimer > breathCurve.length)
+        if (breathTimer > breathCurve.keys[breathCurve.length -1].time)
         {
             breathTimer = 0;
         }

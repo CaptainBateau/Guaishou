@@ -21,7 +21,7 @@ public class LegStep : MonoBehaviour
     // have a button generating currentTarget;
     void Update()
     {
-        //// make the feet stay at their place when we move the body
+        // make the feet stay at their place when we move the body
         //foot.transform.position = Vector2.MoveTowards(foot.transform.position, currentTarget.position, speed * Time.deltaTime);
 
 
