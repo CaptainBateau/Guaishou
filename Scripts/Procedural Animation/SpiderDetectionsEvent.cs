@@ -8,8 +8,9 @@ public class SpiderDetectionsEvent : MonoBehaviour
     Vector2 dir;
     [SerializeField] float wallDetectionDistance;
     [SerializeField] float playerNextToDistance;
+    [SerializeField] float playerDetectionDistance;
 
-    private void Start()
+    private void Awake()
     {
         OnShiftDirection += OnShiftDirectionHandler;
     }
@@ -22,6 +23,8 @@ public class SpiderDetectionsEvent : MonoBehaviour
     void Update()
     {
         CheckWall();
+        CheckPlayerNext();
+        CheckPlayerDetection();
     }
 
     private void CheckWall()
@@ -35,14 +38,24 @@ public class SpiderDetectionsEvent : MonoBehaviour
         }
     }
 
-    private void CheckPlayer()
+    private void CheckPlayerNext()
     {
         RaycastHit2D hit = Physics2D.Raycast(new
         Vector2(transform.position.x, transform.position.y),
-        dir, playerNextToDistance, LayerMask.GetMask("Ground"));
-        if (hit)
+        dir, playerNextToDistance, LayerMask.GetMask("Default"));
+        if (hit && hit.transform.tag == "Player")
         {
-            PlayerIsNextBy(new PlayerIsNextByEventArgs {});
+            PlayerIsNextBy(new PlayerIsNextByEventArgs { player = hit.collider, direction = dir});
+        }
+    }
+    private void CheckPlayerDetection()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(new
+        Vector2(transform.position.x - playerDetectionDistance, transform.position.y),
+        Vector2.right, playerDetectionDistance * 2, LayerMask.GetMask("Default"));
+        if (hit && hit.transform.tag == "Player")
+        {
+            PlayerDetected(new PlayerDetectedEventArgs { player = hit.collider, direction = dir});
         }
     }
 
@@ -50,7 +63,9 @@ public class SpiderDetectionsEvent : MonoBehaviour
     {
         Gizmos.DrawRay(transform.position, dir * wallDetectionDistance);
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(new Vector3(transform.position.x, transform.position.y + 0.01f, transform.position.z), dir * playerNextToDistance);
+        Gizmos.DrawRay(new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z), dir * playerNextToDistance);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(new Vector3(transform.position.x - playerDetectionDistance, transform.position.y - 0.2f, transform.position.z), Vector2.right * playerDetectionDistance * 2);
     }
 
     public class ShiftDirectionEventArgs : EventArgs
@@ -62,10 +77,19 @@ public class SpiderDetectionsEvent : MonoBehaviour
 
     public class PlayerIsNextByEventArgs : EventArgs
     {
-        
+        public Collider2D player;
+        public Vector2 direction;
     }
     public event EventHandler<PlayerIsNextByEventArgs> OnPlayerIsNextBy;
     void PlayerIsNextBy(PlayerIsNextByEventArgs e) => OnPlayerIsNextBy?.Invoke(this, e);
+    
+    public class PlayerDetectedEventArgs : EventArgs
+    {
+        public Collider2D player;
+        public Vector2 direction;
+    }
+    public event EventHandler<PlayerDetectedEventArgs> OnPlayerDetected;
+    void PlayerDetected(PlayerDetectedEventArgs e) => OnPlayerDetected?.Invoke(this, e);
 
     public class WallIsNextByEventArgs : EventArgs
     {
