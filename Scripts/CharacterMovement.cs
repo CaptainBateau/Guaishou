@@ -25,10 +25,10 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(GameState._isCharacterFlipped == false)
+        //if(GameState._isCharacterFlipped == false)
             _rb.AddForce(transform.right * _horizontalInput * Time.fixedDeltaTime * _force);
-        else
-            _rb.AddForce(transform.right * _horizontalInput * Time.fixedDeltaTime * -_force);
+        //else
+          //  _rb.AddForce(transform.right * _horizontalInput * Time.fixedDeltaTime * -_force);
     }
 
 

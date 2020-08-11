@@ -27,6 +27,15 @@ public class WeaponController : MonoBehaviour
     float _spreadAngle;
     bool _canShoot = false;
 
+    public float _reloadTime;
+    public int _magazineCapacity;
+    public int _maxCapacity;
+    public Light2D _magazineLight;
+    public float _maxMagazineIntensity;
+    public Light2D _emptyMagazineLight;
+
+
+
     void Start()
     {
         _camera = Camera.main;
@@ -40,7 +49,7 @@ public class WeaponController : MonoBehaviour
         _orientation = _orientation - _parent.position;
         _direction = (_camera.ScreenToWorldPoint(temp) - transform.position).normalized;
         float tempAngle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
-        Debug.Log(tempAngle);
+
         if (_orientation.x < 0)
         {
             GameState._isCharacterFlipped = true;
@@ -64,7 +73,8 @@ public class WeaponController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            _canShoot = true;
+            if(_magazineCapacity>0)
+                _canShoot = true;
             _pointLight.pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle -=_toAdd, _minAngle, _maxAngle);
             _pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle -=_toAdd, _minAngle + 10, _maxAngle);
             _spreadAngle = _pointLight.pointLightInnerAngle;
@@ -74,7 +84,7 @@ public class WeaponController : MonoBehaviour
             _pointLight.pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle += _toAdd/3f, _minAngle, _maxAngle);
             _pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle += _toAdd/3f, _minAngle + 10, _maxAngle);
             _spreadAngle = _pointLight.pointLightInnerAngle;
-            if(_pointLight.pointLightInnerAngle == _maxAngle)
+            if(_pointLight.pointLightInnerAngle == _maxAngle || _magazineCapacity <= 0)
             {
                 _canShoot = false;
             }
@@ -82,10 +92,16 @@ public class WeaponController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && _canShoot)
         {
             StartCoroutine(ShootWithSpread(_spreadAngle, _pelletNumber, transform.rotation, _spawner.position));
+            _magazineCapacity--;
+            if (_magazineCapacity <= 0)
+            {
+                StartCoroutine(Reloading());
+            }
             _canShoot = false;
             _pointLight.pointLightOuterAngle = _maxAngle;
             _pointLight.pointLightOuterAngle = _maxAngle;
         }
+        SetMagazineLight();
     }
     private void OnValidate()
     {
@@ -93,6 +109,11 @@ public class WeaponController : MonoBehaviour
             _minAngle = _maxAngle;
     }
 
+    void SetMagazineLight()
+    {
+        _magazineLight.intensity = (_magazineCapacity/ (float)_maxCapacity)*_maxMagazineIntensity;
+        _emptyMagazineLight.intensity = _maxMagazineIntensity - _magazineLight.intensity;
+    }
 
     IEnumerator ShootWithSpread(float spreadAngle, int numberOfPellets, Quaternion transformRotation, Vector3 spawnerPosition)
     {
@@ -109,5 +130,13 @@ public class WeaponController : MonoBehaviour
             yield return new WaitForSeconds(.01f);
 
         }
+    }
+
+    IEnumerator Reloading()
+    {
+        _canShoot = false;
+        yield return new WaitForSeconds(_reloadTime);
+        _canShoot = true;
+        _magazineCapacity = _maxCapacity;
     }
 }
