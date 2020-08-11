@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LegStep : MonoBehaviour
 {
-    [Header("Reference")]
+    [Header("References")]
     public Transform foot;
 
     public Transform currentTarget;
@@ -13,10 +13,19 @@ public class LegStep : MonoBehaviour
     [Header("Parameters")]
     public AnimationCurve yCurve;
     public float distanceToStep = 1;
-    public float speed = 10;
 
-    float timer;
+    [Header("Editing Not Necessary")]
+    public float initialDistanceToStep;
+    float timer = 0;
+    Vector2 startPos;
+    float animDuration;
     bool moving;
+    private void Start()
+    {
+        initialDistanceToStep = distanceToStep;
+        startPos = foot.position;
+        animDuration = yCurve.keys[yCurve.length - 1].time;
+    }
 
     // have a button generating currentTarget;
     void Update()
@@ -27,21 +36,36 @@ public class LegStep : MonoBehaviour
 
         float distToTarget = Vector2.Distance(foot.position, currentTarget.position);
         // Move the foot
-        if (distToTarget > 0.1f)
+        if (distToTarget > 0.5f)
         {
             if (!moving)
             {
+                Debug.Log("Next Step");
+                startPos = foot.position;
                 timer = 0;
                 moving = true;
+            }           
+
+            if (timer < animDuration && moving)
+            {                
+                foot.position = Vector2.Lerp(startPos, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(timer)), timer / animDuration);
+                timer += Time.deltaTime;
+                Debug.Log(timer / animDuration);
             }
-            
-            timer += Time.deltaTime;
-            // Move towards desired target position
-            foot.position = Vector2.MoveTowards(foot.position, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(timer)), speed * Time.deltaTime);
+            else
+            {
+                Debug.Log("Cant reach target");
+                foot.position = currentTarget.position;
+                moving = false;
+            }
+
+                //foot.position = Vector2.MoveTowards(foot.position, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(timer)), Time.deltaTime * speed);
+
 
         }      
         else
         {
+            Debug.Log("InPosition");
             moving = false;
             foot.position = currentTarget.position;
         }

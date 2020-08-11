@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class SpiderDetectionsEvent : MonoBehaviour
 {
-    Vector2 dir;
+    Vector2 dir = Vector2.left;
+    [Header("Parameters")]
     [SerializeField] float wallDetectionDistance;
     [SerializeField] float playerNextToDistance;
     [SerializeField] float playerDetectionDistance;
+    bool playerDetected;
 
     private void Awake()
     {
@@ -53,9 +55,15 @@ public class SpiderDetectionsEvent : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(new
         Vector2(transform.position.x - playerDetectionDistance, transform.position.y),
         Vector2.right, playerDetectionDistance * 2, LayerMask.GetMask("Default"));
-        if (hit && hit.transform.tag == "Player")
+        if (hit && hit.transform.tag == "Player" && !playerDetected)
         {
+            playerDetected = true;
             PlayerDetected(new PlayerDetectedEventArgs { player = hit.collider, direction = dir});
+        }
+        if (!hit || hit.transform.tag != "Player")
+        {
+            playerDetected = false;
+            PlayerNotDetectedAnymore(new PlayerNotDetectedAnymoreEventArgs {});
         }
     }
 
@@ -90,6 +98,11 @@ public class SpiderDetectionsEvent : MonoBehaviour
     }
     public event EventHandler<PlayerDetectedEventArgs> OnPlayerDetected;
     void PlayerDetected(PlayerDetectedEventArgs e) => OnPlayerDetected?.Invoke(this, e);
+    public class PlayerNotDetectedAnymoreEventArgs : EventArgs
+    {
+    }
+    public event EventHandler<PlayerNotDetectedAnymoreEventArgs> OnPlayerNotDetectedAnymore;
+    void PlayerNotDetectedAnymore(PlayerNotDetectedAnymoreEventArgs e) => OnPlayerNotDetectedAnymore?.Invoke(this, e);
 
     public class WallIsNextByEventArgs : EventArgs
     {
