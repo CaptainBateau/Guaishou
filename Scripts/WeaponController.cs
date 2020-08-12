@@ -6,6 +6,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class WeaponController : MonoBehaviour
 {
     public Light2D _pointLight;
+    public Light2D[] _pointLights;
     public float _toAdd;
 
     [Range(0,360f)]
@@ -75,14 +76,24 @@ public class WeaponController : MonoBehaviour
         {
             if(_magazineCapacity>0)
                 _canShoot = true;
-            _pointLight.pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle -=_toAdd, _minAngle, _maxAngle);
-            _pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle -=_toAdd, _minAngle + 10, _maxAngle);
+            for (int i = 0; i < _pointLights.Length; i++)
+            {
+                _pointLights[i].pointLightInnerAngle = Mathf.Clamp(_pointLights[i].pointLightInnerAngle -= _toAdd, _minAngle, _maxAngle);
+                _pointLights[i].pointLightOuterAngle = Mathf.Clamp(_pointLights[i].pointLightOuterAngle -= _toAdd, _minAngle + 10, _maxAngle);
+            }
+            //_pointLight.pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle -= _toAdd, _minAngle, _maxAngle);
+            //_pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle -= _toAdd, _minAngle + 10, _maxAngle);
             _spreadAngle = _pointLight.pointLightInnerAngle;
         }
         else
         {
-            _pointLight.pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle += _toAdd/3f, _minAngle, _maxAngle);
-            _pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle += _toAdd/3f, _minAngle + 10, _maxAngle);
+            //_pointLight.pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle += _toAdd/3f, _minAngle, _maxAngle);
+            //_pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle += _toAdd/3f, _minAngle + 10, _maxAngle);
+            for (int i = 0; i < _pointLights.Length; i++)
+            {
+                _pointLights[i].pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle += _toAdd / 3f, _minAngle, _maxAngle);
+                _pointLights[i].pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle += _toAdd / 3f, _minAngle + 10, _maxAngle);
+            }
             _spreadAngle = _pointLight.pointLightInnerAngle;
             if(_pointLight.pointLightInnerAngle == _maxAngle || _magazineCapacity <= 0)
             {
@@ -98,8 +109,13 @@ public class WeaponController : MonoBehaviour
                 StartCoroutine(Reloading());
             }
             _canShoot = false;
-            _pointLight.pointLightOuterAngle = _maxAngle;
-            _pointLight.pointLightOuterAngle = _maxAngle;
+            //_pointLight.pointLightOuterAngle = _maxAngle;
+            //_pointLight.pointLightInnerAngle = _maxAngle;
+            for (int i = 0; i < _pointLights.Length; i++)
+            {
+                _pointLights[i].pointLightInnerAngle = _maxAngle;
+                _pointLights[i].pointLightOuterAngle = _maxAngle;
+            }
         }
         SetMagazineLight();
     }
