@@ -6,10 +6,24 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class WeaponController : MonoBehaviour
 {
     public Light2D _pointLight;
-    public Light2D[] _pointLights;
-    public float _toAdd;
+    public LightParameters[] _pointLightStruct;
 
-    [Range(0,360f)]
+    [System.Serializable]
+    public struct LightParameters
+    {
+        public Light2D _light;
+        public float _minLightAngle;
+        public float _maxLightAngle;
+        public float _minDistance;
+        public float _maxDistance;
+        public float _intensity;
+    }
+
+
+    public float _toAdd;
+    public float _timeToAim;
+
+    [Range(0, 360f)]
     public float _minAngle, _maxAngle;
 
     Camera _camera;
@@ -23,7 +37,7 @@ public class WeaponController : MonoBehaviour
 
     public Transform _spawner;
 
-    public int _pelletNumber=3;
+    public int _pelletNumber = 3;
 
     float _spreadAngle;
     bool _canShoot = false;
@@ -76,38 +90,59 @@ public class WeaponController : MonoBehaviour
         {
             if(_magazineCapacity>0)
                 _canShoot = true;
-            if (_pointLights.Length > 0)
+            //if (_pointLights.Length > 0)
+            //{
+            //    for (int i = 0; i < _pointLights.Length; i++)
+            //    {
+            //        _pointLights[i].pointLightInnerAngle = Mathf.Clamp(_pointLights[i].pointLightInnerAngle -= _toAdd, _minAngle, _maxAngle);
+            //        _pointLights[i].pointLightOuterAngle = Mathf.Clamp(_pointLights[i].pointLightOuterAngle -= _toAdd, _minAngle + 10, _maxAngle);
+            //    }
+            //}
+
+            if (_pointLightStruct.Length > 0)
             {
-                for (int i = 0; i < _pointLights.Length; i++)
+                for(int i = 0; i < _pointLightStruct.Length; i++)
                 {
-                    _pointLights[i].pointLightInnerAngle = Mathf.Clamp(_pointLights[i].pointLightInnerAngle -= _toAdd, _minAngle, _maxAngle);
-                    _pointLights[i].pointLightOuterAngle = Mathf.Clamp(_pointLights[i].pointLightOuterAngle -= _toAdd, _minAngle + 10, _maxAngle);
+                    _pointLightStruct[i]._light.pointLightInnerAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightInnerAngle -= _toAdd, _pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle);
+                    _pointLightStruct[i]._light.pointLightOuterAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightOuterAngle -= _toAdd, _pointLightStruct[i]._minLightAngle + 10, _pointLightStruct[i]._maxLightAngle);
                 }
+            _spreadAngle = _pointLightStruct[0]._light.pointLightInnerAngle;
             }
+
             else 
             { 
                 _pointLight.pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle -= _toAdd, _minAngle, _maxAngle);
                 _pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle -= _toAdd, _minAngle + 10, _maxAngle);
+                _spreadAngle = _pointLight.pointLightInnerAngle;
             }
-            _spreadAngle = _pointLight.pointLightInnerAngle;
+
         }
         else
         {
-            if (_pointLights.Length > 0)
+            //if (_pointLights.Length > 0)
+            //{
+            //    for (int i = 0; i < _pointLights.Length; i++)
+            //    {
+            //        _pointLights[i].pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle += _toAdd / 3f, _pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle);
+            //        _pointLights[i].pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle += _toAdd / 3f, _pointLightStruct[i]._minLightAngle + 10, _pointLightStruct[i]._maxLightAngle);
+            //    }
+            //}
+            if (_pointLightStruct.Length > 0)
             {
-                for (int i = 0; i < _pointLights.Length; i++)
+                for (int i = 0; i < _pointLightStruct.Length; i++)
                 {
-                    _pointLights[i].pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle += _toAdd / 3f, _minAngle, _maxAngle);
-                    _pointLights[i].pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle += _toAdd / 3f, _minAngle + 10, _maxAngle);
+                    _pointLightStruct[i]._light.pointLightInnerAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightInnerAngle += _toAdd/3, _pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle);
+                    _pointLightStruct[i]._light.pointLightOuterAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightOuterAngle += _toAdd/3, _pointLightStruct[i]._minLightAngle + 10, _pointLightStruct[i]._maxLightAngle);
                 }
+                 _spreadAngle = _pointLightStruct[0]._light.pointLightInnerAngle;
             }
             else
             {
                 _pointLight.pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle += _toAdd / 3f, _minAngle, _maxAngle);
                 _pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle += _toAdd / 3f, _minAngle + 10, _maxAngle);
+                _spreadAngle = _pointLight.pointLightInnerAngle;
             }
-            _spreadAngle = _pointLight.pointLightInnerAngle;
-            if(_pointLight.pointLightInnerAngle == _maxAngle || _magazineCapacity <= 0)
+            if(_pointLightStruct[0]._light.pointLightInnerAngle == _maxAngle || _magazineCapacity <= 0)
             {
                 _canShoot = false;
             }
@@ -121,12 +156,12 @@ public class WeaponController : MonoBehaviour
                 StartCoroutine(Reloading());
             }
             _canShoot = false;
-            if (_pointLights.Length > 0)
+            if (_pointLightStruct.Length > 0)
             {
-                for (int i = 0; i < _pointLights.Length; i++)
+                for (int i = 0; i < _pointLightStruct.Length; i++)
                 {
-                    _pointLights[i].pointLightInnerAngle = _maxAngle;
-                    _pointLights[i].pointLightOuterAngle = _maxAngle;
+                    _pointLightStruct[i]._light.pointLightInnerAngle = _pointLightStruct[i]._maxLightAngle;
+                    _pointLightStruct[i]._light.pointLightOuterAngle = _pointLightStruct[i]._maxLightAngle;
                 }
             }
             else
