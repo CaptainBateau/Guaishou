@@ -7,16 +7,19 @@ using UnityEngine.Experimental.U2D.IK;
 
 public class LegAttack : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] SpiderDetectionsEvent detectionEvent;
     [SerializeField] LimbSolver2D _target;
+    [SerializeField] Transform anticipationPosition;
+    [SerializeField] Transform basePosition;
 
+    [Header("Parameters")]
     [SerializeField] AnimationCurve _preparingAttackCurve;
     [SerializeField] AnimationCurve _attackingCurve;   
     [SerializeField] AnimationCurve _recoveringCurve;
     [SerializeField] AnimationCurve _breathCurve;
 
-    [SerializeField] Transform anticipationPosition;
-    [SerializeField] Transform basePosition;
+    
     [SerializeField] bool LeftLeg;
     bool attacking;
     float breathTimer;

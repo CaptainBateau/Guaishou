@@ -5,6 +5,6 @@ using UnityEngine;
 public static class GameState
 {
     public static bool _isCharacterFlipped = false;
-
+    public static bool _isCloseToDoor = false;
     public static KeyCode _upButton = KeyCode.UpArrow;
 }
