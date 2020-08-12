@@ -40,7 +40,6 @@ public class LegStep : MonoBehaviour
         {
             if (!moving)
             {
-                Debug.Log("Next Step");
                 startPos = foot.position;
                 timer = 0;
                 moving = true;
@@ -50,11 +49,9 @@ public class LegStep : MonoBehaviour
             {                
                 foot.position = Vector2.Lerp(startPos, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(timer)), timer / animDuration);
                 timer += Time.deltaTime;
-                Debug.Log(timer / animDuration);
             }
             else
             {
-                Debug.Log("Cant reach target");
                 foot.position = currentTarget.position;
                 moving = false;
             }
@@ -65,7 +62,6 @@ public class LegStep : MonoBehaviour
         }      
         else
         {
-            Debug.Log("InPosition");
             moving = false;
             foot.position = currentTarget.position;
         }

@@ -24,13 +24,12 @@ public class LeechMovement : MonoBehaviour
     private void CheckHeightPosition()
     {
         RaycastHit2D hit = Physics2D.Raycast(new
-        Vector2(transform.position.x -0.5f, transform.position.y),
+        Vector2(transform.position.x, transform.position.y + 5),
         Vector2.down, 50f, LayerMask.GetMask("Ground"));
-        float projectedHeight = -1;
+        //float projectedHeight = -1;
         if (hit)
         {
-            projectedHeight = hit.point.y + distanceToGround;
-            heightPosition = projectedHeight;
+            heightPosition = hit.point.y + distanceToGround;
         }
     }
 }
