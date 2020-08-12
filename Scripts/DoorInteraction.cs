@@ -7,6 +7,7 @@ public class DoorInteraction: MonoBehaviour
     public Transform _doorSprite;
     Transform _startTransform;
     public float _speed = 1;
+    public float _timeToOpen = 1f;
     bool _triggered = false;
     bool _opening = false;
     private void Awake()
@@ -19,7 +20,10 @@ public class DoorInteraction: MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (_triggered)
+            {
                 _opening = true;
+                StartCoroutine(RemoveCollider());
+            }
         }
         if (_opening)
             Opening();
@@ -48,11 +52,14 @@ public class DoorInteraction: MonoBehaviour
 
     void Opening()
     {
-        _doorSprite.rotation = Quaternion.Lerp(_startTransform.rotation, Quaternion.identity, Time.time * _speed);
-        if(_doorSprite.rotation == Quaternion.identity)
-        {
-            _opening = false;
-            gameObject.GetComponent<Collider2D>().enabled = false;
-        }
+        _doorSprite.rotation = Quaternion.Lerp(_startTransform.rotation, Quaternion.identity, Time.deltaTime * _speed);
+    }
+
+    IEnumerator RemoveCollider()
+    {
+        yield return new WaitForSeconds(_timeToOpen);
+        _opening = false;
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        Destroy(this);
     }
 }

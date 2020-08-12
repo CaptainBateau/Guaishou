@@ -153,7 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _doorSprite: {fileID: 1305182623}
-  _speed: 0.08
+  _speed: 5
+  _timeToOpen: 0.1
 --- !u!4 &293297
 Transform:
   m_ObjectHideFlags: 0
@@ -894,7 +895,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _doorSprite: {fileID: 203904564}
-  _speed: 0.08
+  _speed: 5
+  _timeToOpen: 0.1
 --- !u!61 &569024141
 BoxCollider2D:
   m_ObjectHideFlags: 0
