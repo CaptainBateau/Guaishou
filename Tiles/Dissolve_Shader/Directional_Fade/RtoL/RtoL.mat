@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dissolve
-  m_Shader: {fileID: -6465566751694194690, guid: eb6f2bdfaddfb3d4f98cf9e172eff85d,
+  m_Name: RtoL
+  m_Shader: {fileID: -6465566751694194690, guid: 4c83273f681e2ba48aff3782f9b12605,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -20,17 +20,19 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _DissolveTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Fade: 0.25
-    - _Scale: 14.8
+    - _BorderSize: 0.777
+    - _DissolveAmount: 1
+    - _Fade: -1
+    - _Height: 0.44
+    - _MainTex: 1
+    - _MaskGradient: 0.518
+    - _Offset: 5
+    - _Scale: 87.1
     m_Colors:
-    - Color_D13E3E3C: {r: 0.2641509, g: 0.06603773, b: 0.06603773, a: 1}
-    - _Albedo: {r: 0, g: 0, b: 0, a: 0}
+    - _Albedo: {r: 0.009433985, g: 0.0007564989, b: 0.0007564989, a: 1}
+    - _EmissiveColor: {r: 14.754423, g: 1.6222141, b: 1.6222141, a: 0}
