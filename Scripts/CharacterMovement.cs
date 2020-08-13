@@ -17,10 +17,6 @@ public class CharacterMovement : MonoBehaviour
     private void Update()
     {
         GetInput();
-        if (_upPressed)
-        {
-
-        }
     }
 
     private void FixedUpdate()
@@ -35,19 +31,8 @@ public class CharacterMovement : MonoBehaviour
     void GetInput()
     {
         _horizontalInput = Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown(GameState._upButton))
-        {
-            _upPressed = true;
-        }
-        if(Input.GetKeyUp(GameState._upButton))
-        {
-            _upPressed = false;
-        }
 
     }
 
-    public void ChangeUpInput()
-    {
-        GameState._upButton = KeyCode.Z;
-    }
+    
 }
