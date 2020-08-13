@@ -4,7 +4,9 @@ using UnityEngine;
 
 public static class GameState
 {
+    [HideInInspector]
     public static bool _isCharacterFlipped = false;
+    [HideInInspector]
     public static bool _isCloseToDoor = false;
-    public static KeyCode _upButton = KeyCode.UpArrow;
+    public static KeyCode _interactButton = KeyCode.E;
 }

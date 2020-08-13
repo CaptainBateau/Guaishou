@@ -17,7 +17,7 @@ public class DoorInteraction: MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(GameState._interactButton))
         {
             if (_triggered)
             {
@@ -27,7 +27,6 @@ public class DoorInteraction: MonoBehaviour
         }
         if (_opening)
             Opening();
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
