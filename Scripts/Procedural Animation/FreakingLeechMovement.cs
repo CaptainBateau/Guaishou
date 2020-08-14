@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Experimental.U2D.IK;
 
+[RequireComponent(typeof(MonsterDetectionEvent))]
 public class FreakingLeechMovement : MonoBehaviour
 {
     [Header("References")]
@@ -17,11 +19,10 @@ public class FreakingLeechMovement : MonoBehaviour
     [SerializeField] float _stepDistance = 1;
     [SerializeField] float _stepDurationHead = 1;
     [SerializeField] float _stepDurationBase = 1;
-    // configure so if it it is higher will go back instead of jumping
-    [SerializeField] float _maxJump = 1;
 
     [SerializeField] AnimationCurve _stepMovementHead;
     [SerializeField] float _randomMovementRange;
+    [SerializeField] AnimationCurve _turningAround;
     [SerializeField] AnimationCurve _stepMovementBase;
     [SerializeField] float delay;
     [SerializeField] bool directionIsLeft = true;
@@ -29,36 +30,67 @@ public class FreakingLeechMovement : MonoBehaviour
 
 
     [Header("Debugs")]
-    [SerializeField] AnimationCurve debugCurve;
+    [SerializeField] AnimationCurve debugCurve;   
+    [SerializeField] float _distanceBetweenHeadAndBase;
+    [SerializeField] bool directionJustChanged;
+
 
     float _distanceBetweenPart;
-    public float _distanceBetweenHeadAndBase;
-    public bool directionJustChanged;
+    MonsterDetectionEvent detectionEvent;
 
-   
-    [ContextMenu("Change Direction")]
+
     void ChangeDirection()
     {
         DirectionIsLeft = !DirectionIsLeft;
+        Vector2 dir;
+        if (directionIsLeft)
+            dir = Vector2.left;
+        else
+            dir = Vector2.right;
+        detectionEvent.ShiftDirection(new MonsterDetectionEvent.ShiftDirectionEventArgs { newDir = dir });        
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
+        detectionEvent = GetComponent<MonsterDetectionEvent>();
+        detectionEvent.OnWallIsNextBy += OnWallIsNextHandler;
+        detectionEvent.OnPlayerDetected += OnPlayerDetectedHandler;
+        detectionEvent.OnPlayerNotDetectedAnymore += OnPlayerNotDetectedAnymoreHandler;
+
+
+
         _distanceBetweenPart = Vector2.Distance(_bigPartSolver.transform.position, _endPartSolver.transform.position) * 0.65f;
         _distanceBetweenHeadAndBase = Vector2.Distance(_base.transform.position, _endPartSolver.transform.position);
         Invoke("StartMoving", delay);
     }
 
+    private void OnPlayerNotDetectedAnymoreHandler(object sender, MonsterDetectionEvent.PlayerNotDetectedAnymoreEventArgs e)
+    {
+        //throw new NotImplementedException();
+    }
+
+    private void OnPlayerDetectedHandler(object sender, MonsterDetectionEvent.PlayerDetectedEventArgs e)
+    {
+        if(e.player.transform.position.x < transform.position.x && !directionIsLeft)
+        {
+            ChangeDirection();
+        }
+        if (e.player.transform.position.x > detectionEvent._center.x && directionIsLeft)
+        {
+            ChangeDirection();         
+        }
+    }
+
+    private void OnWallIsNextHandler(object sender, MonsterDetectionEvent.WallIsNextByEventArgs e)
+    {
+        ChangeDirection();
+    }
+
     void StartMoving()
     {
         StartCoroutine(TakeStep());
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
     AnimationCurve RandomStepMovement()
     {
@@ -80,7 +112,7 @@ public class FreakingLeechMovement : MonoBehaviour
             }
             else
             {
-                tempCurve.AddKey(new Keyframe(curve.keys[i].time, Random.Range(curve.keys[i].value - randomRange / 2, curve.keys[i].value + randomRange / 2)));
+                tempCurve.AddKey(new Keyframe(curve.keys[i].time, UnityEngine.Random.Range(curve.keys[i].value - randomRange / 2, curve.keys[i].value + randomRange / 2)));
             }
             
         }
@@ -91,11 +123,17 @@ public class FreakingLeechMovement : MonoBehaviour
     IEnumerator TakeStep()
     {
         float timer = 0;
+        AnimationCurve stepMovement;
+        if (directionJustChanged)
+            stepMovement = _turningAround;
+        else
+            stepMovement = RandomStepMovement();
+
         Vector2 startPos = _endPartSolver.transform.position;
         Vector2 startPosBig = _bigPartSolver.transform.position;
         Vector2 target = getTargetPos(_endPartSolver.transform, DirectionIsLeft, true);
         Vector2 targetBigPart = new Vector2(target.x, target.y + _distanceBetweenPart);
-        AnimationCurve stepMovement = RandomStepMovement();
+        
         while (timer < _stepDurationHead)
         {
             timer += Time.deltaTime;
@@ -126,14 +164,15 @@ public class FreakingLeechMovement : MonoBehaviour
         
         if (directionJustChanged)
         {
-            directionJustChanged = false;
+            
             // move toward new direction
             if (isHead)
             {
+                directionJustChanged = false;
                 if (movingDirLeft)
-                    targetPos = initialPos.position - new Vector3(_stepDistance + _distanceBetweenHeadAndBase, 0, 0);
+                    targetPos = initialPos.position - new Vector3(_stepDistance + _distanceBetweenHeadAndBase * 2, 0, 0);
                 else
-                    targetPos = initialPos.position + new Vector3(_stepDistance + _distanceBetweenHeadAndBase, 0, 0);
+                    targetPos = initialPos.position + new Vector3(_stepDistance + _distanceBetweenHeadAndBase * 2, 0, 0);
             }
             // keep it like normal movement in the wrong direction
             else

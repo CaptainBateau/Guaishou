@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpiderDetectionsEvent))]
+[RequireComponent(typeof(MonsterDetectionEvent))]
 public class SpiderLegAttack : MonoBehaviour
 {
     [SerializeField] LegStep AttackingLeg;

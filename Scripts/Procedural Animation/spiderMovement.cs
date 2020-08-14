@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpiderDetectionsEvent))]
+[RequireComponent(typeof(MonsterDetectionEvent))]
 public class spiderMovement : MonoBehaviour
 {
     [Header("References")]
@@ -26,12 +26,12 @@ public class spiderMovement : MonoBehaviour
     float breathTimer;
     Vector2 _dir = Vector2.left;
     float heightPosition;
-    SpiderDetectionsEvent detectionEvent;
+    MonsterDetectionEvent detectionEvent;
     float _initialSpeed;
 
     private void Start()
     {
-        detectionEvent = GetComponent<SpiderDetectionsEvent>();
+        detectionEvent = GetComponent<MonsterDetectionEvent>();
         detectionEvent.OnWallIsNextBy += OnWallIsNextHandler;
         detectionEvent.OnPlayerDetected += OnPlayerDetectedHandler;        
         detectionEvent.OnPlayerNotDetectedAnymore += OnPlayerNotDetectedAnymoreHandler;        
@@ -40,10 +40,10 @@ public class spiderMovement : MonoBehaviour
             _dir = Vector2.right;
 
         _initialSpeed = speed;
-        detectionEvent.ShiftDirection(new SpiderDetectionsEvent.ShiftDirectionEventArgs { newDir = _dir });
+        detectionEvent.ShiftDirection(new MonsterDetectionEvent.ShiftDirectionEventArgs { newDir = _dir });
     }
 
-    private void OnPlayerNotDetectedAnymoreHandler(object sender, SpiderDetectionsEvent.PlayerNotDetectedAnymoreEventArgs e)
+    private void OnPlayerNotDetectedAnymoreHandler(object sender, MonsterDetectionEvent.PlayerNotDetectedAnymoreEventArgs e)
     {
         if (changeSpeedOnPlayerDetected)
         {
@@ -58,7 +58,7 @@ public class spiderMovement : MonoBehaviour
         }
     }
 
-    private void OnPlayerDetectedHandler(object sender, SpiderDetectionsEvent.PlayerDetectedEventArgs e)
+    private void OnPlayerDetectedHandler(object sender, MonsterDetectionEvent.PlayerDetectedEventArgs e)
     {
         if (changeSpeedOnPlayerDetected)
         {
@@ -70,27 +70,24 @@ public class spiderMovement : MonoBehaviour
             {
                 leg.distanceToStep = leg.initialDistanceToStep * stepDistanceOnPlayerDetected / 100;
             }
-
         }
         if (shiftToFacePlayer)
         {
-            if (e.player.transform.position.x < transform.position.x && _dir == Vector2.right)
+            if (e.player.transform.position.x < detectionEvent._center.x && _dir == Vector2.right)
             {
-                ShiftDirection(_dir);
-                detectionEvent.ShiftDirection(new SpiderDetectionsEvent.ShiftDirectionEventArgs { newDir = _dir });
+                ShiftDirection(_dir);                
             }
-            if (e.player.transform.position.x > transform.position.x && _dir == Vector2.left)
+            if (e.player.transform.position.x > detectionEvent._center.x && _dir == Vector2.left)
             {
-                ShiftDirection(_dir);
-                detectionEvent.ShiftDirection(new SpiderDetectionsEvent.ShiftDirectionEventArgs { newDir = _dir });
+                ShiftDirection(_dir);                
             }
         }        
     }
 
-    private void OnWallIsNextHandler(object sender, SpiderDetectionsEvent.WallIsNextByEventArgs e)
+    private void OnWallIsNextHandler(object sender, MonsterDetectionEvent.WallIsNextByEventArgs e)
     {
         ShiftDirection(_dir);
-        detectionEvent.ShiftDirection(new SpiderDetectionsEvent.ShiftDirectionEventArgs { newDir = _dir});        
+        detectionEvent.ShiftDirection(new MonsterDetectionEvent.ShiftDirectionEventArgs { newDir = _dir});        
     }
 
     void Update()
@@ -165,6 +162,7 @@ public class spiderMovement : MonoBehaviour
             }
             _dir = Vector2.left;
         }
+        detectionEvent.ShiftDirection(new MonsterDetectionEvent.ShiftDirectionEventArgs { newDir = _dir });
     }
     private void Move()
     {

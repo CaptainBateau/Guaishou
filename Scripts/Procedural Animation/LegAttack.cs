@@ -8,7 +8,7 @@ using UnityEngine.Experimental.U2D.IK;
 public class LegAttack : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] SpiderDetectionsEvent detectionEvent;
+    [SerializeField] MonsterDetectionEvent detectionEvent;
     [SerializeField] LimbSolver2D _target;
     [SerializeField] Transform anticipationPosition;
     [SerializeField] Transform basePosition;
@@ -41,7 +41,7 @@ public class LegAttack : MonoBehaviour
             _target.transform.position = new Vector3(_target.transform.position.x, basePosition.position.y + _breathCurve.Evaluate(breathTimer));
         }
     }
-    private void OnPlayerIsNextByHandler(object sender, SpiderDetectionsEvent.PlayerIsNextByEventArgs e)
+    private void OnPlayerIsNextByHandler(object sender, MonsterDetectionEvent.PlayerIsNextByEventArgs e)
     {
         if((e.direction == Vector2.left && LeftLeg && !attacking) || (e.direction == Vector2.right && !LeftLeg && !attacking))
             StartCoroutine(PrepareAttack(e.player.transform));
