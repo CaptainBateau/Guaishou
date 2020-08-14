@@ -8,5 +8,7 @@ public static class GameState
     public static bool _isCharacterFlipped = false;
     [HideInInspector]
     public static bool _isCloseToDoor = false;
+    [HideInInspector]
+    public static bool _isReloading = false;
     public static KeyCode _interactButton = KeyCode.E;
 }
