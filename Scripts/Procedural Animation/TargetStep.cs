@@ -15,13 +15,13 @@ public class TargetStep : MonoBehaviour
         if (inversed)
         {
             hit = Physics2D.Raycast(new
-            Vector2(transform.position.x, transform.position.y - 5),
+            Vector2(transform.position.x, transform.position.y - 2),
             Vector2.up, 12f, LayerMask.GetMask("Ground"));
         }
         else
         {
             hit = Physics2D.Raycast(new
-            Vector2(transform.position.x, transform.position.y + 5),
+            Vector2(transform.position.x, transform.position.y + 2),
             Vector2.down, 12f, LayerMask.GetMask("Ground"));
         }
         

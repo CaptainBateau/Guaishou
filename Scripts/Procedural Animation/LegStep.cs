@@ -12,19 +12,22 @@ public class LegStep : MonoBehaviour
 
     [Header("Parameters")]
     public AnimationCurve yCurve;
+    public float stepDuration;
     public float distanceToStep = 1;
+
 
     [Header("Editing Not Necessary")]
     public float initialDistanceToStep;
+    public float initialStepDuration;
     float timer = 0;
     Vector2 startPos;
-    float animDuration;
     bool moving;
     private void Start()
     {
         initialDistanceToStep = distanceToStep;
+        initialStepDuration = stepDuration;
         startPos = foot.position;
-        animDuration = yCurve.keys[yCurve.length - 1].time;
+        currentTarget.position = foot.position;
     }
 
     // have a button generating currentTarget;
@@ -36,7 +39,7 @@ public class LegStep : MonoBehaviour
 
         float distToTarget = Vector2.Distance(foot.position, currentTarget.position);
         // Move the foot
-        if (distToTarget > 0.5f)
+        if (distToTarget > 0.05f)
         {
             if (!moving)
             {
@@ -45,9 +48,9 @@ public class LegStep : MonoBehaviour
                 moving = true;
             }           
 
-            if (timer < animDuration && moving)
+            if (timer < stepDuration && moving)
             {                
-                foot.position = Vector2.Lerp(startPos, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(timer)), timer / animDuration);
+                foot.position = Vector2.Lerp(startPos, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(timer / stepDuration)), timer / stepDuration);
                 timer += Time.deltaTime;
             }
             else

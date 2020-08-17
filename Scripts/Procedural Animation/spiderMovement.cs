@@ -22,6 +22,7 @@ public class spiderMovement : MonoBehaviour
     [SerializeField] bool changeSpeedOnPlayerDetected;
     [SerializeField] [Range(0, 300)] float bodySpeedOnPlayerDetected;
     [SerializeField] [Range(0, 300)] float stepDistanceOnPlayerDetected;
+    [SerializeField] [Range(0, 300)] float stepDurationOnPlayerDetected;
 
     float breathTimer;
     Vector2 _dir = Vector2.left;
@@ -54,6 +55,7 @@ public class spiderMovement : MonoBehaviour
             foreach (LegStep leg in legs)
             {
                 leg.distanceToStep = leg.initialDistanceToStep;
+                leg.stepDuration = leg.initialStepDuration;
             }
         }
     }
@@ -69,6 +71,7 @@ public class spiderMovement : MonoBehaviour
             foreach (LegStep leg in legs)
             {
                 leg.distanceToStep = leg.initialDistanceToStep * stepDistanceOnPlayerDetected / 100;
+                leg.stepDuration = leg.initialStepDuration * stepDurationOnPlayerDetected / 100;
             }
         }
         if (shiftToFacePlayer)
