@@ -5,7 +5,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class WeaponController : MonoBehaviour
 {
-    public Light2D _pointLight;
+   // public Light2D _pointLight;
     public LightParameters[] _pointLightStruct;
 
     [System.Serializable]
@@ -20,8 +20,7 @@ public class WeaponController : MonoBehaviour
     }
 
 
-    public float _toAdd;
-    public float _timeToAim;
+    private float _toAdd;
 
     [Range(0, 360f)]
     public float _minAngle, _maxAngle;
@@ -71,10 +70,8 @@ public class WeaponController : MonoBehaviour
         {
             GameState._isCharacterFlipped = true;
             _parent.transform.localScale = new Vector3(-1, 1, 1);
-            //_parent.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
             if (_orientation.y < transform.localPosition.y)
                 transform.eulerAngles = new Vector3(0, 0, (Mathf.Clamp(tempAngle, -180,-180 + _lightAngleRange/2))-180);
-                //transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, -180, -180 + _lightAngleRange/2));
             else
                 transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, 180 - _lightAngleRange / 2, 180)-180);
         }
@@ -84,7 +81,6 @@ public class WeaponController : MonoBehaviour
             GameState._isCharacterFlipped = false;
 
             _parent.transform.localScale = new Vector3(1, 1, 1);
-            //_parent.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
             transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, - _lightAngleRange / 2, _lightAngleRange / 2));
         }
 
@@ -92,57 +88,38 @@ public class WeaponController : MonoBehaviour
         {
             if(_magazineCapacity>0)
                 _canShoot = true;
-            //if (_pointLights.Length > 0)
-            //{
-            //    for (int i = 0; i < _pointLights.Length; i++)
-            //    {
-            //        _pointLights[i].pointLightInnerAngle = Mathf.Clamp(_pointLights[i].pointLightInnerAngle -= _toAdd, _minAngle, _maxAngle);
-            //        _pointLights[i].pointLightOuterAngle = Mathf.Clamp(_pointLights[i].pointLightOuterAngle -= _toAdd, _minAngle + 10, _maxAngle);
-            //    }
-            //}
+            
 
             if (_pointLightStruct.Length > 0)
             {
                 for(int i = 0; i < _pointLightStruct.Length; i++)
                 {
+                    _toAdd = (_pointLightStruct[i]._maxLightAngle - _pointLightStruct[i]._minLightAngle) * Time.deltaTime;
                     _pointLightStruct[i]._light.pointLightInnerAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightInnerAngle -= _toAdd, _pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle);
                     _pointLightStruct[i]._light.pointLightOuterAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightOuterAngle -= _toAdd, _pointLightStruct[i]._minLightAngle + 10, _pointLightStruct[i]._maxLightAngle);
+                    float tempRadius = Mathf.InverseLerp(_pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle, _pointLightStruct[i]._light.pointLightInnerAngle);
+                    _pointLightStruct[i]._light.pointLightInnerRadius = Mathf.Lerp(_pointLightStruct[i]._maxDistance, _pointLightStruct[i]._minDistance, tempRadius);
                 }
-            _spreadAngle = _pointLightStruct[0]._light.pointLightInnerAngle;
+                _spreadAngle = _pointLightStruct[0]._light.pointLightInnerAngle;
             }
 
-            else 
-            { 
-                _pointLight.pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle -= _toAdd, _minAngle, _maxAngle);
-                _pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle -= _toAdd, _minAngle + 10, _maxAngle);
-                _spreadAngle = _pointLight.pointLightInnerAngle;
-            }
 
         }
         else
         {
-            //if (_pointLights.Length > 0)
-            //{
-            //    for (int i = 0; i < _pointLights.Length; i++)
-            //    {
-            //        _pointLights[i].pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle += _toAdd / 3f, _pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle);
-            //        _pointLights[i].pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle += _toAdd / 3f, _pointLightStruct[i]._minLightAngle + 10, _pointLightStruct[i]._maxLightAngle);
-            //    }
-            //}
+            
             if (_pointLightStruct.Length > 0)
             {
                 for (int i = 0; i < _pointLightStruct.Length; i++)
                 {
+
+                    _toAdd = (_pointLightStruct[i]._maxLightAngle - _pointLightStruct[i]._minLightAngle) * Time.deltaTime;
                     _pointLightStruct[i]._light.pointLightInnerAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightInnerAngle += _toAdd/3, _pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle);
                     _pointLightStruct[i]._light.pointLightOuterAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightOuterAngle += _toAdd/3, _pointLightStruct[i]._minLightAngle + 10, _pointLightStruct[i]._maxLightAngle);
+                    float tempRadius = Mathf.InverseLerp(_pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle, _pointLightStruct[i]._light.pointLightInnerAngle);
+                    _pointLightStruct[i]._light.pointLightInnerRadius = Mathf.Lerp(_pointLightStruct[i]._maxDistance, _pointLightStruct[i]._minDistance, tempRadius);
                 }
                  _spreadAngle = _pointLightStruct[0]._light.pointLightInnerAngle;
-            }
-            else
-            {
-                _pointLight.pointLightInnerAngle = Mathf.Clamp(_pointLight.pointLightInnerAngle += _toAdd / 3f, _minAngle, _maxAngle);
-                _pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle += _toAdd / 3f, _minAngle + 10, _maxAngle);
-                _spreadAngle = _pointLight.pointLightInnerAngle;
             }
             if( _magazineCapacity <= 0)
             {
@@ -151,7 +128,8 @@ public class WeaponController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse0) && _canShoot)
         {
-            StartCoroutine(ShootWithSpread(_spreadAngle, _pelletNumber, transform.rotation, _spawner.position));
+            float tempValue = Mathf.InverseLerp(_maxAngle, _minAngle, _spreadAngle);
+            StartCoroutine(ShootWithSpread(_spreadAngle, _pelletNumber, transform.rotation, _spawner.position, Mathf.Lerp(.3f,1f,tempValue)));
             _magazineCapacity--;
             if (_magazineCapacity <= 0)
             {
@@ -163,12 +141,8 @@ public class WeaponController : MonoBehaviour
                 {
                     _pointLightStruct[i]._light.pointLightInnerAngle = _pointLightStruct[i]._maxLightAngle;
                     _pointLightStruct[i]._light.pointLightOuterAngle = _pointLightStruct[i]._maxLightAngle;
+                    _pointLightStruct[i]._light.pointLightInnerRadius = _pointLightStruct[i]._minDistance;
                 }
-            }
-            else
-            {
-                _pointLight.pointLightOuterAngle = _maxAngle;
-                _pointLight.pointLightInnerAngle = _maxAngle;
             }
         }
         SetMagazineLight();
@@ -185,7 +159,7 @@ public class WeaponController : MonoBehaviour
         _emptyMagazineLight.intensity = _maxMagazineIntensity - _magazineLight.intensity;
     }
 
-    IEnumerator ShootWithSpread(float spreadAngle, int numberOfPellets, Quaternion transformRotation, Vector3 spawnerPosition)
+    IEnumerator ShootWithSpread(float spreadAngle, int numberOfPellets, Quaternion transformRotation, Vector3 spawnerPosition,float powerMulti = 1f, float duration = 1f)
     {
         for(int i = 0; i < numberOfPellets; i++)
         {
@@ -194,8 +168,8 @@ public class WeaponController : MonoBehaviour
                 pellet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, transformRotation.eulerAngles.z + Random.Range(-spreadAngle, spreadAngle)+180));
             else
                 pellet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, transformRotation.eulerAngles.z + Random.Range(-spreadAngle, spreadAngle)));
-            pellet.GetComponent<Rigidbody2D>().AddForce(pellet.transform.right * _firePower);
-            Destroy(pellet, 2f);
+            pellet.GetComponent<Rigidbody2D>().AddForce(pellet.transform.right * _firePower * powerMulti);
+            Destroy(pellet, duration);
             yield return new WaitForEndOfFrame();
             yield return new WaitForSeconds(.01f);
 
@@ -204,6 +178,7 @@ public class WeaponController : MonoBehaviour
 
     IEnumerator Reloading()
     {
+        GameState._isReloading = true;
         _animator.SetBool("reloading", true);
         _canShoot = false;
         yield return new WaitForSeconds(_reloadTime);
@@ -211,5 +186,6 @@ public class WeaponController : MonoBehaviour
         _magazineCapacity = _maxCapacity;
         SetMagazineLight();
         _animator.SetBool("reloading", false);
+        GameState._isReloading = false;
     }
 }
