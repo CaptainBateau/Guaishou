@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 8267255101598731947}
   - component: {fileID: 3895971380297695973}
   m_Layer: 0
-  m_Name: Projectile 1 1
+  m_Name: Light_Shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -769,7 +769,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.01
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
