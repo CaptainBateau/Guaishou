@@ -50,6 +50,8 @@ public class WeaponController : MonoBehaviour
     public Light2D _emptyMagazineLight;
 
 
+    public Animator _animator; 
+
 
     void Start()
     {
@@ -142,7 +144,7 @@ public class WeaponController : MonoBehaviour
                 _pointLight.pointLightOuterAngle = Mathf.Clamp(_pointLight.pointLightOuterAngle += _toAdd / 3f, _minAngle + 10, _maxAngle);
                 _spreadAngle = _pointLight.pointLightInnerAngle;
             }
-            if(_pointLightStruct[0]._light.pointLightInnerAngle == _maxAngle || _magazineCapacity <= 0)
+            if( _magazineCapacity <= 0)
             {
                 _canShoot = false;
             }
@@ -155,7 +157,6 @@ public class WeaponController : MonoBehaviour
             {
                 StartCoroutine(Reloading());
             }
-            _canShoot = false;
             if (_pointLightStruct.Length > 0)
             {
                 for (int i = 0; i < _pointLightStruct.Length; i++)
@@ -203,9 +204,12 @@ public class WeaponController : MonoBehaviour
 
     IEnumerator Reloading()
     {
+        _animator.SetBool("reloading", true);
         _canShoot = false;
         yield return new WaitForSeconds(_reloadTime);
         _canShoot = true;
         _magazineCapacity = _maxCapacity;
+        SetMagazineLight();
+        _animator.SetBool("reloading", false);
     }
 }

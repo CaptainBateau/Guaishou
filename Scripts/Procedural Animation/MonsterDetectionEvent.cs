@@ -3,14 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpiderDetectionsEvent : MonoBehaviour
+public class MonsterDetectionEvent : MonoBehaviour
 {
-    Vector2 dir = Vector2.left;
+    
     [Header("Parameters")]
+    [SerializeField] bool showDebug;
+    [SerializeField] bool _centerBetween2element;
+    [SerializeField] Transform _firstElement;
+    [SerializeField] Transform _secondElement;
+    [SerializeField] Vector2 _offset;
     [SerializeField] float wallDetectionDistance;
     [SerializeField] float playerNextToDistance;
     [SerializeField] float playerDetectionDistance;
+
     bool playerDetected;
+    Vector2 dir = Vector2.left;
+    public Vector3 _center;
 
     private void Awake()
     {
@@ -24,6 +32,10 @@ public class SpiderDetectionsEvent : MonoBehaviour
 
     void Update()
     {
+        if (_centerBetween2element)
+            _center = Vector3.Lerp(_firstElement.position, _secondElement.position, 0.5f);
+        else
+            _center = transform.position;
         CheckWall();
         CheckPlayerNext();
         CheckPlayerDetection();
@@ -32,7 +44,7 @@ public class SpiderDetectionsEvent : MonoBehaviour
     private void CheckWall()
     {
         RaycastHit2D hit = Physics2D.Raycast(new
-        Vector2(transform.position.x, transform.position.y),
+        Vector2(_center.x, _center.y) + _offset,
         dir, wallDetectionDistance, LayerMask.GetMask("Ground"));
         if (hit)
         {
@@ -43,7 +55,7 @@ public class SpiderDetectionsEvent : MonoBehaviour
     private void CheckPlayerNext()
     {
         RaycastHit2D hit = Physics2D.Raycast(new
-        Vector2(transform.position.x, transform.position.y),
+        Vector2(_center.x, _center.y) + _offset,
         dir, playerNextToDistance, LayerMask.GetMask("Default"));
         if (hit && hit.transform.tag == "Player")
         {
@@ -53,7 +65,7 @@ public class SpiderDetectionsEvent : MonoBehaviour
     private void CheckPlayerDetection()
     {
         RaycastHit2D hit = Physics2D.Raycast(new
-        Vector2(transform.position.x - playerDetectionDistance, transform.position.y),
+        Vector2(_center.x - playerDetectionDistance, _center.y) + _offset,
         Vector2.right, playerDetectionDistance * 2, LayerMask.GetMask("Default"));
         if (hit && hit.transform.tag == "Player" && !playerDetected)
         {
@@ -69,11 +81,19 @@ public class SpiderDetectionsEvent : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(transform.position, dir * wallDetectionDistance);
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z), dir * playerNextToDistance);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(new Vector3(transform.position.x - playerDetectionDistance, transform.position.y - 0.2f, transform.position.z), Vector2.right * playerDetectionDistance * 2);
+        if (showDebug)
+        {
+            if (_centerBetween2element)
+                _center = Vector3.Lerp(_firstElement.position, _secondElement.position, 0.5f);
+            else
+                _center = transform.position;
+
+            Gizmos.DrawRay(new Vector2(_center.x, _center.y) + _offset, dir * wallDetectionDistance);
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(new Vector2(_center.x, _center.y + 0.05f) + _offset, dir * playerNextToDistance);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(new Vector2(_center.x - playerDetectionDistance, _center.y - 0.05f) + _offset, Vector2.right * playerDetectionDistance * 2);
+        }       
     }
 
     public class ShiftDirectionEventArgs : EventArgs
