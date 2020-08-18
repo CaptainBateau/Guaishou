@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class DoorInteraction: MonoBehaviour
 {
@@ -10,9 +11,14 @@ public class DoorInteraction: MonoBehaviour
     public float _timeToOpen = 1f;
     bool _triggered = false;
     bool _opening = false;
+
+    public ShadowCaster2D _testShadow;
+    ShadowCaster2D _selfShadow;
+
     private void Awake()
     {
         _startTransform = _doorSprite;
+        _selfShadow = gameObject.GetComponent<ShadowCaster2D>();
     }
 
     private void Update()
@@ -35,7 +41,6 @@ public class DoorInteraction: MonoBehaviour
         {
             GameState._isCloseToDoor = true;
             _triggered = true;
-            Debug.Log("open");
         }
     }
 
@@ -45,13 +50,16 @@ public class DoorInteraction: MonoBehaviour
         {
             GameState._isCloseToDoor = false;
             _triggered = false;
-            Debug.Log("close");
         }
     }
 
     void Opening()
     {
         _doorSprite.rotation = Quaternion.Lerp(_startTransform.rotation, Quaternion.identity, Time.deltaTime * _speed);
+        if(_testShadow!=null)
+            _testShadow.enabled = false;
+        if(_selfShadow)
+            _selfShadow.enabled = false;
     }
 
     IEnumerator RemoveCollider()

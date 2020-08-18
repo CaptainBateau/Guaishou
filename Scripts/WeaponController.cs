@@ -96,7 +96,7 @@ public class WeaponController : MonoBehaviour
                 {
                     _toAdd = (_pointLightStruct[i]._maxLightAngle - _pointLightStruct[i]._minLightAngle) * Time.deltaTime;
                     _pointLightStruct[i]._light.pointLightInnerAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightInnerAngle -= _toAdd, _pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle);
-                    _pointLightStruct[i]._light.pointLightOuterAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightOuterAngle -= _toAdd, _pointLightStruct[i]._minLightAngle + 10, _pointLightStruct[i]._maxLightAngle);
+                   // _pointLightStruct[i]._light.pointLightOuterAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightOuterAngle -= _toAdd, _pointLightStruct[i]._minLightAngle + 10, _pointLightStruct[i]._maxLightAngle);
                     float tempRadius = Mathf.InverseLerp(_pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle, _pointLightStruct[i]._light.pointLightInnerAngle);
                     _pointLightStruct[i]._light.pointLightInnerRadius = Mathf.Lerp(_pointLightStruct[i]._maxDistance, _pointLightStruct[i]._minDistance, tempRadius);
                 }
@@ -115,7 +115,7 @@ public class WeaponController : MonoBehaviour
 
                     _toAdd = (_pointLightStruct[i]._maxLightAngle - _pointLightStruct[i]._minLightAngle) * Time.deltaTime;
                     _pointLightStruct[i]._light.pointLightInnerAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightInnerAngle += _toAdd/3, _pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle);
-                    _pointLightStruct[i]._light.pointLightOuterAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightOuterAngle += _toAdd/3, _pointLightStruct[i]._minLightAngle + 10, _pointLightStruct[i]._maxLightAngle);
+                    //_pointLightStruct[i]._light.pointLightOuterAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightOuterAngle += _toAdd/3, _pointLightStruct[i]._minLightAngle + 10, _pointLightStruct[i]._maxLightAngle);
                     float tempRadius = Mathf.InverseLerp(_pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle, _pointLightStruct[i]._light.pointLightInnerAngle);
                     _pointLightStruct[i]._light.pointLightInnerRadius = Mathf.Lerp(_pointLightStruct[i]._maxDistance, _pointLightStruct[i]._minDistance, tempRadius);
                 }
@@ -140,7 +140,7 @@ public class WeaponController : MonoBehaviour
                 for (int i = 0; i < _pointLightStruct.Length; i++)
                 {
                     _pointLightStruct[i]._light.pointLightInnerAngle = _pointLightStruct[i]._maxLightAngle;
-                    _pointLightStruct[i]._light.pointLightOuterAngle = _pointLightStruct[i]._maxLightAngle;
+                    //_pointLightStruct[i]._light.pointLightOuterAngle = _pointLightStruct[i]._maxLightAngle;
                     _pointLightStruct[i]._light.pointLightInnerRadius = _pointLightStruct[i]._minDistance;
                 }
             }
