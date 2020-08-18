@@ -1523,7 +1523,7 @@ Transform:
   - {fileID: 7687151333917748525}
   m_Father: {fileID: 7032195840494280895}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 142.94301}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 185.77399}
 --- !u!1 &2888699640923941027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,8 +1629,8 @@ MonoBehaviour:
   - {fileID: 8493405092123910218}
   - {fileID: 1597218093459937681}
   m_Bounds:
-    m_Center: {x: 0.97717166, y: -0.94122016, z: 0}
-    m_Extent: {x: 0.75445175, y: 0.7084224, z: 0}
+    m_Center: {x: 0.9771718, y: -0.94122016, z: 0}
+    m_Extent: {x: 0.7544519, y: 0.7084224, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &4584064490852998537
@@ -2491,7 +2491,7 @@ MonoBehaviour:
   - {fileID: 1367201524414604489}
   - {fileID: 8146326731361443090}
   m_Bounds:
-    m_Center: {x: -0.095412195, y: 0.026103854, z: 0}
+    m_Center: {x: -0.095412195, y: 0.026103616, z: 0}
     m_Extent: {x: 0.85979325, y: 0.56778723, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -3134,6 +3134,8 @@ GameObject:
   - component: {fileID: 7022476998033133758}
   - component: {fileID: 548679875}
   - component: {fileID: 1162160986374570410}
+  - component: {fileID: 1856622018}
+  - component: {fileID: 1856622019}
   m_Layer: 0
   m_Name: body
   m_TagString: Untagged
@@ -3272,7 +3274,10 @@ MonoBehaviour:
   wallDetectionDistance: 2.5
   playerNextToDistance: 3
   playerDetectionDistance: 4
-  _center: {x: -4.3685884, y: -2.3767586, z: -5.71875}
+  _hitBoxes:
+  - collider: {fileID: 1856622018}
+    healthLost: 5
+  _center: {x: -4.2, y: -2.3767586, z: -5.71875}
 --- !u!212 &1162160986374570410
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3323,6 +3328,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1856622018
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7022476998033133752}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.013322115, y: 0.07644093}
+  serializedVersion: 2
+  m_Radius: 0.6498033
+--- !u!114 &1856622019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7022476998033133752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e409310d2a81046ad8efec53da223e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 500
 --- !u!1 &7890935021405521887
 GameObject:
   m_ObjectHideFlags: 0

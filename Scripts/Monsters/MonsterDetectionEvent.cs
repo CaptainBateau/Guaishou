@@ -15,19 +15,32 @@ public class MonsterDetectionEvent : MonoBehaviour
     [SerializeField] float wallDetectionDistance;
     [SerializeField] float playerNextToDistance;
     [SerializeField] float playerDetectionDistance;
+    [SerializeField] List<HitBox> _hitBoxes = new List<HitBox>();
+
+    [System.Serializable]
+    public struct HitBox
+    {
+        public Collider2D collider;
+        public int healthLost;
+    }
 
     bool playerDetected;
     Vector2 dir = Vector2.left;
     public Vector3 _center;
 
+    #region Unity Functions
     private void Awake()
     {
         OnShiftDirection += OnShiftDirectionHandler;
     }
 
-    private void OnShiftDirectionHandler(object sender, ShiftDirectionEventArgs e)
+    private void Start()
     {
-        dir = e.newDir;
+        foreach (HitBox hitbox in _hitBoxes)
+        {
+            HitBoxDetector hitboxDetector = hitbox.collider.gameObject.AddComponent<HitBoxDetector>();
+            hitboxDetector.Initialize(this, hitbox);
+        }
     }
 
     void Update()
@@ -41,6 +54,9 @@ public class MonsterDetectionEvent : MonoBehaviour
         CheckPlayerDetection();
     }
 
+    #endregion
+
+    #region Check Functions
     private void CheckWall()
     {
         RaycastHit2D hit = Physics2D.Raycast(new
@@ -51,7 +67,6 @@ public class MonsterDetectionEvent : MonoBehaviour
             WallIsNextBy(new WallIsNextByEventArgs {});
         }
     }
-
     private void CheckPlayerNext()
     {
         RaycastHit2D hit = Physics2D.Raycast(new
@@ -79,6 +94,7 @@ public class MonsterDetectionEvent : MonoBehaviour
         }
     }
 
+    #endregion
     private void OnDrawGizmos()
     {
         if (showDebug)
@@ -96,6 +112,12 @@ public class MonsterDetectionEvent : MonoBehaviour
         }       
     }
 
+    private void OnShiftDirectionHandler(object sender, ShiftDirectionEventArgs e)
+    {
+        dir = e.newDir;
+    }
+
+    #region Events
     public class ShiftDirectionEventArgs : EventArgs
     {
         public Vector2 newDir;
@@ -130,4 +152,13 @@ public class MonsterDetectionEvent : MonoBehaviour
     }
     public event EventHandler<WallIsNextByEventArgs> OnWallIsNextBy;
     void WallIsNextBy(WallIsNextByEventArgs e) => OnWallIsNextBy?.Invoke(this, e);
+
+    public class MonsterHitEventArgs : EventArgs
+    {
+        public HitBox hitbox;
+    }
+    public event EventHandler<MonsterHitEventArgs> OnMonsterHit;
+    public void MonsterHit(MonsterHitEventArgs e) => OnMonsterHit?.Invoke(this, e);
+
+    #endregion
 }

@@ -19,7 +19,7 @@ public class FreakingLeechMovement : MonoBehaviour
     [SerializeField] float _stepDistance = 1;
     [SerializeField] float _stepDurationHead = 1;
     [SerializeField] float _stepDurationBase = 1;
-
+    [SerializeField] float _jumpMaxHigh = 2f;
     [SerializeField] AnimationCurve _stepMovementHead;
     [SerializeField] float _randomMovementRange;
     [SerializeField] AnimationCurve _turningAround;
@@ -47,7 +47,7 @@ public class FreakingLeechMovement : MonoBehaviour
             dir = Vector2.left;
         else
             dir = Vector2.right;
-        detectionEvent.ShiftDirection(new MonsterDetectionEvent.ShiftDirectionEventArgs { newDir = dir });        
+        detectionEvent.ShiftDirection(new MonsterDetectionEvent.ShiftDirectionEventArgs { newDir = dir });   
     }
 
 
@@ -195,7 +195,7 @@ public class FreakingLeechMovement : MonoBehaviour
 
 
         RaycastHit2D hit = Physics2D.Raycast(new
-            Vector2(targetPos.x, targetPos.y + 5),
+            Vector2(targetPos.x, targetPos.y + _jumpMaxHigh),
             Vector2.down, 12f, LayerMask.GetMask("Ground"));
         if (hit.collider != null)
         {
