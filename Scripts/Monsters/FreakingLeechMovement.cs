@@ -26,6 +26,8 @@ public class FreakingLeechMovement : MonoBehaviour
     [SerializeField] AnimationCurve _stepMovementBase;
     [SerializeField] float delay;
     [SerializeField] bool directionIsLeft = true;
+    [SerializeField] AnimationCurve _attackingCurve;
+    [SerializeField] float _attackDuration;
     public bool DirectionIsLeft { get => directionIsLeft; set { directionIsLeft = value; directionJustChanged = true; } }
 
 
@@ -57,18 +59,12 @@ public class FreakingLeechMovement : MonoBehaviour
         detectionEvent = GetComponent<MonsterDetectionEvent>();
         detectionEvent.OnWallIsNextBy += OnWallIsNextHandler;
         detectionEvent.OnPlayerDetected += OnPlayerDetectedHandler;
-        detectionEvent.OnPlayerNotDetectedAnymore += OnPlayerNotDetectedAnymoreHandler;
 
 
 
         _distanceBetweenPart = Vector2.Distance(_bigPartSolver.transform.position, _endPartSolver.transform.position) * 0.65f;
         _distanceBetweenHeadAndBase = Vector2.Distance(_base.transform.position, _endPartSolver.transform.position);
         Invoke("StartMoving", delay);
-    }
-
-    private void OnPlayerNotDetectedAnymoreHandler(object sender, MonsterDetectionEvent.PlayerNotDetectedAnymoreEventArgs e)
-    {
-        //throw new NotImplementedException();
     }
 
     private void OnPlayerDetectedHandler(object sender, MonsterDetectionEvent.PlayerDetectedEventArgs e)
@@ -158,6 +154,17 @@ public class FreakingLeechMovement : MonoBehaviour
         }
         StartCoroutine(TakeStep());
     }
+
+    //IEnumerator Attack()
+    //{
+    //    Movements.Move(_endPartSolver.transform, player, _attackingCurve, _attackDuration);
+    //    yield return new WaitForSeconds(_attackDuration / 10);
+    //    Movements.Move(_bigPartSolver.transform, player, _attackingCurve, _attackDuration);
+    //    yield return new WaitForSeconds(_attackDuration / 3);
+    //    Movements.Move(_base.transform, player, _attackingCurve, _attackDuration);
+
+    //}
+
     Vector2 getTargetPos(Transform initialPos, bool movingDirLeft, bool isHead = false)
     {
         Vector2 targetPos;

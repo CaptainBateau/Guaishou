@@ -22,6 +22,8 @@ public class MonsterDetectionEvent : MonoBehaviour
     public struct HitBox
     {
         public Collider2D collider;
+        public bool colliderGroup;
+        public Transform parentOfColliders;
         public int healthLost;
     }
 
@@ -39,8 +41,20 @@ public class MonsterDetectionEvent : MonoBehaviour
     {
         foreach (HitBox hitbox in _hitBoxes)
         {
-            HitBoxDetector hitboxDetector = hitbox.collider.gameObject.AddComponent<HitBoxDetector>();
-            hitboxDetector.Initialize(this, hitbox);
+            if(hitbox.collider != null)
+            {
+                HitBoxDetector hitboxDetector = hitbox.collider.gameObject.AddComponent<HitBoxDetector>();
+                hitboxDetector.Initialize(this, hitbox);
+            }
+            if (hitbox.colliderGroup)
+            {
+                foreach (Collider2D col in hitbox.parentOfColliders.GetComponentsInChildren<Collider2D>())
+                {
+                    HitBoxDetector hitboxDetector = col.gameObject.AddComponent<HitBoxDetector>();
+                    hitboxDetector.Initialize(this, hitbox);
+                }
+            }
+            
         }
     }
 
