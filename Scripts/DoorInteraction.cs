@@ -11,6 +11,11 @@ public class DoorInteraction: MonoBehaviour
     public float _timeToOpen = 1f;
     bool _triggered = false;
     bool _opening = false;
+    bool _closing = false;
+    bool _opened = false;
+    bool _isPlayerLeftSide;
+    public Vector3 _openRotation;
+    public Vector3 _closeRotation;
 
     public ShadowCaster2D _testShadow;
     ShadowCaster2D _selfShadow;
@@ -27,12 +32,24 @@ public class DoorInteraction: MonoBehaviour
         {
             if (_triggered)
             {
-                _opening = true;
-                StartCoroutine(RemoveCollider());
+                PlayerSideOfDoor();
+                Debug.Log(_isPlayerLeftSide);
+                if (!_opened)
+                {
+                    _opening = true;
+                    StartCoroutine(RemoveCollider());
+                }
+                else
+                {
+                    _closing = true;
+                    StartCoroutine(ReactiveCollider());
+                }
             }
         }
         if (_opening)
             Opening();
+        if (_closing)
+            Closing();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,18 +72,46 @@ public class DoorInteraction: MonoBehaviour
 
     void Opening()
     {
-        _doorSprite.rotation = Quaternion.Lerp(_startTransform.rotation, Quaternion.identity, Time.deltaTime * _speed);
+        _doorSprite.eulerAngles = _openRotation;
+        //_doorSprite.rotation = Quaternion.Lerp(_startTransform.rotation, Quaternion.identity, Time.deltaTime * _speed);
         if(_testShadow!=null)
             _testShadow.enabled = false;
         if(_selfShadow)
             _selfShadow.enabled = false;
     }
 
+    void Closing()
+    {
+        _doorSprite.eulerAngles = _closeRotation;
+        //_doorSprite.rotation = Quaternion.Lerp(Quaternion.identity, _startTransform.rotation, Time.deltaTime * _speed);
+        if (_testShadow != null)
+            _testShadow.enabled = true;
+        if (_selfShadow)
+            _selfShadow.enabled = true;
+    }
+
+    void PlayerSideOfDoor()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        float test = _doorSprite.position.x - player.transform.position.x;
+        _isPlayerLeftSide = test > 0 ? true : false;
+    }
+
+
     IEnumerator RemoveCollider()
     {
         yield return new WaitForSeconds(_timeToOpen);
         _opening = false;
         gameObject.GetComponent<Collider2D>().enabled = false;
-        Destroy(this);
+        _opened = true;
+        //Destroy(this);
+    }
+
+    IEnumerator ReactiveCollider()
+    {
+        yield return new WaitForSeconds(_timeToOpen);
+        _closing = false;
+        gameObject.GetComponent<Collider2D>().enabled = true;
+        _opened = false;
     }
 }
