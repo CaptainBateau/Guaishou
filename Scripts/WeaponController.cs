@@ -49,9 +49,15 @@ public class WeaponController : MonoBehaviour
     public Light2D _emptyMagazineLight;
 
 
-    public Animator _animator; 
+    public Animator _animator;
 
 
+    public Light2D[] _playerSpriteLights;
+    public float _initialIntensity = 1;
+    public float _targetIntensity;
+    public float _timeToRecover;
+    float _timeWhenShoot;
+    
     void Start()
     {
         _camera = Camera.main;
@@ -130,6 +136,10 @@ public class WeaponController : MonoBehaviour
         {
             float tempValue = Mathf.InverseLerp(_maxSpreadAngle, _minSpreadAngle, _spreadAngle);
             StartCoroutine(ShootWithSpread(_spreadAngle, _pelletNumber, transform.rotation, _spawner.position, Mathf.Lerp(.3f,1f,tempValue)));
+
+            _timeWhenShoot = Time.time + _timeToRecover;
+
+
             _magazineCapacity--;
             if (_magazineCapacity <= 0)
             {
@@ -145,6 +155,10 @@ public class WeaponController : MonoBehaviour
                 }
             }
         }
+        if (Time.time < _timeWhenShoot)
+        {
+            SetIntensityPlayer();
+        }
         SetMagazineLight();
     }
     private void OnValidate()
@@ -159,6 +173,14 @@ public class WeaponController : MonoBehaviour
         _emptyMagazineLight.intensity = _maxMagazineIntensity - _magazineLight.intensity;
     }
 
+    void SetIntensityPlayer()
+    {
+        for(int i= 0; i < _playerSpriteLights.Length; i++)
+        {
+            _playerSpriteLights[i].intensity = Mathf.Lerp( _initialIntensity, _targetIntensity, (_timeWhenShoot - Time.time) * _timeToRecover);
+        }
+    }
+
     IEnumerator ShootWithSpread(float spreadAngle, int numberOfPellets, Quaternion transformRotation, Vector3 spawnerPosition,float powerMulti = 1f, float duration = 1f)
     {
         for(int i = 0; i < numberOfPellets; i++)
@@ -170,7 +192,6 @@ public class WeaponController : MonoBehaviour
                 pellet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, transformRotation.eulerAngles.z + Random.Range(-spreadAngle, spreadAngle)));
             pellet.GetComponent<Rigidbody2D>().AddForce(pellet.transform.right * _firePower * powerMulti);
             Destroy(pellet, duration);
-            yield return new WaitForEndOfFrame();
             yield return new WaitForSeconds(.01f);
 
         }

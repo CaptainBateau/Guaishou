@@ -41,5 +41,4 @@ public class CharacterMovement : MonoBehaviour
             _animator.SetBool("walking", false);
     }
 
-    
 }
