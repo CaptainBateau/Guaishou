@@ -9,7 +9,7 @@ public class InputAssigner : MonoBehaviour
 
     private void Awake()
     {
-        if (_interaction != GameState._interactButton)
+        if (_interaction != GameState._interactButton && _interaction != KeyCode.None)
             GameState._interactButton = _interaction;
     }
 

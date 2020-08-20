@@ -17,7 +17,8 @@ public class DoorInteraction: MonoBehaviour
     public Vector3 _openRotation;
     public Vector3 _closeRotation;
 
-    public ShadowCaster2D _testShadow;
+    public ShadowCaster2D _leftShadow;
+    public ShadowCaster2D _rightShadow;
     ShadowCaster2D _selfShadow;
 
     private void Awake()
@@ -74,8 +75,10 @@ public class DoorInteraction: MonoBehaviour
     {
         _doorSprite.eulerAngles = _openRotation;
         //_doorSprite.rotation = Quaternion.Lerp(_startTransform.rotation, Quaternion.identity, Time.deltaTime * _speed);
-        if(_testShadow!=null)
-            _testShadow.enabled = false;
+        if (_isPlayerLeftSide)
+            _rightShadow.enabled = false;
+        else
+            _leftShadow.enabled = false;
         if(_selfShadow)
             _selfShadow.enabled = false;
     }
@@ -84,8 +87,10 @@ public class DoorInteraction: MonoBehaviour
     {
         _doorSprite.eulerAngles = _closeRotation;
         //_doorSprite.rotation = Quaternion.Lerp(Quaternion.identity, _startTransform.rotation, Time.deltaTime * _speed);
-        if (_testShadow != null)
-            _testShadow.enabled = true;
+        if (_isPlayerLeftSide)
+            _rightShadow.enabled = true;
+        else
+            _leftShadow.enabled = true;
         if (_selfShadow)
             _selfShadow.enabled = true;
     }
