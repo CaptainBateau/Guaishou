@@ -25,12 +25,12 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void ShowObject(GameObject _object)
+    public void EnableObject(GameObject _object)
     {
         _object.SetActive(true);
     }
 
-    public void UnShowObject(GameObject _object)
+    public void DisableObject(GameObject _object)
     {
         _object.SetActive(false);
     }
