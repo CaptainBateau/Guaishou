@@ -12,7 +12,7 @@ public abstract class AudioManager : MonoBehaviour
     // public AudioMixerGroup _audioMixer;
     // public GameObject _effectsVolumeSlider;
 
-    List<Sound> bannedSounds;
+    List<Sound> bannedSounds = new List<Sound>();
 
     public void Play(Sound s)
     {

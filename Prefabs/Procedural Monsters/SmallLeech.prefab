@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 795569598261897019}
   m_Layer: 11
   m_Name: SmallLeech
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 1899019709}
   - component: {fileID: 1899019710}
   - component: {fileID: 4110696595640019512}
-  - component: {fileID: 1899019712}
+  - component: {fileID: 1395626514}
   m_Layer: 11
   m_Name: Base
   m_TagString: Untagged
@@ -820,7 +820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
---- !u!114 &1899019712
+--- !u!114 &1395626514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -829,9 +829,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 795569598410367847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2831285acff5c74ebe18240d03ba505, type: 3}
+  m_Script: {fileID: 11500000, guid: bc735878afe82f14f822ee0602539743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  squishStep:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  aggro:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  takeDamage:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  death:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
 --- !u!1 &795569598431406782
 GameObject:
   m_ObjectHideFlags: 0
