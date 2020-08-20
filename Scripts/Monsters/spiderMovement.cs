@@ -37,8 +37,6 @@ public class spiderMovement : MonoBehaviour
         detectionEvent.OnPlayerDetected += OnPlayerDetectedHandler;        
         detectionEvent.OnPlayerNotDetectedAnymore += OnPlayerNotDetectedAnymoreHandler;        
         heightPosition = transform.position.y;
-        if (inversed)
-            _dir = Vector2.right;
 
         _initialSpeed = speed;
         detectionEvent.ShiftDirection(new MonsterDetectionEvent.ShiftDirectionEventArgs { newDir = _dir });

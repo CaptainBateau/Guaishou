@@ -14,8 +14,11 @@ public class LegAttack : MonoBehaviour
     [SerializeField] Transform basePosition;
 
     [Header("Parameters")]
+    [SerializeField] float _prepareDuration = 1;
     [SerializeField] AnimationCurve _preparingAttackCurve;
-    [SerializeField] AnimationCurve _attackingCurve;   
+    [SerializeField] float _attackingDuration = 1;
+    [SerializeField] AnimationCurve _attackingCurve;
+    [SerializeField] float _recoveringDuration = 1;
     [SerializeField] AnimationCurve _recoveringCurve;
     [SerializeField] AnimationCurve _breathCurve;
 
@@ -42,51 +45,36 @@ public class LegAttack : MonoBehaviour
         }
     }
     private void OnPlayerIsNextByHandler(object sender, MonsterDetectionEvent.PlayerIsNextByEventArgs e)
-    {
+    {        
         if((e.direction == Vector2.left && LeftLeg && !attacking) || (e.direction == Vector2.right && !LeftLeg && !attacking))
-            StartCoroutine(PrepareAttack(e.player.transform));
-    }
-    IEnumerator PrepareAttack(Transform targetToHit)
-    {
-        attacking = true;
-        float timer = 0;
-        Vector2 startPos = _target.transform.position;
-        float animDuration = _preparingAttackCurve.keys[_preparingAttackCurve.length - 1].time;
-        while (timer < animDuration)
         {
-            timer += Time.deltaTime;          
-            _target.transform.position = Vector2.Lerp(startPos, anticipationPosition.transform.position, _preparingAttackCurve.Evaluate(timer));
-            yield return null;
+            attacking = true;
+            StartCoroutine(PrepareAttack(e.player.transform));
         }
+            
+    }
+
+    IEnumerator PrepareAttack(Transform targetToHit)
+    {     
+        StartCoroutine(Movements.Move(_target.transform, anticipationPosition.transform, _preparingAttackCurve, _prepareDuration));
+        yield return new WaitForSeconds(_prepareDuration);
         StartCoroutine(Attack(targetToHit));
     }
 
     IEnumerator Attack(Transform targetToHit)
     {
-        float timer = 0;
-        Vector2 startPos = _target.transform.position;
-        float animDuration = _attackingCurve.keys[_attackingCurve.length - 1].time;
-        while (timer < animDuration)
-        {
-            timer += Time.deltaTime;
-            _target.transform.position = Vector2.Lerp(startPos, targetToHit.position, _preparingAttackCurve.Evaluate(timer));
-            yield return null;
-        }
+        StartCoroutine(Movements.Move(_target.transform, targetToHit, _attackingCurve, _attackingDuration));
+        yield return new WaitForSeconds(_attackingDuration);
         StartCoroutine(Recover());
     }
+
     IEnumerator Recover()
     {
-        float timer = 0;
-        Vector2 startPos = _target.transform.position;
-        float animDuration = _attackingCurve.keys[_attackingCurve.length - 1].time;
-        while (timer < animDuration)
-        {
-            timer += Time.deltaTime;
-            _target.transform.position = Vector2.Lerp(startPos, basePosition.position, _recoveringCurve.Evaluate(timer));
-            yield return null;
-        }
+        StartCoroutine(Movements.Move(_target.transform, basePosition, _recoveringCurve, _recoveringDuration));
+        yield return new WaitForSeconds(_recoveringDuration);
         attacking = false;
     }
+    
 }
 
 

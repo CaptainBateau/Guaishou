@@ -12,6 +12,7 @@ public class MonsterDetectionEvent : MonoBehaviour
     [SerializeField] Transform _firstElement;
     [SerializeField] Transform _secondElement;
     [SerializeField] Vector2 _offset;
+    [SerializeField] Vector2 _playerDetectionOffset;
     [SerializeField] float wallDetectionDistance;
     [SerializeField] float playerNextToDistance;
     [SerializeField] float playerDetectionDistance;
@@ -21,6 +22,8 @@ public class MonsterDetectionEvent : MonoBehaviour
     public struct HitBox
     {
         public Collider2D collider;
+        public bool colliderGroup;
+        public Transform parentOfColliders;
         public int healthLost;
     }
 
@@ -38,8 +41,20 @@ public class MonsterDetectionEvent : MonoBehaviour
     {
         foreach (HitBox hitbox in _hitBoxes)
         {
-            HitBoxDetector hitboxDetector = hitbox.collider.gameObject.AddComponent<HitBoxDetector>();
-            hitboxDetector.Initialize(this, hitbox);
+            if(hitbox.collider != null)
+            {
+                HitBoxDetector hitboxDetector = hitbox.collider.gameObject.AddComponent<HitBoxDetector>();
+                hitboxDetector.Initialize(this, hitbox);
+            }
+            if (hitbox.colliderGroup)
+            {
+                foreach (Collider2D col in hitbox.parentOfColliders.GetComponentsInChildren<Collider2D>())
+                {
+                    HitBoxDetector hitboxDetector = col.gameObject.AddComponent<HitBoxDetector>();
+                    hitboxDetector.Initialize(this, hitbox);
+                }
+            }
+            
         }
     }
 
@@ -49,6 +64,7 @@ public class MonsterDetectionEvent : MonoBehaviour
             _center = Vector3.Lerp(_firstElement.position, _secondElement.position, 0.5f);
         else
             _center = transform.position;
+
         CheckWall();
         CheckPlayerNext();
         CheckPlayerDetection();
@@ -70,9 +86,9 @@ public class MonsterDetectionEvent : MonoBehaviour
     private void CheckPlayerNext()
     {
         RaycastHit2D hit = Physics2D.Raycast(new
-        Vector2(_center.x, _center.y) + _offset,
-        dir, playerNextToDistance, LayerMask.GetMask("Default"));
-        if (hit && hit.transform.tag == "Player")
+        Vector2(_center.x, _center.y) + _offset + _playerDetectionOffset,
+        dir, playerNextToDistance, LayerMask.GetMask("Player"));
+        if (hit)
         {
             PlayerIsNextBy(new PlayerIsNextByEventArgs { player = hit.collider, direction = dir});
         }
@@ -80,14 +96,14 @@ public class MonsterDetectionEvent : MonoBehaviour
     private void CheckPlayerDetection()
     {
         RaycastHit2D hit = Physics2D.Raycast(new
-        Vector2(_center.x - playerDetectionDistance, _center.y) + _offset,
-        Vector2.right, playerDetectionDistance * 2, LayerMask.GetMask("Default"));
-        if (hit && hit.transform.tag == "Player" && !playerDetected)
+        Vector2(_center.x - playerDetectionDistance, _center.y) + _offset + _playerDetectionOffset,
+        Vector2.right, playerDetectionDistance * 2, LayerMask.GetMask("Player"));
+        if (hit && !playerDetected)
         {
             playerDetected = true;
             PlayerDetected(new PlayerDetectedEventArgs { player = hit.collider, direction = dir});
         }
-        if (!hit || hit.transform.tag != "Player")
+        if (!hit && playerDetected)
         {
             playerDetected = false;
             PlayerNotDetectedAnymore(new PlayerNotDetectedAnymoreEventArgs {});
@@ -106,9 +122,9 @@ public class MonsterDetectionEvent : MonoBehaviour
 
             Gizmos.DrawRay(new Vector2(_center.x, _center.y) + _offset, dir * wallDetectionDistance);
             Gizmos.color = Color.red;
-            Gizmos.DrawRay(new Vector2(_center.x, _center.y + 0.05f) + _offset, dir * playerNextToDistance);
+            Gizmos.DrawRay(new Vector2(_center.x, _center.y + 0.03f) + _offset + _playerDetectionOffset, dir * playerNextToDistance);
             Gizmos.color = Color.blue;
-            Gizmos.DrawRay(new Vector2(_center.x - playerDetectionDistance, _center.y - 0.05f) + _offset, Vector2.right * playerDetectionDistance * 2);
+            Gizmos.DrawRay(new Vector2(_center.x - playerDetectionDistance, _center.y - 0.03f) + _offset + _playerDetectionOffset, Vector2.right * playerDetectionDistance * 2);
         }       
     }
 
