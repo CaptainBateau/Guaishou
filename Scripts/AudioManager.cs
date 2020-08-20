@@ -56,6 +56,7 @@ public abstract class AudioManager : MonoBehaviour
 
             }
 
+            s.source.volume = s.volume;
             s.source.loop = s.loop;
 
             if (s.randomPitch)

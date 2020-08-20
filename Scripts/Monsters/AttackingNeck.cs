@@ -14,7 +14,7 @@ public class AttackingNeck : MonoBehaviour
     [SerializeField] float neckRecoverDuration = 0.2f;
 
 
-    [SerializeField] Transform originalNeckPos;
+    [SerializeField] Transform originalNeckPos = null;
 
     void Start()
     {

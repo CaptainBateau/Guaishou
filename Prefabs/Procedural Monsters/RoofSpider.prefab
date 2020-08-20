@@ -835,7 +835,7 @@ MonoBehaviour:
     colliderGroup: 0
     parentOfColliders: {fileID: 0}
     healthLost: 10
-  _center: {x: -8.260584, y: -0.054716915, z: 0}
+  _center: {x: -8.670584, y: -0.054716915, z: 0}
 --- !u!114 &1142894944335121431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -951,13 +951,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   step:
-    clips:
-    - {fileID: 8300000, guid: e5b4fe33b6bfd5648bc10a607b390264, type: 3}
-    - {fileID: 8300000, guid: 4a80ddf36f527954f82c17600687cf94, type: 3}
+    clips: []
     volume: 0.647
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
+    minDelayBetweenSounds: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   aggro:
@@ -966,6 +965,7 @@ MonoBehaviour:
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
+    minDelayBetweenSounds: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   takeDamage:
@@ -974,6 +974,7 @@ MonoBehaviour:
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
+    minDelayBetweenSounds: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   death:
@@ -982,6 +983,7 @@ MonoBehaviour:
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
+    minDelayBetweenSounds: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   attack:
@@ -990,6 +992,7 @@ MonoBehaviour:
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
+    minDelayBetweenSounds: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   neckMovement:
@@ -998,6 +1001,7 @@ MonoBehaviour:
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
+    minDelayBetweenSounds: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
 --- !u!1 &4815499288960643247

@@ -12,14 +12,14 @@ public class spiderMovement : MonoBehaviour
 
     [Header("Parameters")]
     public float stepShift = 2f;
-    public float speed;
-    public AnimationCurve breathCurve;
+    public float speed = 1;
+    public AnimationCurve breathCurve = null;
     public float distanceToGround = 2f;
 
     [Header("Optional")]
-    [SerializeField] bool inversed;
-    [SerializeField] bool shiftToFacePlayer;
-    [SerializeField] bool changeSpeedOnPlayerDetected;
+    [SerializeField] bool inversed = false;
+    [SerializeField] bool shiftToFacePlayer = true;
+    [SerializeField] bool changeSpeedOnPlayerDetected = true;
     [SerializeField] [Range(0, 300)] float bodySpeedOnPlayerDetected = 100;
     [SerializeField] [Range(0, 300)] float stepDistanceOnPlayerDetected = 100;
     [SerializeField] [Range(0, 300)] float stepDurationOnPlayerDetected = 100;
