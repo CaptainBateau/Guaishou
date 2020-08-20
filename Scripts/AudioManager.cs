@@ -16,12 +16,12 @@ public abstract class AudioManager : MonoBehaviour
 	{
 		if (s == null)
 		{
-			Debug.LogWarning("Sound: " + s + " not found!");
+			Debug.LogWarning("Sound: " + s.ToString() + " not found!");
 			return;
 		}
 		if(s.clips.Count == 0)
         {
-			Debug.LogWarning("Sound: " + s + " doesn't have any audioClip");
+			Debug.LogWarning("Sound: " + s.ToString() + " doesn't have any audioClip");
 			return;
 		}
 		if(s.source == null)

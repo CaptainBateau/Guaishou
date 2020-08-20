@@ -57,15 +57,15 @@ public class LegAttack : MonoBehaviour
     }
 
     IEnumerator PrepareAttack(Transform targetToHit)
-    {     
+    {
+        detectionEvent.MonsterAttack(new MonsterDetectionEvent.MonsterAttackEventArgs { });
         StartCoroutine(Movements.Move(_target.transform, anticipationPosition.transform, _preparingAttackCurve, _prepareDuration));
         yield return new WaitForSeconds(_prepareDuration);
         StartCoroutine(Attack(targetToHit));
     }
 
     IEnumerator Attack(Transform targetToHit)
-    {
-        detectionEvent.MonsterAttack(new MonsterDetectionEvent.MonsterAttackEventArgs { });
+    {       
         StartCoroutine(Movements.Move(_target.transform, targetToHit, _attackingCurve, _attackingDuration, _playerYOffset, _playerRandomHitRange));
         yield return new WaitForSeconds(_attackingDuration);
         StartCoroutine(Recover());
