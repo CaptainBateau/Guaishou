@@ -23,13 +23,13 @@ public class WeaponController : MonoBehaviour
     private float _toAdd;
 
     [Range(0, 360f)]
-    public float _minAngle, _maxAngle;
+    public float _minSpreadAngle, _maxSpreadAngle;
 
     Camera _camera;
     Vector3 _orientation;
     Vector3 _direction;
     public Transform _parent;
-    float _lightAngleRange = 120f;
+    public float _aimAngleRange = 120f;
 
     public GameObject _projectile;
     public float _firePower;
@@ -71,9 +71,9 @@ public class WeaponController : MonoBehaviour
             GameState._isCharacterFlipped = true;
             _parent.transform.localScale = new Vector3(-1, 1, 1);
             if (_orientation.y < transform.localPosition.y)
-                transform.eulerAngles = new Vector3(0, 0, (Mathf.Clamp(tempAngle, -180,-180 + _lightAngleRange/2))-180);
+                transform.eulerAngles = new Vector3(0, 0, (Mathf.Clamp(tempAngle, -180,-180 + _aimAngleRange/2))-180);
             else
-                transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, 180 - _lightAngleRange / 2, 180)-180);
+                transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, 180 - _aimAngleRange / 2, 180)-180);
         }
         else
         {
@@ -81,7 +81,7 @@ public class WeaponController : MonoBehaviour
             GameState._isCharacterFlipped = false;
 
             _parent.transform.localScale = new Vector3(1, 1, 1);
-            transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, - _lightAngleRange / 2, _lightAngleRange / 2));
+            transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, - _aimAngleRange / 2, _aimAngleRange / 2));
         }
 
         if (Input.GetKey(KeyCode.Mouse1))
@@ -128,7 +128,7 @@ public class WeaponController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Mouse0) && _canShoot)
         {
-            float tempValue = Mathf.InverseLerp(_maxAngle, _minAngle, _spreadAngle);
+            float tempValue = Mathf.InverseLerp(_maxSpreadAngle, _minSpreadAngle, _spreadAngle);
             StartCoroutine(ShootWithSpread(_spreadAngle, _pelletNumber, transform.rotation, _spawner.position, Mathf.Lerp(.3f,1f,tempValue)));
             _magazineCapacity--;
             if (_magazineCapacity <= 0)
@@ -149,8 +149,8 @@ public class WeaponController : MonoBehaviour
     }
     private void OnValidate()
     {
-        if (_minAngle > _maxAngle)
-            _minAngle = _maxAngle;
+        if (_minSpreadAngle > _maxSpreadAngle)
+            _minSpreadAngle = _maxSpreadAngle;
     }
 
     void SetMagazineLight()
