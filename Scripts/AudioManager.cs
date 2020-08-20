@@ -32,6 +32,23 @@ public abstract class AudioManager : MonoBehaviour
 			}
 			s.source = s.soundOrigin.gameObject.AddComponent<AudioSource>();
 		}
+        if (s.source.isPlaying)
+        {
+			AudioSource[] sources = s.soundOrigin.GetComponents<AudioSource>();
+			bool availableSource = false;
+            foreach (AudioSource source in sources)
+            {
+                if (!source.isPlaying)
+                {
+					availableSource = true;
+					s.source = source;
+					break;
+                }
+            }
+			if (!availableSource)
+				s.source = s.soundOrigin.gameObject.AddComponent<AudioSource>();
+
+		}
 
 		s.source.loop = s.loop;
 
