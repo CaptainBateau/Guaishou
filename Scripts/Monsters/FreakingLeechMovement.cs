@@ -137,6 +137,7 @@ public class FreakingLeechMovement : MonoBehaviour
             _bigPartSolver.transform.position = Vector2.Lerp(startPosBig, new Vector2(targetBigPart.x, targetBigPart.y + stepMovement.Evaluate(timer / _stepDurationHead)), timer / _stepDurationHead);
             yield return null;
         }
+        detectionEvent.TakeStep(new MonsterDetectionEvent.TakeStepEventArgs { });
         StartCoroutine(FollowStep());
     }
 
@@ -152,6 +153,7 @@ public class FreakingLeechMovement : MonoBehaviour
             _base.transform.position = Vector2.Lerp(startPos, new Vector2(target.x, target.y + _stepMovementBase.Evaluate(timer / _stepDurationBase)), timer / _stepDurationBase);            
             yield return null;
         }
+        detectionEvent.TakeStep(new MonsterDetectionEvent.TakeStepEventArgs { });
         StartCoroutine(TakeStep());
     }
 

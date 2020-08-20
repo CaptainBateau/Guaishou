@@ -16,6 +16,7 @@ public class Sound
 	public bool loop;
 
 	[Header("Optional")]
+	public float minDelayBetweenSounds = 0;
 	public Transform soundOrigin;
 	[HideInInspector] public AudioSource source;
 }
