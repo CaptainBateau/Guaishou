@@ -17,6 +17,8 @@ public class LegAttack : MonoBehaviour
     [SerializeField] float _prepareDuration = 1;
     [SerializeField] AnimationCurve _preparingAttackCurve;
     [SerializeField] float _attackingDuration = 1;
+    [SerializeField] float _playerYOffset = 1;
+    [SerializeField] float _playerRandomHitRange = 0.5f;
     [SerializeField] AnimationCurve _attackingCurve;
     [SerializeField] float _recoveringDuration = 1;
     [SerializeField] AnimationCurve _recoveringCurve;
@@ -63,7 +65,8 @@ public class LegAttack : MonoBehaviour
 
     IEnumerator Attack(Transform targetToHit)
     {
-        StartCoroutine(Movements.Move(_target.transform, targetToHit, _attackingCurve, _attackingDuration));
+        detectionEvent.MonsterAttack(new MonsterDetectionEvent.MonsterAttackEventArgs { });
+        StartCoroutine(Movements.Move(_target.transform, targetToHit, _attackingCurve, _attackingDuration, _playerYOffset, _playerRandomHitRange));
         yield return new WaitForSeconds(_attackingDuration);
         StartCoroutine(Recover());
     }

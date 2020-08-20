@@ -6,7 +6,7 @@ public class LegStep : MonoBehaviour
 {
     [Header("References")]
     public Transform foot;
-
+    MonsterDetectionEvent detectionEvent;
     public Transform currentTarget;
     public TargetStep desiredTarget;
 
@@ -24,6 +24,9 @@ public class LegStep : MonoBehaviour
     bool moving;
     private void Start()
     {
+        detectionEvent = gameObject.GetComponentInParent(typeof(MonsterDetectionEvent)) as MonsterDetectionEvent;
+        if (detectionEvent == null)
+            Debug.LogWarning(this + " doesn't have a MonsterDetectionEvent in its parent, footstep won't be registered in events");
         initialDistanceToStep = distanceToStep;
         initialStepDuration = stepDuration;
         startPos = foot.position;
@@ -46,23 +49,20 @@ public class LegStep : MonoBehaviour
                 startPos = foot.position;
                 timer = 0;
                 moving = true;
-            }           
+            }
 
             if (timer < stepDuration && moving)
-            {                
+            {
                 foot.position = Vector2.Lerp(startPos, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(timer / stepDuration)), timer / stepDuration);
                 timer += Time.deltaTime;
             }
             else
             {
+                detectionEvent.TakeStep(new MonsterDetectionEvent.TakeStepEventArgs { });
                 foot.position = currentTarget.position;
                 moving = false;
             }
-
-                //foot.position = Vector2.MoveTowards(foot.position, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(timer)), Time.deltaTime * speed);
-
-
-        }      
+        }
         else
         {
             moving = false;

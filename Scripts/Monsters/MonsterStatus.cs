@@ -23,6 +23,7 @@ public class MonsterStatus : MonoBehaviour
 
         if (Health < 0)
         {
+            detectionEvent.MonsterDie(new MonsterDetectionEvent.MonsterDieEventArgs { });
             Destroy(gameObject);
         }
     }

@@ -176,5 +176,26 @@ public class MonsterDetectionEvent : MonoBehaviour
     public event EventHandler<MonsterHitEventArgs> OnMonsterHit;
     public void MonsterHit(MonsterHitEventArgs e) => OnMonsterHit?.Invoke(this, e);
 
+    public class MonsterAttackEventArgs : EventArgs
+    {
+        
+    }
+    public event EventHandler<MonsterAttackEventArgs> OnMonsterAttack;
+    public void MonsterAttack(MonsterAttackEventArgs e) => OnMonsterAttack?.Invoke(this, e);
+
+    public class MonsterDieEventArgs : EventArgs
+    {
+
+    }
+    public event EventHandler<MonsterDieEventArgs> OnMonsterDie;
+    public void MonsterDie(MonsterDieEventArgs e) => OnMonsterDie?.Invoke(this, e);
+
+    public class TakeStepEventArgs : EventArgs
+    {
+
+    }
+    public event EventHandler<TakeStepEventArgs> OnTakeStep;
+    public void TakeStep(TakeStepEventArgs e) => OnTakeStep?.Invoke(this, e);
+
     #endregion
 }
