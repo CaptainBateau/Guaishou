@@ -14,8 +14,9 @@ public class DoorInteraction: MonoBehaviour
     bool _closing = false;
     bool _opened = false;
     bool _isPlayerLeftSide;
-    public Vector3 _openRotation;
-    public Vector3 _closeRotation;
+    public bool _leftOpening;
+    Vector3 _openRotation;
+    Vector3 _closeRotation = new Vector3(0,90,0);
 
     public ShadowCaster2D _leftShadow;
     public ShadowCaster2D _rightShadow;
@@ -25,6 +26,10 @@ public class DoorInteraction: MonoBehaviour
     {
         _startTransform = _doorSprite;
         _selfShadow = gameObject.GetComponent<ShadowCaster2D>();
+        if (_leftOpening)
+            _openRotation = new Vector3(0, 180, 0);
+        else
+            _openRotation = Vector3.zero;
     }
 
     private void Update()
