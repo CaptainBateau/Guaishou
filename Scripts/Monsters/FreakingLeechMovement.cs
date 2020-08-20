@@ -10,9 +10,9 @@ public class FreakingLeechMovement : MonoBehaviour
 {
     [Header("References")]
 
-    [SerializeField] Solver2D _bigPartSolver;
-    [SerializeField] Solver2D _endPartSolver;
-    [SerializeField] GameObject _base;
+    [SerializeField] Solver2D _bigPartSolver = null;
+    [SerializeField] Solver2D _endPartSolver = null;
+    [SerializeField] GameObject _base = null;
 
     [Header("Parameters")]
     
@@ -20,14 +20,14 @@ public class FreakingLeechMovement : MonoBehaviour
     [SerializeField] float _stepDurationHead = 1;
     [SerializeField] float _stepDurationBase = 1;
     [SerializeField] float _jumpMaxHigh = 2f;
-    [SerializeField] AnimationCurve _stepMovementHead;
-    [SerializeField] float _randomMovementRange;
-    [SerializeField] AnimationCurve _turningAround;
-    [SerializeField] AnimationCurve _stepMovementBase;
-    [SerializeField] float delay;
+    [SerializeField] AnimationCurve _stepMovementHead = null;
+    [SerializeField] float _randomMovementRange = 0;
+    [SerializeField] AnimationCurve _turningAround = null;
+    [SerializeField] AnimationCurve _stepMovementBase = null;
+    [SerializeField] float delay = 0;
     [SerializeField] bool directionIsLeft = true;
-    [SerializeField] AnimationCurve _attackingCurve;
-    [SerializeField] float _attackDuration;
+    [SerializeField] AnimationCurve _attackingCurve = null;
+    [SerializeField] float _attackDuration = 1;
     public bool DirectionIsLeft { get => directionIsLeft; set { directionIsLeft = value; directionJustChanged = true; } }
 
 

@@ -3,20 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MonsterDetectionEvent))]
+[RequireComponent(typeof(PlayerEvent))]
 public class PlayerAudio : AudioManager
 {
     PlayerEvent playerEvent;
 
-    [SerializeField] Sound lightIntensityUp;
-    [SerializeField] Sound lightIntensityDown;
-    [SerializeField] Sound openDoor;
-    [SerializeField] Sound breakDoor;
-    [SerializeField] Sound playerHit;
-    [SerializeField] Sound playerReload;
-    [SerializeField] Sound playerShoot;
-    [SerializeField] Sound playerStep;
-    [SerializeField] Sound playerTouchVegetation;
+    [SerializeField] Sound lightIntensityUp = null;
+    [SerializeField] Sound lightIntensityDown = null;
+    [SerializeField] Sound openDoor = null;
+    [SerializeField] Sound breakDoor = null;
+    [SerializeField] Sound playerHit = null;
+    [SerializeField] Sound playerReload = null;
+    [SerializeField] Sound playerShoot = null;
+    [SerializeField] Sound playerStep = null;
+    [SerializeField] Sound playerTouchVegetation = null;
     
 
 

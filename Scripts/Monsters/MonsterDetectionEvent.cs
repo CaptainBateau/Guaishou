@@ -7,15 +7,15 @@ public class MonsterDetectionEvent : MonoBehaviour
 {
     
     [Header("Parameters")]
-    [SerializeField] bool showDebug;
-    [SerializeField] bool _centerBetween2element;
-    [SerializeField] Transform _firstElement;
-    [SerializeField] Transform _secondElement;
-    [SerializeField] Vector2 _offset;
-    [SerializeField] Vector2 _playerDetectionOffset;
-    [SerializeField] float wallDetectionDistance;
-    [SerializeField] float playerNextToDistance;
-    [SerializeField] float playerDetectionDistance;
+    [SerializeField] bool showDebug = false;
+    [SerializeField] bool _centerBetween2element = false;
+    [SerializeField] Transform _firstElement = null;
+    [SerializeField] Transform _secondElement = null;
+    [SerializeField] Vector2 _offset = Vector2.zero;
+    [SerializeField] Vector2 _playerDetectionOffset = Vector2.zero;
+    [SerializeField] float wallDetectionDistance = 1;
+    [SerializeField] float playerNextToDistance = 1;
+    [SerializeField] float playerDetectionDistance = 2;
     [SerializeField] List<HitBox> _hitBoxes = new List<HitBox>();
 
     [System.Serializable]

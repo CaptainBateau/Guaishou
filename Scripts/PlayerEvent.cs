@@ -22,6 +22,18 @@ public class PlayerEvent : MonoBehaviour
             
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // layer 11 is monster
+        if (collision.gameObject.layer == 11)
+        {
+            PlayerGotHit(new PlayerGotHitEventArgs { });
+            Debug.Log("You got hit");
+            // temporary restart
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        }
+    }
 
     #region HOW TO CALL EVENT
     PlayerEvent playerEvent;

@@ -6,11 +6,11 @@ using UnityEngine;
 public class AttackingNeck : MonoBehaviour
 {
     [SerializeField] MonsterDetectionEvent detectionEvent;
-    [SerializeField] Transform neckBase;
-    [SerializeField] Transform targetPos;
-    [SerializeField] AnimationCurve neckDownCurve;
+    [SerializeField] Transform neckBase = null;
+    [SerializeField] Transform targetPos = null;
+    [SerializeField] AnimationCurve neckDownCurve = null;
     [SerializeField] float neckDownDuration = 0.2f;
-    [SerializeField] AnimationCurve neckRecoverCurve;
+    [SerializeField] AnimationCurve neckRecoverCurve = null;
     [SerializeField] float neckRecoverDuration = 0.2f;
 
 

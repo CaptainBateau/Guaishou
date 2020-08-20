@@ -8,7 +8,7 @@ public class Sound
 	public List<AudioClip> clips;
 
 	[Range(0f,1f)]
-	public float volume;
+	public float volume = 1;
 
 	public bool randomPitch;
 	public Vector2 pitchRange = new Vector2(0.9f, 1.1f);

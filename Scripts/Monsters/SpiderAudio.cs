@@ -8,13 +8,13 @@ public class SpiderAudio : AudioManager
 {
     protected MonsterDetectionEvent detectionEvent;
 
-    [SerializeField] Sound step;
-    [SerializeField] Sound aggro;
+    [SerializeField] Sound step = null;
+    [SerializeField] Sound aggro = null;
     // randomly played with a delay, need more var
     // Sound Idle;
-    [SerializeField] Sound takeDamage;
-    [SerializeField] Sound death;
-    [SerializeField] Sound attack;
+    [SerializeField] Sound takeDamage = null;
+    [SerializeField] Sound death = null;
+    [SerializeField] Sound attack = null;
     public virtual void Start()
     {
         detectionEvent = GetComponent<MonsterDetectionEvent>();

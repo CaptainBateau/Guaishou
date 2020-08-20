@@ -20,9 +20,9 @@ public class spiderMovement : MonoBehaviour
     [SerializeField] bool inversed;
     [SerializeField] bool shiftToFacePlayer;
     [SerializeField] bool changeSpeedOnPlayerDetected;
-    [SerializeField] [Range(0, 300)] float bodySpeedOnPlayerDetected;
-    [SerializeField] [Range(0, 300)] float stepDistanceOnPlayerDetected;
-    [SerializeField] [Range(0, 300)] float stepDurationOnPlayerDetected;
+    [SerializeField] [Range(0, 300)] float bodySpeedOnPlayerDetected = 100;
+    [SerializeField] [Range(0, 300)] float stepDistanceOnPlayerDetected = 100;
+    [SerializeField] [Range(0, 300)] float stepDurationOnPlayerDetected = 100;
 
     float breathTimer;
     Vector2 _dir = Vector2.left;

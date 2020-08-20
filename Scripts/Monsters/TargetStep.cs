@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TargetStep : MonoBehaviour
 {
-    [SerializeField] bool inversed;
+    [SerializeField] bool inversed = false;
     float desiredYPosition;
 
     void Update()

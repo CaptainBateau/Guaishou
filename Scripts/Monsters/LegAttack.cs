@@ -9,20 +9,20 @@ public class LegAttack : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] MonsterDetectionEvent detectionEvent;
-    [SerializeField] LimbSolver2D _target;
-    [SerializeField] Transform anticipationPosition;
-    [SerializeField] Transform basePosition;
+    [SerializeField] LimbSolver2D _target = null;
+    [SerializeField] Transform anticipationPosition = null;
+    [SerializeField] Transform basePosition = null;
 
     [Header("Parameters")]
     [SerializeField] float _prepareDuration = 1;
-    [SerializeField] AnimationCurve _preparingAttackCurve;
+    [SerializeField] AnimationCurve _preparingAttackCurve = null;
     [SerializeField] float _attackingDuration = 1;
     [SerializeField] float _playerYOffset = 1;
     [SerializeField] float _playerRandomHitRange = 0.5f;
-    [SerializeField] AnimationCurve _attackingCurve;
+    [SerializeField] AnimationCurve _attackingCurve = null;
     [SerializeField] float _recoveringDuration = 1;
-    [SerializeField] AnimationCurve _recoveringCurve;
-    [SerializeField] AnimationCurve _breathCurve;
+    [SerializeField] AnimationCurve _recoveringCurve = null;
+    [SerializeField] AnimationCurve _breathCurve = null;
 
     
     [SerializeField] bool LeftLeg;

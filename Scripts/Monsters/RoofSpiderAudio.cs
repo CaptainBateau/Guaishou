@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RoofSpiderAudio : SpiderAudio
 {
-    [SerializeField] Sound neckMovement;
+    [SerializeField] Sound neckMovement = null;
 
     public override void Start()
     {
