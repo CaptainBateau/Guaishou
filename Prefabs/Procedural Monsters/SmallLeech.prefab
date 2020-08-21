@@ -604,6 +604,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dissolveDuration: 1
+  hitParticles: {fileID: 3184868286238355934, guid: 9242568d1f6fec94993ebb07b11052d4,
+    type: 3}
 --- !u!1 &795569598278863318
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,13 +877,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   delay: 0
   directionIsLeft: 1
-  _attackingCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _attackDuration: 0
   debugCurve:
     serializedVersion: 2
     m_Curve: []

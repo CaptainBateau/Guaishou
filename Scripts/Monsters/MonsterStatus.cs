@@ -18,7 +18,7 @@ public class MonsterStatus : MonoBehaviour
     {
         Health -= e.hitbox.healthLost;
 
-        HurtColorFeedback(e.hitbox);
+        //HurtColorFeedback(e.hitbox);
 
 
         if (Health < 0)
@@ -34,22 +34,22 @@ public class MonsterStatus : MonoBehaviour
         }
     }
 
-    private void HurtColorFeedback(MonsterDetectionEvent.HitBox hitbox)
-    {
-        SpriteRenderer spriteRend = GetComponent<SpriteRenderer>();
-        if (spriteRend != null && spriteRend.color != Color.red)
-        {
-            Color originalColor = spriteRend.color;
-            spriteRend.color = Color.red;
-            StartCoroutine(ChangeColor(spriteRend, originalColor, 0.05f));          
-        }
-    }
+    //private void HurtColorFeedback(MonsterDetectionEvent.HitBox hitbox)
+    //{
+    //    SpriteRenderer spriteRend = GetComponent<SpriteRenderer>();
+    //    if (spriteRend != null && spriteRend.color != Color.red)
+    //    {
+    //        Color originalColor = spriteRend.color;
+    //        spriteRend.color = Color.red;
+    //        StartCoroutine(ChangeColor(spriteRend, originalColor, 0.05f));          
+    //    }
+    //}
 
-    IEnumerator ChangeColor(SpriteRenderer spriteRend, Color color, float delay)
-    {
+    //IEnumerator ChangeColor(SpriteRenderer spriteRend, Color color, float delay)
+    //{
 
-        yield return new WaitForSeconds(delay);
-        spriteRend.color = color;
-        yield return null;
-    }
+    //    yield return new WaitForSeconds(delay);
+    //    spriteRend.color = color;
+    //    yield return null;
+    //}
 }

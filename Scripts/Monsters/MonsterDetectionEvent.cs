@@ -172,6 +172,7 @@ public class MonsterDetectionEvent : MonoBehaviour
     public class MonsterHitEventArgs : EventArgs
     {
         public HitBox hitbox;
+        public Vector2 collisionPosition;
     }
     public event EventHandler<MonsterHitEventArgs> OnMonsterHit;
     public void MonsterHit(MonsterHitEventArgs e) => OnMonsterHit?.Invoke(this, e);

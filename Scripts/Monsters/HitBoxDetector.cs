@@ -16,7 +16,7 @@ public class HitBoxDetector : MonoBehaviour
     {
         if (collision.collider.tag == "Projectile")
         {
-            _eventDetection.MonsterHit(new MonsterDetectionEvent.MonsterHitEventArgs { hitbox = _hitbox });
+            _eventDetection.MonsterHit(new MonsterDetectionEvent.MonsterHitEventArgs { hitbox = _hitbox, collisionPosition = collision.contacts[0].point});
             Destroy(collision.collider.gameObject);
         }
             
