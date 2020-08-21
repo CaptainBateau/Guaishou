@@ -12,9 +12,13 @@ public class WeaponController : MonoBehaviour
     public struct LightParameters
     {
         public Light2D _light;
+        [Header("Minimum light angle when aiming")]
         public float _minLightAngle;
+        [Header("Maximum light angle when aiming")]
         public float _maxLightAngle;
+        [Header("Distance of light when NOT aiming")]
         public float _minDistance;
+        [Header("Distance of light when aiming")]
         public float _maxDistance;
         public float _intensity;
     }
@@ -23,7 +27,7 @@ public class WeaponController : MonoBehaviour
     private float _toAdd;
 
     [Range(0, 360f)]
-    public float _minSpreadAngle, _maxSpreadAngle;
+    float _minSpreadAngle, _maxSpreadAngle;
 
     Camera _camera;
     Vector3 _orientation;
@@ -57,10 +61,15 @@ public class WeaponController : MonoBehaviour
     public float _targetIntensity;
     public float _timeToRecover;
     float _timeWhenShoot;
-    
+
     void Start()
     {
         _camera = Camera.main;
+        if (_pointLightStruct.Length > 0)
+        {
+            _minSpreadAngle = _pointLightStruct[0]._minLightAngle;
+            _maxSpreadAngle = _pointLightStruct[0]._maxLightAngle;
+        }
     }
 
     void Update()
