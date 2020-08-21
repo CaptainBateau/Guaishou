@@ -36,45 +36,34 @@ public class LegStep : MonoBehaviour
     // have a button generating currentTarget;
     void Update()
     {
-        // make the feet stay at their place when we move the body
-        //foot.transform.position = Vector2.MoveTowards(foot.transform.position, currentTarget.position, speed * Time.deltaTime);
 
-
-        float distToTarget = Vector2.Distance(foot.position, currentTarget.position);
-        // Move the foot
-        if (distToTarget > 0.05f)
+        if (!moving)
         {
-            if (!moving)
-            {
-                startPos = foot.position;
-                timer = 0;
-                moving = true;
-            }
-
-            if (timer < stepDuration && moving)
-            {
-                foot.position = Vector2.Lerp(startPos, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(timer / stepDuration)), timer / stepDuration);
-                timer += Time.deltaTime;
-            }
-            else
-            {
-                detectionEvent.TakeStep(new MonsterDetectionEvent.TakeStepEventArgs { });
-                foot.position = currentTarget.position;
-                moving = false;
-            }
-        }
-        else
-        {
-            moving = false;
+            // feet stay at its place if it's not moving
             foot.position = currentTarget.position;
         }
-
 
         // Update current target if desiredTarget is far enough
         float desiredTargetDist = Vector2.Distance(currentTarget.position, desiredTarget.transform.position);
         if (desiredTargetDist > distanceToStep)
         {
             currentTarget.transform.position = desiredTarget.transform.position;
+            startPos = foot.position;
+            timer = 0;
+            moving = true;
         }
+
+
+        if (timer < stepDuration && moving)
+        {
+            foot.position = Vector2.Lerp(startPos, new Vector2(currentTarget.position.x, currentTarget.position.y + yCurve.Evaluate(timer / stepDuration)), timer / stepDuration);
+            timer += Time.deltaTime;
+        }
+        else if(moving)
+        {
+            moving = false;
+            detectionEvent.TakeStep(new MonsterDetectionEvent.TakeStepEventArgs { });
+        }
+        
     }
 }

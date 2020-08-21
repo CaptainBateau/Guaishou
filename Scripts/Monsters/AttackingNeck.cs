@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AttackingNeck : MonoBehaviour
 {
-    [SerializeField] MonsterDetectionEvent detectionEvent;
+    [SerializeField] MonsterDetectionEvent detectionEvent = null;
     [SerializeField] Transform neckBase = null;
     [SerializeField] Transform targetPos = null;
     [SerializeField] AnimationCurve neckDownCurve = null;
@@ -25,13 +25,11 @@ public class AttackingNeck : MonoBehaviour
     
     private void OnPlayerDetectedHandler(object sender, MonsterDetectionEvent.PlayerDetectedEventArgs e)
     {
-        Debug.Log("player detected");
         StartCoroutine(NeckDown());
     }
 
     private void OnPlayerNotDetectedAnymoreHandler(object sender, MonsterDetectionEvent.PlayerNotDetectedAnymoreEventArgs e)
     {
-        Debug.Log("player not detected");
         StartCoroutine(NeckRecover());
     }
 

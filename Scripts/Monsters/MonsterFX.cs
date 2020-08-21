@@ -16,7 +16,6 @@ public class MonsterFX : MonoBehaviour
 
     private void OnMonsterDie(object sender, MonsterDetectionEvent.MonsterDieEventArgs e)
     {
-        Debug.Log("shader anim");
         SpriteRenderer[] spriteRends = GetComponentsInChildren<SpriteRenderer>();
         foreach (SpriteRenderer rend in spriteRends)
         {
