@@ -727,7 +727,6 @@ MonoBehaviour:
     m_Center: {x: 1.1694505, y: 0.41648754, z: 0}
     m_Extent: {x: 0.439814, y: 0.42207864, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &385030523743189942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1508,7 +1507,6 @@ MonoBehaviour:
     m_Center: {x: 1.3055031, y: 0.32001638, z: 0}
     m_Extent: {x: 0.76872206, y: 0.5518749, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &2306615878022402727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1849,7 +1847,6 @@ MonoBehaviour:
     m_Center: {x: 1.2831516, y: 0.27560514, z: 0}
     m_Extent: {x: 0.79377, y: 0.5644431, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &2306615879051046852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2143,7 +2140,6 @@ MonoBehaviour:
     m_Center: {x: 0.97717136, y: -0.94122016, z: 0}
     m_Extent: {x: 0.75445247, y: 0.70842254, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &4584064490852998537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3078,7 +3074,6 @@ MonoBehaviour:
     m_Center: {x: -0.09541184, y: 0.026103795, z: 0}
     m_Extent: {x: 0.85979325, y: 0.5677871, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &6393486639411665162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3370,7 +3365,6 @@ MonoBehaviour:
     m_Center: {x: 6.049444, y: -1.8906428, z: 0}
     m_Extent: {x: 0.64362717, y: 0.62457407, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &4835058753886857525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3994,16 +3988,20 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   aggro:
     clips:
     - {fileID: 8300000, guid: 737c29e713d196943a882fb3b8fac74e, type: 3}
-    volume: 1
+    volume: 0.5
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 60
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   takeDamage:
@@ -4012,11 +4010,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 4b5f8f1edf6ebec4fb5a7b51baaf38f0, type: 3}
     - {fileID: 8300000, guid: 5e0e3c311e9895548b48c48e7c8ae5af, type: 3}
     - {fileID: 8300000, guid: 4eaebb9613fff9040b2c203d88135b5e, type: 3}
-    volume: 1
+    volume: 0.5
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 1
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   death:
@@ -4027,6 +4027,8 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   attack:
@@ -4034,11 +4036,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 5a2f9b66b95974048b4044ef594f75cf, type: 3}
     - {fileID: 8300000, guid: f3a3d60cc87fd354c860b9e2e6714a24, type: 3}
     - {fileID: 8300000, guid: 6294281bfa770b04bab15c767e0623ba, type: 3}
-    volume: 1
+    volume: 0.7
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
 --- !u!1 &7890935021405521887
@@ -4148,7 +4152,6 @@ MonoBehaviour:
     m_Center: {x: 0.98373187, y: 0.42403626, z: 0}
     m_Extent: {x: 0.3970332, y: 0.42070317, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &8023705762766764318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4489,7 +4492,6 @@ MonoBehaviour:
     m_Center: {x: -0.46972734, y: -0.22472942, z: 0}
     m_Extent: {x: 0.6190981, y: 0.6466285, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &7398665519944771359
 MonoBehaviour:
   m_ObjectHideFlags: 0
