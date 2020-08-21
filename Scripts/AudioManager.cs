@@ -72,6 +72,7 @@ public abstract class AudioManager : MonoBehaviour
             if (s.spatialisation)
             {
                 s.source.spatialBlend = 1f;
+                s.source.rolloffMode = AudioRolloffMode.Linear;
                 s.source.maxDistance = s.spatialisationRange;
             }
 
