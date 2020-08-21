@@ -29,6 +29,7 @@ public class MonsterStatus : MonoBehaviour
             {
                 col.enabled = false;
             }
+            detectionEvent.enabled = false;
             //Destroy(gameObject);
         }
     }
