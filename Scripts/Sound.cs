@@ -17,6 +17,8 @@ public class Sound
 
 	[Header("Optional")]
 	public float minDelayBetweenSounds = 0;
+	public bool spatialisation;
+	public float spatialisationRange;
 	public Transform soundOrigin;
 	[HideInInspector] public AudioSource source;
 }

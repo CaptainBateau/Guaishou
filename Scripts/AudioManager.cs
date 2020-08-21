@@ -68,6 +68,13 @@ public abstract class AudioManager : MonoBehaviour
                 s.source.clip = s.clips[UnityEngine.Random.Range(0, s.clips.Count - 1)];
             else
                 s.source.clip = s.clips[0];
+
+            if (s.spatialisation)
+            {
+                s.source.spatialBlend = 1f;
+                s.source.maxDistance = s.spatialisationRange;
+            }
+
             s.source.Play();
         }
     }
