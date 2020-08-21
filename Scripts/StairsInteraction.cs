@@ -14,7 +14,7 @@ public class StairsInteraction : MonoBehaviour
             if (_triggered)
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
-                player.transform.position = player.transform.position + (_exitStairs.position - transform.position);
+                player.transform.position = _exitStairs.position;
             }
         }
     }
