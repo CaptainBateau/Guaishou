@@ -5,7 +5,6 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Experimental.U2D.IK;
 
-[RequireComponent(typeof(MonsterDetectionEvent))]
 public class FreakingLeechMovement : MonoBehaviour
 {
     [Header("References")]
@@ -38,7 +37,7 @@ public class FreakingLeechMovement : MonoBehaviour
 
 
     float _distanceBetweenPart;
-    MonsterDetectionEvent detectionEvent;
+    [SerializeField] MonsterDetectionEvent detectionEvent;
 
 
     void ChangeDirection()
@@ -56,7 +55,6 @@ public class FreakingLeechMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        detectionEvent = GetComponent<MonsterDetectionEvent>();
         detectionEvent.OnWallIsNextBy += OnWallIsNextHandler;
         detectionEvent.OnPlayerDetected += OnPlayerDetectedHandler;
 

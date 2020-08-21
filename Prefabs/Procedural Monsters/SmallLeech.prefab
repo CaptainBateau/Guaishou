@@ -359,6 +359,10 @@ GameObject:
   - component: {fileID: 795569598261897013}
   - component: {fileID: 795569598261897012}
   - component: {fileID: 795569598261897019}
+  - component: {fileID: 398425256778143431}
+  - component: {fileID: 638327134618529232}
+  - component: {fileID: 58953278791900144}
+  - component: {fileID: 2118842246283208753}
   m_Layer: 11
   m_Name: SmallLeech
   m_TagString: Monster
@@ -401,7 +405,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 1ff23ead51a661445a645fc7f92a6457, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -466,8 +470,8 @@ MonoBehaviour:
   - {fileID: 795569598380630726}
   - {fileID: 795569598278863319}
   m_Bounds:
-    m_Center: {x: -0.13412929, y: -0.31690085, z: 0}
-    m_Extent: {x: 0.24945089, y: 0.217951, z: 0}
+    m_Center: {x: -0.1341289, y: -0.31690085, z: 0}
+    m_Extent: {x: 0.24945047, y: 0.217951, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!114 &795569598261897019
@@ -491,6 +495,115 @@ MonoBehaviour:
     showGizmo: 1
   - color: {r: 0, g: 1, b: 0, a: 1}
     showGizmo: 1
+--- !u!114 &398425256778143431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795569598261897023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f397cb414dd906d4fbf051c0b65ba804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showDebug: 1
+  _centerBetween2element: 0
+  _firstElement: {fileID: 795569598410367840}
+  _secondElement: {fileID: 795569597806714124}
+  _offset: {x: 0, y: 0.54}
+  _playerDetectionOffset: {x: 0, y: 0}
+  wallDetectionDistance: 1
+  playerNextToDistance: 1.5
+  playerDetectionDistance: 3
+  _hitBoxes:
+  - collider: {fileID: 0}
+    colliderGroup: 1
+    parentOfColliders: {fileID: 795569598410367840}
+    healthLost: 1
+  _center: {x: -5.937142, y: -3.325974, z: 0}
+--- !u!114 &638327134618529232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795569598261897023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e409310d2a81046ad8efec53da223e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+--- !u!114 &58953278791900144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795569598261897023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc735878afe82f14f822ee0602539743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squishStep:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  aggro:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  takeDamage:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  death:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+--- !u!114 &2118842246283208753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795569598261897023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf1644ee48571e4488af56ff3717eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveDuration: 1
 --- !u!1 &795569598278863318
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,9 +723,6 @@ GameObject:
   m_Component:
   - component: {fileID: 795569598410367840}
   - component: {fileID: 1899019709}
-  - component: {fileID: 1899019710}
-  - component: {fileID: 4110696595640019512}
-  - component: {fileID: 1395626514}
   m_Layer: 11
   m_Name: Base
   m_TagString: Untagged
@@ -780,94 +890,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _distanceBetweenHeadAndBase: 0
   directionJustChanged: 0
---- !u!114 &1899019710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795569598410367847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f397cb414dd906d4fbf051c0b65ba804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showDebug: 1
-  _centerBetween2element: 0
-  _firstElement: {fileID: 795569598410367840}
-  _secondElement: {fileID: 795569597806714124}
-  _offset: {x: 0, y: 0.54}
-  _playerDetectionOffset: {x: 0, y: 0}
-  wallDetectionDistance: 1
-  playerNextToDistance: 1.5
-  playerDetectionDistance: 3
-  _hitBoxes:
-  - collider: {fileID: 0}
-    colliderGroup: 1
-    parentOfColliders: {fileID: 795569598410367840}
-    healthLost: 1
-  _center: {x: -5.937142, y: -3.325974, z: 0}
---- !u!114 &4110696595640019512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795569598410367847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8e409310d2a81046ad8efec53da223e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
---- !u!114 &1395626514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795569598410367847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc735878afe82f14f822ee0602539743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  squishStep:
-    clips: []
-    volume: 0
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  aggro:
-    clips: []
-    volume: 0
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  takeDamage:
-    clips: []
-    volume: 0
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  death:
-    clips: []
-    volume: 0
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
+  detectionEvent: {fileID: 398425256778143431}
 --- !u!1 &795569598431406782
 GameObject:
   m_ObjectHideFlags: 0
