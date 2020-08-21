@@ -25,8 +25,8 @@ public class FreakingLeechMovement : MonoBehaviour
     [SerializeField] AnimationCurve _stepMovementBase = null;
     [SerializeField] float delay = 0;
     [SerializeField] bool directionIsLeft = true;
-    [SerializeField] AnimationCurve _attackingCurve = null;
-    [SerializeField] float _attackDuration = 1;
+    //[SerializeField] AnimationCurve _attackingCurve = null;
+    //[SerializeField] float _attackDuration = 1;
     public bool DirectionIsLeft { get => directionIsLeft; set { directionIsLeft = value; directionJustChanged = true; } }
 
 
@@ -37,7 +37,7 @@ public class FreakingLeechMovement : MonoBehaviour
 
 
     float _distanceBetweenPart;
-    [SerializeField] MonsterDetectionEvent detectionEvent;
+    [SerializeField] MonsterDetectionEvent detectionEvent = null;
 
 
     void ChangeDirection()

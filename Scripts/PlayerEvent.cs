@@ -28,7 +28,6 @@ public class PlayerEvent : MonoBehaviour
         if (collision.gameObject.layer == 11)
         {
             PlayerGotHit(new PlayerGotHitEventArgs { });
-            Debug.Log("You got hit");
             // temporary restart
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
@@ -36,7 +35,7 @@ public class PlayerEvent : MonoBehaviour
     }
 
     #region HOW TO CALL EVENT
-    PlayerEvent playerEvent;
+    PlayerEvent playerEvent = null;
     private void Start()
     {
         // il faut une référence au player event, par l'inspecteur ou via getComponent comme tu veux

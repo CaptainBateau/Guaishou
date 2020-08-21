@@ -8,7 +8,7 @@ using UnityEngine.Experimental.U2D.IK;
 public class LegAttack : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] MonsterDetectionEvent detectionEvent;
+    [SerializeField] MonsterDetectionEvent detectionEvent = null;
     [SerializeField] LimbSolver2D _target = null;
     [SerializeField] Transform anticipationPosition = null;
     [SerializeField] Transform basePosition = null;
@@ -25,7 +25,7 @@ public class LegAttack : MonoBehaviour
     [SerializeField] AnimationCurve _breathCurve = null;
 
     
-    [SerializeField] bool LeftLeg;
+    [SerializeField] bool LeftLeg = false;
     bool attacking;
     float breathTimer;
 
