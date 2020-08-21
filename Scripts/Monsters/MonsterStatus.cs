@@ -24,7 +24,12 @@ public class MonsterStatus : MonoBehaviour
         if (Health < 0)
         {
             detectionEvent.MonsterDie(new MonsterDetectionEvent.MonsterDieEventArgs { });
-            Destroy(gameObject);
+            Collider2D[] cols = GetComponentsInChildren<Collider2D>();
+            foreach (Collider2D col in cols)
+            {
+                col.enabled = false;
+            }
+            //Destroy(gameObject);
         }
     }
 

@@ -27,7 +27,7 @@ public abstract class AudioManager : MonoBehaviour
             }
             if (s.clips.Count == 0)
             {
-                Debug.LogWarning("Sound: " + s.ToString() + " doesn't have any audioClip");
+                //Debug.LogWarning("Sound: " + s.ToString() + " doesn't have any audioClip");
                 return;
             }
             if (s.source == null)

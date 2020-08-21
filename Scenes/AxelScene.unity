@@ -1931,6 +1931,8 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   lightIntensityDown:
@@ -1940,6 +1942,8 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   openDoor:
@@ -1949,6 +1953,8 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   breakDoor:
@@ -1958,6 +1964,8 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   playerHit:
@@ -1967,6 +1975,8 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   playerReload:
@@ -1976,6 +1986,8 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   playerShoot:
@@ -1985,6 +1997,8 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   playerStep:
@@ -1994,6 +2008,8 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   playerTouchVegetation:
@@ -2003,6 +2019,8 @@ MonoBehaviour:
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
 --- !u!1001 &1490163102
@@ -2177,7 +2195,7 @@ PrefabInstance:
     - target: {fileID: 4909346134352778004, guid: b8dab949e49e5d54a929cfe7943d7705,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.36
+      value: -3.8
       objectReference: {fileID: 0}
     - target: {fileID: 4909346134352778004, guid: b8dab949e49e5d54a929cfe7943d7705,
         type: 3}
