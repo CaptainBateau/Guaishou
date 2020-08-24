@@ -7,6 +7,7 @@ using UnityEngine;
 public class spiderMovement : MonoBehaviour
 {
     [Header("References")]
+    public Transform _body;
     public List<LegStep> leftLegs;
     public List<LegStep> rightLegs;
 
@@ -36,7 +37,7 @@ public class spiderMovement : MonoBehaviour
         detectionEvent.OnWallIsNextBy += OnWallIsNextHandler;
         detectionEvent.OnPlayerDetected += OnPlayerDetectedHandler;        
         detectionEvent.OnPlayerNotDetectedAnymore += OnPlayerNotDetectedAnymoreHandler;        
-        heightPosition = transform.position.y;
+        heightPosition = _body.position.y;
 
         _initialSpeed = speed;
         detectionEvent.ShiftDirection(new MonsterDetectionEvent.ShiftDirectionEventArgs { newDir = _dir });
@@ -104,13 +105,13 @@ public class spiderMovement : MonoBehaviour
         if (inversed)
         {
             hit = Physics2D.Raycast(new
-        Vector2(transform.position.x, transform.position.y),
+        Vector2(_body.position.x, _body.position.y),
         Vector2.up, 50f, LayerMask.GetMask("Ground"));
         }
         else
         {
             hit = Physics2D.Raycast(new
-        Vector2(transform.position.x, transform.position.y),
+        Vector2(_body.position.x, _body.position.y),
         Vector2.down, 50f, LayerMask.GetMask("Ground"));
         }
         
@@ -131,7 +132,7 @@ public class spiderMovement : MonoBehaviour
         {
             breathTimer = 0;
         }
-        transform.position = new Vector3(transform.position.x, heightPosition + breathCurve.Evaluate(breathTimer));
+        _body.position = new Vector3(_body.position.x, heightPosition + breathCurve.Evaluate(breathTimer));
     }
     private void ShiftDirection(Vector2 dir)
     {
@@ -167,6 +168,6 @@ public class spiderMovement : MonoBehaviour
     }
     private void Move()
     {
-            transform.Translate(_dir * speed * Time.deltaTime);
+        _body.Translate(_dir * speed * Time.deltaTime);
     }
 }

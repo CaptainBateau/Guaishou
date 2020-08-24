@@ -508,7 +508,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showDebug: 1
-  _centerBetween2element: 0
+  _centerTransform: {fileID: 0}
+  _centerBetween2element: 1
   _firstElement: {fileID: 795569598410367840}
   _secondElement: {fileID: 795569597806714124}
   _offset: {x: 0, y: 0.54}
@@ -521,7 +522,7 @@ MonoBehaviour:
     colliderGroup: 1
     parentOfColliders: {fileID: 795569598410367840}
     healthLost: 1
-  _center: {x: -5.937142, y: -3.325974, z: 0}
+  _center: {x: -7.849571, y: -3.3364868, z: 0}
 --- !u!114 &638327134618529232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,6 +607,7 @@ MonoBehaviour:
   dissolveDuration: 1
   hitParticles: {fileID: 3184868286238355934, guid: 9242568d1f6fec94993ebb07b11052d4,
     type: 3}
+  scaleFor20healthLost: 3
 --- !u!1 &795569598278863318
 GameObject:
   m_ObjectHideFlags: 0

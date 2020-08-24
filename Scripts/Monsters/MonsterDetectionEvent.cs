@@ -8,6 +8,7 @@ public class MonsterDetectionEvent : MonoBehaviour
     
     [Header("Parameters")]
     [SerializeField] bool showDebug = false;
+    [SerializeField] Transform _centerTransform = null;
     [SerializeField] bool _centerBetween2element = false;
     [SerializeField] Transform _firstElement = null;
     [SerializeField] Transform _secondElement = null;
@@ -63,7 +64,7 @@ public class MonsterDetectionEvent : MonoBehaviour
         if (_centerBetween2element)
             _center = Vector3.Lerp(_firstElement.position, _secondElement.position, 0.5f);
         else
-            _center = transform.position;
+            _center = _centerTransform.position;
 
         CheckWall();
         CheckPlayerNext();
@@ -118,7 +119,7 @@ public class MonsterDetectionEvent : MonoBehaviour
             if (_centerBetween2element)
                 _center = Vector3.Lerp(_firstElement.position, _secondElement.position, 0.5f);
             else
-                _center = transform.position;
+                _center = _centerTransform.position;
 
             Gizmos.DrawRay(new Vector2(_center.x, _center.y) + _offset, dir * wallDetectionDistance);
             Gizmos.color = Color.red;
