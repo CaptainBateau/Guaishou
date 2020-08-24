@@ -14,4 +14,10 @@ public class TestingEvent : MonoBehaviour
             _event.Invoke();
         }
     }
+
+
+    public void IsGoingInside(bool isInside)
+    {
+        GameState._isInside = isInside;
+    }
 }

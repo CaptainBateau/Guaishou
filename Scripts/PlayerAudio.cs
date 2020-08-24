@@ -16,6 +16,7 @@ public class PlayerAudio : AudioManager
     [SerializeField] Sound playerReload = null;
     [SerializeField] Sound playerShoot = null;
     [SerializeField] Sound playerStep = null;
+    [SerializeField] Sound playerStepInside = null;
     [SerializeField] Sound playerTouchVegetation = null;
     
 
@@ -30,6 +31,7 @@ public class PlayerAudio : AudioManager
         playerEvent.OnPlayerReload += OnPlayerReload;
         playerEvent.OnPlayerShoot += OnpLayerShoot;
         playerEvent.OnPlayerStep += OnPlayerStep;
+        playerEvent.OnPlayerStepInside += OnPlayerStepInside;
         playerEvent.OnPlayerTouchVegetation += OnPlayerTouchVegetaion;
     }
 
@@ -67,6 +69,10 @@ public class PlayerAudio : AudioManager
     private void OnPlayerStep(object sender, PlayerEvent.PlayerStepEventArgs e)
     {
         Play(playerStep);
+    }
+    private void OnPlayerStepInside(object sender, PlayerEvent.PlayerStepInsideEventArgs e)
+    {
+        Play(playerStepInside);
     }
 
     private void OnPlayerTouchVegetaion(object sender, PlayerEvent.PlayerTouchVegetationEventArgs e)

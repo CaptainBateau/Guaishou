@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     float _horizontalInput;
     public float _force;
     public Animator _animator;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();

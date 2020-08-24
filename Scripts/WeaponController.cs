@@ -65,7 +65,6 @@ public class WeaponController : MonoBehaviour
 
 
     public PlayerEvent _playerEvent;
-    
 
     void Start()
     {

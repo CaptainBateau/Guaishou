@@ -50,12 +50,13 @@ public class PlayerEvent : MonoBehaviour
     }
     #endregion
 
-    public class PlayerStepEventArgs : EventArgs
-    {
-        public bool indoor;
-    }
+    public class PlayerStepEventArgs : EventArgs { }
     public event EventHandler<PlayerStepEventArgs> OnPlayerStep;
     public void PlayerStep(PlayerStepEventArgs e) => OnPlayerStep?.Invoke(this, e);
+
+    public class PlayerStepInsideEventArgs : EventArgs { }
+    public event EventHandler<PlayerStepInsideEventArgs> OnPlayerStepInside;
+    public void PlayerStepInside(PlayerStepInsideEventArgs e) => OnPlayerStepInside?.Invoke(this, e);
 
     public class PlayerShootEventArgs : EventArgs { }
     public event EventHandler<PlayerShootEventArgs> OnPlayerShoot;
