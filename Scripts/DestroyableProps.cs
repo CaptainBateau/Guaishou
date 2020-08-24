@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class DestroyableProps : MonoBehaviour
 {
+    [SerializeField] bool destroyableByProjectile;
     [SerializeField] int healthPoint;
     [SerializeField] float dissolveDuration;
 
@@ -19,7 +20,7 @@ public class DestroyableProps : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Projectile")
+        if (destroyableByProjectile && collision.collider.tag == "Projectile")
         {
             Destroy(collision.collider.gameObject);
             healthPoint--;
@@ -31,6 +32,14 @@ public class DestroyableProps : MonoBehaviour
                 Destroy(gameObject, dissolveDuration);
             }            
         }
+    }
+
+    public void Dissolve()
+    {
+        StartCoroutine(DissolveAnim(rend));
+        isDissolving = true;
+        Destroy(GetComponent<Collider2D>());
+        Destroy(gameObject, dissolveDuration);
     }
 
 
