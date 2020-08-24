@@ -47,7 +47,6 @@ public class MonsterFX : MonoBehaviour
             timer += Time.deltaTime;
             rend.material.SetFloat("_Fade", Mathf.Lerp(1, -1, timer / dissolveDuration));
             yield return null;
-        }
-        
+        }       
     }
 }
