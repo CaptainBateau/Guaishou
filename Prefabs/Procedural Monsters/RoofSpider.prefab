@@ -676,7 +676,6 @@ GameObject:
   - component: {fileID: 6607467423857963058}
   - component: {fileID: 5027529331155959516}
   - component: {fileID: 2953143153456573755}
-  - component: {fileID: 9044764926911293794}
   - component: {fileID: 8196108938776285345}
   m_Layer: 11
   m_Name: RoofSpider
@@ -836,84 +835,21 @@ MonoBehaviour:
   bodySpeedOnPlayerDetected: 300
   stepDistanceOnPlayerDetected: 95
   stepDurationOnPlayerDetected: 70
---- !u!114 &9044764926911293794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4815499288744836808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d67053e7f5da84dafc0d4d16348e3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  step:
-    clips: []
-    volume: 0.647
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 1
-    spatialisationRange: 15
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  aggro:
-    clips: []
-    volume: 0
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 0
-    spatialisationRange: 0
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  takeDamage:
-    clips: []
-    volume: 0
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 1
-    spatialisationRange: 15
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  death:
-    clips: []
-    volume: 0
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 0
-    spatialisationRange: 0
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  attack:
-    clips: []
-    volume: 0
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 1
-    spatialisationRange: 15
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  neckMovement:
-    clips: []
-    volume: 0
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 1
-    spatialisationRange: 15
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
+  _randomSpeed: 0
+  _randomSpeedRange: 0
+  _speedCurveDuration: 0
+  _speedCurvePoints:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _randomSpeedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &8196108938776285345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,6 +877,7 @@ GameObject:
   - component: {fileID: 4815499288919577359}
   - component: {fileID: 4815499288919577358}
   - component: {fileID: 2134585167}
+  - component: {fileID: 2496754563573950374}
   m_Layer: 11
   m_Name: body
   m_TagString: Untagged
@@ -1035,6 +972,85 @@ CircleCollider2D:
   m_Offset: {x: 0.057896137, y: 0.101317644}
   serializedVersion: 2
   m_Radius: 0.48841643
+--- !u!114 &2496754563573950374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815499288919577352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d67053e7f5da84dafc0d4d16348e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionEvent: {fileID: 6607467423857963058}
+  step:
+    clips: []
+    volume: 0.647
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 1
+    spatialisationRange: 15
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  aggro:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  takeDamage:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 1
+    spatialisationRange: 15
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  death:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  attack:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 1
+    spatialisationRange: 15
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  neckMovement:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 1
+    spatialisationRange: 15
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
 --- !u!1 &4815499288960643247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,6 +1644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inversed: 1
+  maxStepHigh: 1.5
 --- !u!1 &6710652945503922045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1702,6 +1719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inversed: 1
+  maxStepHigh: 1.5
 --- !u!1 &6710652945693845737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,6 +2012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inversed: 1
+  maxStepHigh: 1.5
 --- !u!1 &6710652945794876385
 GameObject:
   m_ObjectHideFlags: 0
@@ -2167,6 +2186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inversed: 1
+  maxStepHigh: 1.5
 --- !u!1 &6710652945922166009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2784,6 +2804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inversed: 1
+  maxStepHigh: 1.5
 --- !u!1 &6710652946223052756
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,6 +3752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inversed: 1
+  maxStepHigh: 1.5
 --- !u!1 &6710652946856804001
 GameObject:
   m_ObjectHideFlags: 0

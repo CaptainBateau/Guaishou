@@ -14,6 +14,7 @@ public class spiderMovement : MonoBehaviour
     [Header("Parameters")]
     public float stepShift = 2f;
     public float speed = 1;
+
     public AnimationCurve breathCurve = null;
     public float distanceToGround = 2f;
 
@@ -24,19 +25,28 @@ public class spiderMovement : MonoBehaviour
     [SerializeField] [Range(0, 300)] float bodySpeedOnPlayerDetected = 100;
     [SerializeField] [Range(0, 300)] float stepDistanceOnPlayerDetected = 100;
     [SerializeField] [Range(0, 300)] float stepDurationOnPlayerDetected = 100;
+    [SerializeField] bool _randomSpeed;
+    [SerializeField] float _randomSpeedRange;
+    [SerializeField] float _speedCurveDuration;
+    [SerializeField] AnimationCurve _speedCurvePoints;
 
-    float breathTimer;
+    [Header("Debugs")]
+    [SerializeField] AnimationCurve _randomSpeedCurve;
+
+    float breathTimer = 0;
     Vector2 _dir = Vector2.left;
-    float heightPosition;
-    MonsterDetectionEvent detectionEvent;
-    float _initialSpeed;
+    float heightPosition = 0;
+    MonsterDetectionEvent detectionEvent = null;
+    float _initialSpeed = 0;
+    bool newRandomCurve = true;
+    float speedCurveTimer = 0;
 
     private void Start()
     {
         detectionEvent = GetComponent<MonsterDetectionEvent>();
         detectionEvent.OnWallIsNextBy += OnWallIsNextHandler;
-        detectionEvent.OnPlayerDetected += OnPlayerDetectedHandler;        
-        detectionEvent.OnPlayerNotDetectedAnymore += OnPlayerNotDetectedAnymoreHandler;        
+        detectionEvent.OnPlayerDetected += OnPlayerDetectedHandler;
+        detectionEvent.OnPlayerNotDetectedAnymore += OnPlayerNotDetectedAnymoreHandler;
         heightPosition = _body.position.y;
 
         _initialSpeed = speed;
@@ -77,19 +87,19 @@ public class spiderMovement : MonoBehaviour
         {
             if (e.player.transform.position.x < detectionEvent._center.x && _dir == Vector2.right)
             {
-                ShiftDirection(_dir);                
+                ShiftDirection(_dir);
             }
             if (e.player.transform.position.x > detectionEvent._center.x && _dir == Vector2.left)
             {
-                ShiftDirection(_dir);                
+                ShiftDirection(_dir);
             }
-        }        
+        }
     }
 
     private void OnWallIsNextHandler(object sender, MonsterDetectionEvent.WallIsNextByEventArgs e)
     {
         ShiftDirection(_dir);
-        detectionEvent.ShiftDirection(new MonsterDetectionEvent.ShiftDirectionEventArgs { newDir = _dir});        
+        detectionEvent.ShiftDirection(new MonsterDetectionEvent.ShiftDirectionEventArgs { newDir = _dir });
     }
 
     void Update()
@@ -97,7 +107,7 @@ public class spiderMovement : MonoBehaviour
         CheckHeightPosition();
         Breath();
         Move();
-        
+
     }
     private void CheckHeightPosition()
     {
@@ -114,11 +124,11 @@ public class spiderMovement : MonoBehaviour
         Vector2(_body.position.x, _body.position.y),
         Vector2.down, 50f, LayerMask.GetMask("Ground"));
         }
-        
+
         float projectedHeight = -1;
         if (hit)
         {
-            if(inversed)
+            if (inversed)
                 projectedHeight = hit.point.y - distanceToGround;
             else
                 projectedHeight = hit.point.y + distanceToGround;
@@ -128,7 +138,7 @@ public class spiderMovement : MonoBehaviour
     private void Breath()
     {
         breathTimer += Time.deltaTime;
-        if (breathTimer > breathCurve.keys[breathCurve.length -1].time)
+        if (breathTimer > breathCurve.keys[breathCurve.length - 1].time)
         {
             breathTimer = 0;
         }
@@ -166,8 +176,60 @@ public class spiderMovement : MonoBehaviour
         }
         detectionEvent.ShiftDirection(new MonsterDetectionEvent.ShiftDirectionEventArgs { newDir = _dir });
     }
+
+    AnimationCurve RandomSpeedCurve()
+    {
+        AnimationCurve _randomStep = NewRandomizeKeys(_speedCurvePoints, _randomSpeedRange);
+        return _randomStep;
+    }
+
+
+    AnimationCurve NewRandomizeKeys(AnimationCurve curve, float randomRange)
+    {
+        // skip first and last keys
+        AnimationCurve tempCurve;
+        tempCurve = new AnimationCurve();
+        for (int i = 0; i < curve.keys.Length; i++)
+        {
+            if (i == 0 || i == curve.keys.Length - 1)
+            {
+                tempCurve.AddKey(curve[i]);
+            }
+            else
+            {
+                tempCurve.AddKey(new Keyframe(curve.keys[i].time, UnityEngine.Random.Range(curve.keys[i].value - randomRange / 2, curve.keys[i].value + randomRange / 2)));
+            }
+
+        }
+
+
+        return tempCurve;
+    }
+
     private void Move()
     {
-        _body.Translate(_dir * speed * Time.deltaTime);
+        if (_randomSpeed)
+        {
+            if (newRandomCurve)
+            {
+                _randomSpeedCurve = RandomSpeedCurve();
+                speedCurveTimer = 0;
+                newRandomCurve = false;
+            }
+            if (speedCurveTimer < _speedCurveDuration)
+            {
+                speedCurveTimer += Time.deltaTime;
+                _body.Translate(_dir * (speed + _randomSpeedCurve.Evaluate(speedCurveTimer / _speedCurveDuration)) * Time.deltaTime);
+            }
+            else
+            {
+                newRandomCurve = true;
+            }
+
+        }
+        else
+        {
+            _body.Translate(_dir * speed * Time.deltaTime);
+        }
     }
 }

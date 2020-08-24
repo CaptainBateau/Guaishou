@@ -361,7 +361,6 @@ GameObject:
   - component: {fileID: 795569598261897019}
   - component: {fileID: 398425256778143431}
   - component: {fileID: 638327134618529232}
-  - component: {fileID: 58953278791900144}
   - component: {fileID: 2118842246283208753}
   m_Layer: 11
   m_Name: SmallLeech
@@ -536,62 +535,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
---- !u!114 &58953278791900144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795569598261897023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc735878afe82f14f822ee0602539743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  squishStep:
-    clips: []
-    volume: 0
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 0
-    spatialisationRange: 0
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  aggro:
-    clips: []
-    volume: 0
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 0
-    spatialisationRange: 0
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  takeDamage:
-    clips: []
-    volume: 0
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 0
-    spatialisationRange: 0
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  death:
-    clips: []
-    volume: 0
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 0
-    spatialisationRange: 0
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
 --- !u!114 &2118842246283208753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -727,6 +670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 795569598410367840}
   - component: {fileID: 1899019709}
+  - component: {fileID: 1736947828724713336}
   m_Layer: 11
   m_Name: Base
   m_TagString: Untagged
@@ -888,6 +832,63 @@ MonoBehaviour:
   _distanceBetweenHeadAndBase: 0
   directionJustChanged: 0
   detectionEvent: {fileID: 398425256778143431}
+--- !u!114 &1736947828724713336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795569598410367847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc735878afe82f14f822ee0602539743, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionEvent: {fileID: 398425256778143431}
+  squishStep:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  aggro:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  takeDamage:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  death:
+    clips: []
+    volume: 0
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
 --- !u!1 &795569598431406782
 GameObject:
   m_ObjectHideFlags: 0

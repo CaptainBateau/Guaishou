@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LeechAudio : AudioManager
 {
-    MonsterDetectionEvent detectionEvent;
+    [SerializeField] MonsterDetectionEvent detectionEvent;
 
     [SerializeField] Sound squishStep = null;
     [SerializeField] Sound aggro = null;
@@ -14,7 +14,6 @@ public class LeechAudio : AudioManager
 
     public virtual void Start()
     {
-        detectionEvent = GetComponent<MonsterDetectionEvent>();
         detectionEvent.OnPlayerDetected += OnPlayerDetectedHandler;
         detectionEvent.OnMonsterHit += OnMonsterHitHandler;
         detectionEvent.OnMonsterDie += OnMonsterDie;

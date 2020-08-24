@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MonsterDetectionEvent))]
 public class SpiderAudio : AudioManager
 {
-    protected MonsterDetectionEvent detectionEvent;
+    [SerializeField] protected MonsterDetectionEvent detectionEvent;
 
     [SerializeField] Sound step = null;
     [SerializeField] Sound aggro = null;
@@ -17,7 +16,6 @@ public class SpiderAudio : AudioManager
     [SerializeField] Sound attack = null;
     public virtual void Start()
     {
-        detectionEvent = GetComponent<MonsterDetectionEvent>();
         detectionEvent.OnPlayerDetected += OnPlayerDetectedHandler;
         detectionEvent.OnMonsterHit += OnMonsterHitHandler;
         detectionEvent.OnMonsterAttack += OnMonsterAttack;

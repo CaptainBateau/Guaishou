@@ -932,6 +932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inversed: 0
+  maxStepHigh: 1.5
 --- !u!1 &543863813770901852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,6 +1055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inversed: 0
+  maxStepHigh: 1.5
 --- !u!1 &1656354954837684637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,6 +1619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inversed: 0
+  maxStepHigh: 1.5
 --- !u!1 &2511153246487784750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,6 +1961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inversed: 0
+  maxStepHigh: 1.5
 --- !u!1 &2511153247598202957
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,6 +2455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inversed: 0
+  maxStepHigh: 1.5
 --- !u!1 &3834843034653721612
 GameObject:
   m_ObjectHideFlags: 0
@@ -2837,7 +2842,6 @@ GameObject:
   - component: {fileID: 5354579099039134767}
   - component: {fileID: 4413832652399613945}
   - component: {fileID: 4645820889296344407}
-  - component: {fileID: 4703654603397335166}
   - component: {fileID: 6879773088502138937}
   m_Layer: 11
   m_Name: GroundSpider
@@ -2981,6 +2985,66 @@ MonoBehaviour:
   bodySpeedOnPlayerDetected: 300
   stepDistanceOnPlayerDetected: 80
   stepDurationOnPlayerDetected: 50
+  _randomSpeed: 1
+  _randomSpeedRange: 0.4
+  _speedCurveDuration: 6
+  _speedCurvePoints:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.32966056
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.54705465
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.722545
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _randomSpeedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &4645820889296344407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2994,89 +3058,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 500
---- !u!114 &4703654603397335166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4909346134352778007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92319168219c69744a007d17e330e95d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  step:
-    clips:
-    - {fileID: 8300000, guid: 59b1a8387839cfe4c9e0534a04615cff, type: 3}
-    - {fileID: 8300000, guid: 185d84b9b5092654887027eee31c6bc8, type: 3}
-    - {fileID: 8300000, guid: c5c74565fc08ff640b2e54d1111eec3a, type: 3}
-    - {fileID: 8300000, guid: 225c8156c0084694fa60159419138f70, type: 3}
-    - {fileID: 8300000, guid: e92d877de85fefe4d902b5c2cbae7de9, type: 3}
-    - {fileID: 8300000, guid: 03b2ade737005df4abe59c17d40d92c2, type: 3}
-    - {fileID: 8300000, guid: 5bca6ffe0ea7b2845ac3dc41c15609e1, type: 3}
-    volume: 1
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 1
-    spatialisationRange: 10
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  aggro:
-    clips:
-    - {fileID: 8300000, guid: 737c29e713d196943a882fb3b8fac74e, type: 3}
-    volume: 0.5
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 60
-    spatialisation: 1
-    spatialisationRange: 10
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  takeDamage:
-    clips:
-    - {fileID: 8300000, guid: 6fbb1c66c8c4a7045bab9bf5dbc430bc, type: 3}
-    - {fileID: 8300000, guid: 4b5f8f1edf6ebec4fb5a7b51baaf38f0, type: 3}
-    - {fileID: 8300000, guid: 5e0e3c311e9895548b48c48e7c8ae5af, type: 3}
-    - {fileID: 8300000, guid: 4eaebb9613fff9040b2c203d88135b5e, type: 3}
-    volume: 0.5
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 1
-    spatialisation: 0
-    spatialisationRange: 0
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  death:
-    clips:
-    - {fileID: 8300000, guid: 03652912f0a487b47a39d5207bc8eb8a, type: 3}
-    volume: 1
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 1
-    spatialisationRange: 10
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
-  attack:
-    clips:
-    - {fileID: 8300000, guid: 5a2f9b66b95974048b4044ef594f75cf, type: 3}
-    - {fileID: 8300000, guid: f3a3d60cc87fd354c860b9e2e6714a24, type: 3}
-    - {fileID: 8300000, guid: 6294281bfa770b04bab15c767e0623ba, type: 3}
-    volume: 0.7
-    randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
-    loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 1
-    spatialisationRange: 10
-    soundOrigin: {fileID: 0}
-    source: {fileID: 0}
 --- !u!114 &6879773088502138937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3976,6 +3957,7 @@ GameObject:
   - component: {fileID: 7022476998033133759}
   - component: {fileID: 1162160986374570410}
   - component: {fileID: 1856622018}
+  - component: {fileID: 7113201984541272238}
   m_Layer: 11
   m_Name: body
   m_TagString: Untagged
@@ -4072,6 +4054,90 @@ CircleCollider2D:
   m_Offset: {x: 0.013322115, y: 0.07644093}
   serializedVersion: 2
   m_Radius: 0.6498033
+--- !u!114 &7113201984541272238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7022476998033133752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92319168219c69744a007d17e330e95d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionEvent: {fileID: 5354579099039134767}
+  step:
+    clips:
+    - {fileID: 8300000, guid: 59b1a8387839cfe4c9e0534a04615cff, type: 3}
+    - {fileID: 8300000, guid: 185d84b9b5092654887027eee31c6bc8, type: 3}
+    - {fileID: 8300000, guid: c5c74565fc08ff640b2e54d1111eec3a, type: 3}
+    - {fileID: 8300000, guid: 225c8156c0084694fa60159419138f70, type: 3}
+    - {fileID: 8300000, guid: e92d877de85fefe4d902b5c2cbae7de9, type: 3}
+    - {fileID: 8300000, guid: 03b2ade737005df4abe59c17d40d92c2, type: 3}
+    - {fileID: 8300000, guid: 5bca6ffe0ea7b2845ac3dc41c15609e1, type: 3}
+    volume: 1
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 1
+    spatialisationRange: 10
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  aggro:
+    clips:
+    - {fileID: 8300000, guid: 737c29e713d196943a882fb3b8fac74e, type: 3}
+    volume: 0.5
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 60
+    spatialisation: 1
+    spatialisationRange: 10
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  takeDamage:
+    clips:
+    - {fileID: 8300000, guid: 6fbb1c66c8c4a7045bab9bf5dbc430bc, type: 3}
+    - {fileID: 8300000, guid: 4b5f8f1edf6ebec4fb5a7b51baaf38f0, type: 3}
+    - {fileID: 8300000, guid: 5e0e3c311e9895548b48c48e7c8ae5af, type: 3}
+    - {fileID: 8300000, guid: 4eaebb9613fff9040b2c203d88135b5e, type: 3}
+    volume: 0.5
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 1
+    spatialisation: 0
+    spatialisationRange: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  death:
+    clips:
+    - {fileID: 8300000, guid: 03652912f0a487b47a39d5207bc8eb8a, type: 3}
+    volume: 1
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 1
+    spatialisationRange: 10
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  attack:
+    clips:
+    - {fileID: 8300000, guid: 5a2f9b66b95974048b4044ef594f75cf, type: 3}
+    - {fileID: 8300000, guid: f3a3d60cc87fd354c860b9e2e6714a24, type: 3}
+    - {fileID: 8300000, guid: 6294281bfa770b04bab15c767e0623ba, type: 3}
+    volume: 0.7
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 1
+    spatialisationRange: 10
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
 --- !u!1 &7890935021405521887
 GameObject:
   m_ObjectHideFlags: 0
@@ -4413,6 +4479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inversed: 0
+  maxStepHigh: 1.5
 --- !u!1 &8153257289062191669
 GameObject:
   m_ObjectHideFlags: 0
