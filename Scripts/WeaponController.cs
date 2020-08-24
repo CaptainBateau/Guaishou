@@ -62,6 +62,11 @@ public class WeaponController : MonoBehaviour
     public float _timeToRecover;
     float _timeWhenShoot;
 
+
+
+    public PlayerEvent _playerEvent;
+    
+
     void Start()
     {
         _camera = Camera.main;
@@ -144,6 +149,7 @@ public class WeaponController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && _canShoot)
         {
             float tempValue = Mathf.InverseLerp(_maxSpreadAngle, _minSpreadAngle, _spreadAngle);
+            _playerEvent.PlayerShoot(new PlayerEvent.PlayerShootEventArgs { });
             StartCoroutine(ShootWithSpread(_spreadAngle, _pelletNumber, transform.rotation, _spawner.position, Mathf.Lerp(.3f,1f,tempValue)));
 
             _timeWhenShoot = Time.time + _timeToRecover;
@@ -152,6 +158,7 @@ public class WeaponController : MonoBehaviour
             _magazineCapacity--;
             if (_magazineCapacity <= 0)
             {
+                _playerEvent.PlayerReload(new PlayerEvent.PlayerReloadEventArgs { });
                 StartCoroutine(Reloading());
             }
             if (_pointLightStruct.Length > 0)
