@@ -1,7 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Experimental.U2D.IK;
 
@@ -9,7 +6,7 @@ public class TentacleMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] BoxCollider2D _movementZone;
-    [SerializeField] LimbSolver2D _solver;
+    [SerializeField] CCDSolver2D _solver;
 
     [Header("Parameters")]
     [SerializeField] float _speed;
@@ -27,10 +24,30 @@ public class TentacleMovement : MonoBehaviour
         topRight = new Vector2(boxBounds.center.x + boxBounds.extents.x, boxBounds.center.y + boxBounds.extents.y);
         bottomLeft = new Vector2(boxBounds.center.x - boxBounds.extents.x, boxBounds.center.y - boxBounds.extents.y);
 
-        GenerateRandomTarget();
         //movementZone.bounds;
+        StartCoroutine(moveToNextTarget());
+    }
+
+    IEnumerator moveToNextTarget()
+    {
+        GenerateRandomTarget();
+        
         float moveDuration = Vector2.Distance(_solver.transform.position, _target.transform.position) * _speed;
-        Movements.Move(_solver.transform, _target.transform, _moveCurve, moveDuration);
+        //Debug.Log("new target pos is " + _target.transform.position + " and duration is " + moveDuration);
+
+        //float timer = 0;
+        //Vector3 solverInitialPos = _solver.transform.position;
+        //while (timer < moveDuration)
+        //{
+        //    timer += Time.deltaTime;
+        //        Vector2 target = _target.transform.position;
+
+        //    _solver.transform.position = Vector2.Lerp(solverInitialPos, target, _moveCurve.Evaluate(timer / moveDuration));
+        //    yield return null;
+        //}
+        StartCoroutine(Movements.Move(_solver.transform, _target.transform, _moveCurve, moveDuration));
+        yield return new WaitForSeconds(moveDuration);
+        StartCoroutine(moveToNextTarget());
     }
 
     [ContextMenu("createRandomTarget")]

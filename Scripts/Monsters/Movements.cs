@@ -8,6 +8,7 @@ public static class Movements
     {
         float timer = 0;
         Vector2 target;
+        Vector3 startPos = initialPos.position;
         if (randomOffset != 0 && yOffset != 0)
             target = new Vector2(targetPos.position.x, targetPos.position.y + Random.Range(yOffset - randomOffset / 2, yOffset + randomOffset / 2));
         else
@@ -18,7 +19,7 @@ public static class Movements
             if (randomOffset == 0 && yOffset == 0)
                 target = targetPos.position;
 
-            initialPos.position = Vector2.Lerp(initialPos.position, target, animCurve.Evaluate(timer / animDuration));
+            initialPos.position = Vector2.Lerp(startPos, target, animCurve.Evaluate(timer / animDuration));
             yield return null;
         }
     }
