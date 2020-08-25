@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEditor;
-using UnityEditor.U2D.Path;
 using UnityEngine;
 using UnityEngine.Experimental.U2D.IK;
 

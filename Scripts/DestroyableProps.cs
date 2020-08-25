@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class DestroyableProps : MonoBehaviour
 {
+    [Header("DON'T FORGET THE COLLIDER 2D")]
     [SerializeField] bool destroyableByProjectile;
     [SerializeField] int healthPoint;
     [SerializeField] float dissolveDuration;
