@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2730595281722500981}
   - component: {fileID: 2730595281722500982}
   - component: {fileID: 2730595281722500983}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: bone_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 2730595281841278549}
   - component: {fileID: 2730595281841278555}
   - component: {fileID: 2730595281841278548}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: bone_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 2730595281843612756}
   - component: {fileID: 2730595281843612762}
   - component: {fileID: 2730595281843612763}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: bone_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 2730595282043867574}
   - component: {fileID: 2730595282043867572}
   - component: {fileID: 2730595282043867573}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: bone_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +388,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2730595282080728178}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 2730595283026962709}
   - component: {fileID: 2730595283026962710}
   - component: {fileID: 2730595283026962711}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +575,7 @@ GameObject:
   - component: {fileID: 2730595283138776846}
   - component: {fileID: 2730595283138776845}
   - component: {fileID: 2730595283138776844}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: bone_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -670,7 +670,7 @@ GameObject:
   - component: {fileID: 2730595283684661471}
   - component: {fileID: 2730595283684661469}
   - component: {fileID: 2730595283684661470}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -765,8 +765,7 @@ GameObject:
   - component: {fileID: 2730595283812981619}
   - component: {fileID: 2730595283812981617}
   - component: {fileID: 2730595283812981618}
-  - component: {fileID: 2518454648839610046}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,22 +840,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.08
---- !u!232 &2518454648839610046
-DistanceJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730595283812981901}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 2730595281722500981}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -11.735606, y: 2.8867233}
-  m_AutoConfigureDistance: 1
-  m_Distance: 11.001745
-  m_MaxDistanceOnly: 0
