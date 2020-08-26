@@ -74,6 +74,11 @@ public class WeaponController : MonoBehaviour
             _minSpreadAngle = _pointLightStruct[0]._minLightAngle;
             _maxSpreadAngle = _pointLightStruct[0]._maxLightAngle;
         }
+
+        for(int i = 0; i < _pointLightStruct.Length; i++)
+        {
+            _pointLightStruct[i]._light.intensity = _pointLightStruct[i]._intensity;
+        }
     }
 
     void Update()
