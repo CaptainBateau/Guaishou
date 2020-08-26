@@ -8,7 +8,7 @@ public class AnimEvents : MonoBehaviour
 
 	void TakeStep()
 	{
-		if(GameState._isInside)
+		if(!GameState._isInside)
 			_playerEvent.PlayerStep(new PlayerEvent.PlayerStepEventArgs { });
 		else
 			_playerEvent.PlayerStepInside(new PlayerEvent.PlayerStepInsideEventArgs { });
