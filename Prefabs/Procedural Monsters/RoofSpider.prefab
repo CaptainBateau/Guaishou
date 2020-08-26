@@ -459,7 +459,6 @@ MonoBehaviour:
     m_Center: {x: 0.012750506, y: 0.4384118, z: 0}
     m_Extent: {x: 0.18900946, y: 0.3678902, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &6201680555427084097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1007,7 +1006,7 @@ MonoBehaviour:
   aggro:
     clips:
     - {fileID: 8300000, guid: 103bc885747df6c4e9569877faf7dbcc, type: 3}
-    volume: 1
+    volume: 0.9
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
@@ -1022,7 +1021,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 3b48c7f7412457d42af266a66bfb86ff, type: 3}
     - {fileID: 8300000, guid: b00270ba0be1766438ec35244c3f7260, type: 3}
     - {fileID: 8300000, guid: bc568f90d3e4ded439e9ca475b67c942, type: 3}
-    volume: 1
+    volume: 0.9
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
@@ -1034,7 +1033,7 @@ MonoBehaviour:
   death:
     clips:
     - {fileID: 8300000, guid: 16e27df75ab072c4d8163ea9544770c0, type: 3}
-    volume: 1
+    volume: 0.3
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
@@ -1420,7 +1419,6 @@ MonoBehaviour:
     m_Center: {x: 0.4022824, y: 0.27818406, z: 0}
     m_Extent: {x: 0.46879438, y: 0.36617202, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &6710652945228190418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1944,7 +1942,6 @@ MonoBehaviour:
     m_Center: {x: 0.29714778, y: 0.25085658, z: 0}
     m_Extent: {x: 0.35720864, y: 0.306616, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &6710652945743294379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2402,7 +2399,6 @@ MonoBehaviour:
     m_Center: {x: 0.52760327, y: 0.15695494, z: 0}
     m_Extent: {x: 0.5839559, y: 0.5892973, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &6710652945931377602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3095,7 +3091,6 @@ MonoBehaviour:
     m_Center: {x: 0.5475435, y: 0.18956539, z: 0}
     m_Extent: {x: 0.60373193, y: 0.5997058, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &6710652946313257757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3510,7 +3505,6 @@ MonoBehaviour:
     m_Center: {x: 0.3982629, y: 0.26979193, z: 0}
     m_Extent: {x: 0.44393343, y: 0.36901098, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &6710652946515616067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3977,7 +3971,6 @@ MonoBehaviour:
     m_Center: {x: 0.29776827, y: 0.21886246, z: 0}
     m_Extent: {x: 0.3738803, y: 0.27822953, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &6710652946908564673
 MonoBehaviour:
   m_ObjectHideFlags: 0
