@@ -987,7 +987,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionEvent: {fileID: 6607467423857963058}
   step:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 30713b79322e7f04baba7ee6b3ee8a52, type: 3}
+    - {fileID: 8300000, guid: b2952c51802a5314fac1b627d4904d58, type: 3}
+    - {fileID: 8300000, guid: 6e374b59677c18448b8ede189bb2302b, type: 3}
+    - {fileID: 8300000, guid: 0f912a2ff5fd8d5448885381d7c5657c, type: 3}
+    - {fileID: 8300000, guid: df6a45b5d45412a45a1272fabd8050c9, type: 3}
+    - {fileID: 8300000, guid: 8353eadcfbf3f394a9ae7911291abdba, type: 3}
+    - {fileID: 8300000, guid: 38be4790ede75aa4ca431cd3e0ecdce8, type: 3}
     volume: 0.647
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
@@ -998,8 +1005,9 @@ MonoBehaviour:
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   aggro:
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: 103bc885747df6c4e9569877faf7dbcc, type: 3}
+    volume: 1
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
@@ -1009,19 +1017,24 @@ MonoBehaviour:
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   takeDamage:
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: 25989d96623b1ba41b3cdff36f5c2f76, type: 3}
+    - {fileID: 8300000, guid: 3b48c7f7412457d42af266a66bfb86ff, type: 3}
+    - {fileID: 8300000, guid: b00270ba0be1766438ec35244c3f7260, type: 3}
+    - {fileID: 8300000, guid: bc568f90d3e4ded439e9ca475b67c942, type: 3}
+    volume: 1
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
-    minDelayBetweenSounds: 0
+    minDelayBetweenSounds: 1
     spatialisation: 1
     spatialisationRange: 15
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   death:
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: 16e27df75ab072c4d8163ea9544770c0, type: 3}
+    volume: 1
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
@@ -1031,7 +1044,10 @@ MonoBehaviour:
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   attack:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 5f68372e9a85e624cb55e6d56da77bb8, type: 3}
+    - {fileID: 8300000, guid: a028c97f9572ddb4ba3e0a7ed53f16b0, type: 3}
+    - {fileID: 8300000, guid: e75ddb10dff35434886607cd8b41c640, type: 3}
     volume: 0
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
@@ -1042,8 +1058,9 @@ MonoBehaviour:
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   neckMovement:
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: 96d2a78d2139c7443bfaebd8ec10b65c, type: 3}
+    volume: 1
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
