@@ -9,7 +9,7 @@ public static class Movements
         float timer = 0;
         Vector2 target;
         Vector3 startPos = initialPos.position;
-        if (randomOffset != 0 && yOffset != 0)
+        if (randomOffset != 0 || yOffset != 0)
             target = new Vector2(targetPos.position.x, targetPos.position.y + Random.Range(yOffset - randomOffset / 2, yOffset + randomOffset / 2));
         else
             target = targetPos.position;
