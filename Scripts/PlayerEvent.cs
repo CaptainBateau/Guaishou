@@ -18,8 +18,7 @@ public class PlayerEvent : MonoBehaviour
             PlayerGotHit(new PlayerGotHitEventArgs { });
             Debug.Log("You got hit");
             // temporary restart
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            
+            Invoke("GameOver", 2f);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,9 +28,13 @@ public class PlayerEvent : MonoBehaviour
         {
             PlayerGotHit(new PlayerGotHitEventArgs { });
             // temporary restart
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+            Invoke("GameOver", 2f);
         }
+    }
+
+    private void GameOver()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     #region HOW TO CALL EVENT

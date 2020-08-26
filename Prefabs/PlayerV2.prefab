@@ -1384,7 +1384,8 @@ MonoBehaviour:
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   openDoor:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: fb01047863ab47541a7e4516d61c9697, type: 3}
     volume: 1
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
@@ -1407,14 +1408,8 @@ MonoBehaviour:
     source: {fileID: 0}
   playerHit:
     clips:
-    - {fileID: 8300000, guid: e5b4fe33b6bfd5648bc10a607b390264, type: 3}
-    - {fileID: 8300000, guid: 4a80ddf36f527954f82c17600687cf94, type: 3}
-    - {fileID: 8300000, guid: da46aaaebca827c4aae1589c3c4e2efe, type: 3}
-    - {fileID: 8300000, guid: e38817336966c6145a3f23429159b9d6, type: 3}
-    - {fileID: 8300000, guid: cda2814a82eedb9429f6e56caf313377, type: 3}
-    - {fileID: 8300000, guid: 58dc48bdd9e19414f86ffb96d9126e2f, type: 3}
-    - {fileID: 8300000, guid: 9a620cc85ef4e934288062f1d4145443, type: 3}
-    volume: 0.85
+    - {fileID: 8300000, guid: b3bd916b184326043969c24cf42d6596, type: 3}
+    volume: 1
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
@@ -1456,8 +1451,33 @@ MonoBehaviour:
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   playerStep:
-    clips: []
-    volume: 1
+    clips:
+    - {fileID: 8300000, guid: 594ac4bd4ec103243bc58f222ee230cb, type: 3}
+    - {fileID: 8300000, guid: 4009ece5720731540b689b1bb3d68f57, type: 3}
+    - {fileID: 8300000, guid: 311e28a56d35fe44bbacf964528cd614, type: 3}
+    - {fileID: 8300000, guid: 4e917054b8dc967469e7a03a1cf05755, type: 3}
+    - {fileID: 8300000, guid: b367671dfb8b7ce4f8e32b68415c967b, type: 3}
+    - {fileID: 8300000, guid: c3fae7cb2f28c024db5f42b60d6a21d0, type: 3}
+    - {fileID: 8300000, guid: 2d5faf04193f81b4792b4851f519d88d, type: 3}
+    volume: 0.5
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  playerStepInside:
+    clips:
+    - {fileID: 8300000, guid: fb73ec810e3a07d4faa1b14f14971c32, type: 3}
+    - {fileID: 8300000, guid: a6d4d35ac46621b43af1bcd2bf4c1a92, type: 3}
+    - {fileID: 8300000, guid: 377330c723022484488cccf1bb9c59ab, type: 3}
+    - {fileID: 8300000, guid: 96b49c7a05a9cad4daafd32106a1963f, type: 3}
+    - {fileID: 8300000, guid: 35362daffb570b94e84c16f634e71b9b, type: 3}
+    - {fileID: 8300000, guid: 7081d7c0baf00324d841a24ca90c5f71, type: 3}
+    - {fileID: 8300000, guid: 6d6d241b2d462d348915c0f4b0ebf6d1, type: 3}
+    volume: 0.5
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
@@ -1467,7 +1487,10 @@ MonoBehaviour:
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   playerTouchVegetation:
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 8a60c611fbbb6e741ba02d7002966dea, type: 3}
+    - {fileID: 8300000, guid: 460a92099aed4af408a7a8451c08c576, type: 3}
+    - {fileID: 8300000, guid: 1f59ba072839c8c4c9548c3d05207eec, type: 3}
     volume: 1
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}

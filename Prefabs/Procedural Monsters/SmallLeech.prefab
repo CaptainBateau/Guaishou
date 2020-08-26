@@ -508,10 +508,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showDebug: 1
   _centerTransform: {fileID: 0}
-  _centerBetween2element: 1
-  _firstElement: {fileID: 795569598410367840}
-  _secondElement: {fileID: 795569597806714124}
-  _offset: {x: 0, y: 0.54}
   _playerDetectionOffset: {x: 0, y: 0}
   wallDetectionDistance: 1
   playerNextToDistance: 1.5
@@ -521,6 +517,11 @@ MonoBehaviour:
     colliderGroup: 1
     parentOfColliders: {fileID: 795569598410367840}
     healthLost: 1
+  _centerBetween2element: 1
+  _firstElement: {fileID: 795569598410367840}
+  _secondElement: {fileID: 795569597806714124}
+  _offset: {x: 0, y: 0.54}
+  circlePlayerDetection: 0
   _center: {x: -7.849571, y: -3.3364868, z: 0}
 --- !u!114 &638327134618529232
 MonoBehaviour:
@@ -846,14 +847,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionEvent: {fileID: 398425256778143431}
   squishStep:
-    clips: []
-    volume: 0
-    randomPitch: 0
+    clips:
+    - {fileID: 8300000, guid: 6cb22aea05221ab478839d5f8afbf62f, type: 3}
+    volume: 1
+    randomPitch: 1
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
-    spatialisation: 0
-    spatialisationRange: 0
+    spatialisation: 1
+    spatialisationRange: 10
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   aggro:
@@ -864,29 +866,33 @@ MonoBehaviour:
     loop: 0
     minDelayBetweenSounds: 0
     spatialisation: 0
-    spatialisationRange: 0
+    spatialisationRange: 10
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   takeDamage:
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: ffa9bf9055311454bb2b28af96647c1a, type: 3}
+    - {fileID: 8300000, guid: 864221b5bb381c247b7713ad12b8d9d6, type: 3}
+    - {fileID: 8300000, guid: f4166425b3e45424aac9f3923f7aa9f5, type: 3}
+    volume: 1
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
-    minDelayBetweenSounds: 0
-    spatialisation: 0
-    spatialisationRange: 0
+    minDelayBetweenSounds: 0.1
+    spatialisation: 1
+    spatialisationRange: 15
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   death:
-    clips: []
-    volume: 0
+    clips:
+    - {fileID: 8300000, guid: a3b880875bac16445b7a93c93e37586f, type: 3}
+    volume: 1
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
     minDelayBetweenSounds: 0
-    spatialisation: 0
-    spatialisationRange: 0
+    spatialisation: 1
+    spatialisationRange: 15
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
 --- !u!1 &795569598431406782
