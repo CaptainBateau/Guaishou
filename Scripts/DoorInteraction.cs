@@ -48,11 +48,13 @@ public class DoorInteraction: MonoBehaviour
                 {
                     _opening = true;
                     StartCoroutine(RemoveCollider());
+                    _playerEvent.OpenDoor(new PlayerEvent.OpenDoorEventArgs { });
                 }
                 else
                 {
                     _closing = true;
                     StartCoroutine(ReactiveCollider());
+                    _playerEvent.OpenDoor(new PlayerEvent.OpenDoorEventArgs { });
                 }
             }
         }
@@ -83,7 +85,6 @@ public class DoorInteraction: MonoBehaviour
     void Opening()
     {
         _doorSprite.eulerAngles = _openRotation;
-        _playerEvent.OpenDoor(new PlayerEvent.OpenDoorEventArgs { });
         //_doorSprite.rotation = Quaternion.Lerp(_startTransform.rotation, Quaternion.identity, Time.deltaTime * _speed);
         if (_isPlayerLeftSide)
             _rightShadow.enabled = false;

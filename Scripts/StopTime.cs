@@ -14,7 +14,8 @@ public class StopTime : MonoBehaviour
     private void Awake()
     {
         _weaponController = FindObjectOfType<WeaponController>();
-        StopTimeScale();
+        _pauseEvent.AddListener(StopTimeFct);
+        _unpauseEvent.AddListener(RestoreTime);
     }
 
     private void Update()
@@ -22,25 +23,35 @@ public class StopTime : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (_isPaused)
-                RestoreTimeScale();
+                Unpause();
             else
-                StopTimeScale();
+                Pause();
         }
     }
 
-    public void StopTimeScale()
+    public void Pause()
     {
-        Time.timeScale = 0;
-        _weaponController.enabled = false;
-        _isPaused = true;
         _pauseEvent.Invoke();
     }
 
-    public void RestoreTimeScale()
+    public void Unpause()
     {
+        _unpauseEvent.Invoke();
+    }
+
+    public void StopTimeFct()
+    {
+        Debug.Log("Stop");
+        Time.timeScale = 0;
+        _weaponController.enabled = false;
+        _isPaused = true;
+    }
+
+    public void RestoreTime()
+    {
+        Debug.Log("GOGOGOGO");
         Time.timeScale = 1;
         _weaponController.enabled = true;
         _isPaused = false;
-        _unpauseEvent.Invoke();
     }
 }
