@@ -43,7 +43,7 @@ public class DoorInteraction: MonoBehaviour
             if (_triggered)
             {
                 PlayerSideOfDoor();
-                Debug.Log(_isPlayerLeftSide);
+
                 if (!_opened)
                 {
                     _opening = true;
