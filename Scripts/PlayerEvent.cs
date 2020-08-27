@@ -8,6 +8,15 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Collider2D))]
 public class PlayerEvent : MonoBehaviour
 {
+    private void Start()
+    {
+        OnGameOver += OnGameOverHandler;
+    }
+
+    private void OnGameOverHandler(object sender, GameOverEventArgs e)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
     // je gère déjà la collision avec les monstres ici
     void OnCollisionEnter2D(Collision2D collision)
@@ -16,9 +25,6 @@ public class PlayerEvent : MonoBehaviour
         if (collision.collider.gameObject.layer == 11)
         {
             PlayerGotHit(new PlayerGotHitEventArgs { });
-            Debug.Log("You got hit");
-            // temporary restart
-            Invoke("GameOver", 2f);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,31 +33,8 @@ public class PlayerEvent : MonoBehaviour
         if (collision.gameObject.layer == 11)
         {
             PlayerGotHit(new PlayerGotHitEventArgs { });
-            // temporary restart
-            Invoke("GameOver", 2f);
         }
     }
-
-    private void GameOver()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    #region HOW TO CALL EVENT
-    PlayerEvent playerEvent = null;
-    private void Start()
-    {
-        // il faut une référence au player event, par l'inspecteur ou via getComponent comme tu veux
-
-        // playerEvent.GetComponent<PlayerEvent>();
-    }
-
-    private void LightIntensityLow()
-    {
-        // appeler l'event à l'endroit où il doit être appelé, avec ses paramètre si nécessaire
-        playerEvent.LightItensityChange(new LightItensityChangeEventArgs { lowerIntensity = true });
-    }
-    #endregion
 
     public class PlayerStepEventArgs : EventArgs { }
     public event EventHandler<PlayerStepEventArgs> OnPlayerStep;
@@ -90,4 +73,8 @@ public class PlayerEvent : MonoBehaviour
     public class PlayerGotHitEventArgs : EventArgs { }
     public event EventHandler<PlayerGotHitEventArgs> OnPlayerGotHit;
     public void PlayerGotHit(PlayerGotHitEventArgs e) => OnPlayerGotHit?.Invoke(this, e);
+
+    public class GameOverEventArgs : EventArgs { }
+    public event EventHandler<GameOverEventArgs> OnGameOver;
+    public void GameOver(GameOverEventArgs e) => OnGameOver?.Invoke(this, e);
 }
