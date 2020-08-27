@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Collider2D))]
 public class PlayerEvent : MonoBehaviour
 {
+    bool hit;
     private void Start()
     {
         OnGameOver += OnGameOverHandler;
@@ -22,16 +23,18 @@ public class PlayerEvent : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         // layer 11 is monster
-        if (collision.collider.gameObject.layer == 11)
+        if (collision.collider.gameObject.layer == 11 && !hit)
         {
+            hit = true;
             PlayerGotHit(new PlayerGotHitEventArgs { });
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // layer 11 is monster
-        if (collision.gameObject.layer == 11)
+        if (collision.gameObject.layer == 11 && !hit)
         {
+            hit = true;
             PlayerGotHit(new PlayerGotHitEventArgs { });
         }
     }
