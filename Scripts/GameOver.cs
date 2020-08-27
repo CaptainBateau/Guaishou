@@ -16,7 +16,7 @@ public class GameOver : MonoBehaviour
     private void OnPlayerHit(object sender, PlayerEvent.PlayerGotHitEventArgs e)
     {
         anim.Play();
-        Invoke("EndGame", anim.clip.averageDuration);
+        Invoke("EndGame", anim.clip.averageDuration - 0.3f);
     }
 
     void EndGame()
