@@ -16,6 +16,7 @@ public class StopTime : MonoBehaviour
         _weaponController = FindObjectOfType<WeaponController>();
         _pauseEvent.AddListener(StopTimeFct);
         _unpauseEvent.AddListener(RestoreTime);
+        Pause();
     }
 
     private void Update()
