@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Experimental.U2D.IK;
 
 public class TentacleMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] BoxCollider2D _movementZone;
-    [SerializeField] CCDSolver2D _solver;
+    [SerializeField] Transform _movingObject;
     [SerializeField] MonsterDetectionEvent detectionEvent;
 
     [Header("Parameters")]
@@ -23,28 +21,33 @@ public class TentacleMovement : MonoBehaviour
     Vector2 bottomLeft;
     bool attackPlayer;
     Transform player;
+    Bounds boxBounds;
 
     void Start()
     {
-        Bounds boxBounds = _movementZone.bounds;
+        boxBounds = _movementZone.bounds;
         topRight = new Vector2(boxBounds.center.x + boxBounds.extents.x, boxBounds.center.y + boxBounds.extents.y);
         bottomLeft = new Vector2(boxBounds.center.x - boxBounds.extents.x, boxBounds.center.y - boxBounds.extents.y);
 
+
         detectionEvent.OnPlayerDetected += OnPlayerDetectedHandler;
         detectionEvent.OnPlayerNotDetectedAnymore += OnPlayerNotDetectedAnymoreHandler;
-        //movementZone.bounds;
         StartCoroutine(moveToNextTarget());
-    }   
+    }
+    void Update()
+    {
+        boxBounds = _movementZone.bounds;
+        topRight = new Vector2(boxBounds.center.x + boxBounds.extents.x, boxBounds.center.y + boxBounds.extents.y);
+        bottomLeft = new Vector2(boxBounds.center.x - boxBounds.extents.x, boxBounds.center.y - boxBounds.extents.y);
+    }
 
     private void OnPlayerDetectedHandler(object sender, MonsterDetectionEvent.PlayerDetectedEventArgs e)
     {       
-        Debug.Log("player detected");
         attackPlayer = true;
         player = e.player.transform;
     }
     private void OnPlayerNotDetectedAnymoreHandler(object sender, MonsterDetectionEvent.PlayerNotDetectedAnymoreEventArgs e)
     {
-        Debug.Log("player not detected anymore");
         attackPlayer = false;
     }
 
@@ -52,8 +55,8 @@ public class TentacleMovement : MonoBehaviour
     {
         if (attackPlayer)
         {
-            float moveDuration = Vector2.Distance(_solver.transform.position, player.position) * _TimeToTargetPlayer;
-            IEnumerator attack = Movements.Move(_solver.transform, player, _moveCurve, moveDuration, 1.5f, 2);
+            float moveDuration = Vector2.Distance(_movingObject.transform.position, player.position) * _TimeToTargetPlayer;
+            IEnumerator attack = Movements.Move(_movingObject.transform, player, _moveCurve, moveDuration, 1.5f, 2);
             StartCoroutine(attack);
             yield return new WaitForSeconds(moveDuration);
             StartCoroutine(moveToNextTarget());
@@ -62,8 +65,8 @@ public class TentacleMovement : MonoBehaviour
         {
             GenerateRandomTarget();
 
-            float moveDuration = Vector2.Distance(_solver.transform.position, _target.transform.position) * _TimeToTarget;
-            IEnumerator move = Movements.Move(_solver.transform, _target.transform, _moveCurve, moveDuration);
+            float moveDuration = Vector2.Distance(_movingObject.transform.position, _target.transform.position) * _TimeToTarget;
+            IEnumerator move = Movements.Move(_movingObject.transform, _target.transform, _moveCurve, moveDuration);
             StartCoroutine(move);
             float timer = 0;
             while(timer < moveDuration)
@@ -80,7 +83,6 @@ public class TentacleMovement : MonoBehaviour
         }        
     }
 
-    [ContextMenu("createRandomTarget")]
     void GenerateRandomTarget()
     {
         GameObject targetGO = new GameObject();
