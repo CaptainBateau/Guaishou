@@ -472,7 +472,6 @@ MonoBehaviour:
     m_Center: {x: -0.1341289, y: -0.31690085, z: 0}
     m_Extent: {x: 0.24945047, y: 0.217951, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &795569598261897019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,7 +848,7 @@ MonoBehaviour:
   squishStep:
     clips:
     - {fileID: 8300000, guid: 6cb22aea05221ab478839d5f8afbf62f, type: 3}
-    volume: 1
+    volume: 0.8
     randomPitch: 1
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
@@ -874,7 +873,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: ffa9bf9055311454bb2b28af96647c1a, type: 3}
     - {fileID: 8300000, guid: 864221b5bb381c247b7713ad12b8d9d6, type: 3}
     - {fileID: 8300000, guid: f4166425b3e45424aac9f3923f7aa9f5, type: 3}
-    volume: 1
+    volume: 0.3
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
@@ -886,7 +885,7 @@ MonoBehaviour:
   death:
     clips:
     - {fileID: 8300000, guid: a3b880875bac16445b7a93c93e37586f, type: 3}
-    volume: 1
+    volume: 0.3
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
