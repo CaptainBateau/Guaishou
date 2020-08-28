@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider2D))]
 public class PlayerEvent : MonoBehaviour
 {
+    
     bool hit;
     private void Start()
     {
         OnGameOver += OnGameOverHandler;
     }
-
     private void OnGameOverHandler(object sender, GameOverEventArgs e)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -26,7 +23,7 @@ public class PlayerEvent : MonoBehaviour
         if (collision.collider.gameObject.layer == 11 && !hit)
         {
             hit = true;
-            PlayerGotHit(new PlayerGotHitEventArgs { });
+            PlayerGotHit(new PlayerGotHitEventArgs { collisionPosition = collision.contacts[0].point });          
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,7 +32,7 @@ public class PlayerEvent : MonoBehaviour
         if (collision.gameObject.layer == 11 && !hit)
         {
             hit = true;
-            PlayerGotHit(new PlayerGotHitEventArgs { });
+            PlayerGotHit(new PlayerGotHitEventArgs { collisionPosition = collision.bounds.ClosestPoint(transform.position) });
         }
     }
 
@@ -73,7 +70,9 @@ public class PlayerEvent : MonoBehaviour
     public event EventHandler<OpenDoorEventArgs> OnOpenDoor;
     public void OpenDoor(OpenDoorEventArgs e) => OnOpenDoor?.Invoke(this, e);
 
-    public class PlayerGotHitEventArgs : EventArgs { }
+    public class PlayerGotHitEventArgs : EventArgs {
+        public Vector2 collisionPosition;
+    }
     public event EventHandler<PlayerGotHitEventArgs> OnPlayerGotHit;
     public void PlayerGotHit(PlayerGotHitEventArgs e) => OnPlayerGotHit?.Invoke(this, e);
 
