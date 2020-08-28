@@ -44,6 +44,10 @@ public class PlayerEvent : MonoBehaviour
     public event EventHandler<PlayerStepInsideEventArgs> OnPlayerStepInside;
     public void PlayerStepInside(PlayerStepInsideEventArgs e) => OnPlayerStepInside?.Invoke(this, e);
 
+
+    public class PlayerStepMetalEventArgs : EventArgs { }
+    public event EventHandler<PlayerStepMetalEventArgs> OnPlayerStepMetal;
+    public void PlayerStepMetal(PlayerStepMetalEventArgs e) => OnPlayerStepMetal?.Invoke(this, e);
     public class PlayerShootEventArgs : EventArgs { }
     public event EventHandler<PlayerShootEventArgs> OnPlayerShoot;
     public void PlayerShoot(PlayerShootEventArgs e) => OnPlayerShoot?.Invoke(this, e);

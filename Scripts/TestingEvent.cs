@@ -19,5 +19,12 @@ public class TestingEvent : MonoBehaviour
     public void IsGoingInside(bool isInside)
     {
         GameState._isInside = isInside;
+        GameState._isOnMetal = false;
+    }
+
+    public void IsGoingOnMetal()
+    {
+        GameState._isOnMetal = true;
+        GameState._isInside = false;
     }
 }
