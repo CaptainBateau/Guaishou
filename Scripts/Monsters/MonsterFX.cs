@@ -23,7 +23,7 @@ public class MonsterFX : MonoBehaviour
         if(hitParticles != null)
         {
             ParticleSystem fx = Instantiate(hitParticles, e.collisionPosition, Quaternion.identity, transform);
-            float newScale = Mathf.Lerp(1, 3, e.hitbox.healthLost / 20);
+            float newScale = Mathf.Lerp(1, scaleFor20healthLost, (float)e.hitbox.healthLost / (float)20);
             fx.transform.localScale = new Vector3(newScale, newScale, newScale);
             Destroy(fx, hitParticles.main.duration);
         }
