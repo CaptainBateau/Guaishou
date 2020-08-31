@@ -40,6 +40,7 @@ public class spiderMovement : MonoBehaviour
     float _initialSpeed = 0;
     bool newRandomCurve = true;
     float speedCurveTimer = 0;
+    bool gotHit;
 
     private void Start()
     {
@@ -47,10 +48,16 @@ public class spiderMovement : MonoBehaviour
         detectionEvent.OnWallIsNextBy += OnWallIsNextHandler;
         detectionEvent.OnPlayerDetected += OnPlayerDetectedHandler;
         detectionEvent.OnPlayerNotDetectedAnymore += OnPlayerNotDetectedAnymoreHandler;
+        detectionEvent.OnMonsterHit += OnMonsterHitHandler;
         heightPosition = _body.position.y;
 
         _initialSpeed = speed;
         detectionEvent.ShiftDirection(new MonsterDetectionEvent.ShiftDirectionEventArgs { newDir = _dir });
+    }
+
+    private void OnMonsterHitHandler(object sender, MonsterDetectionEvent.MonsterHitEventArgs e)
+    {
+//
     }
 
     private void OnPlayerNotDetectedAnymoreHandler(object sender, MonsterDetectionEvent.PlayerNotDetectedAnymoreEventArgs e)
@@ -229,6 +236,7 @@ public class spiderMovement : MonoBehaviour
         }
         else
         {
+            //if()
             _body.Translate(_dir * speed * Time.deltaTime);
         }
     }

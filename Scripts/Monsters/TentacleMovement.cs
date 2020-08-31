@@ -5,13 +5,13 @@ public class TentacleMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] BoxCollider2D _movementZone;
-    [SerializeField] Transform _movingObject;
+    [SerializeField] protected Transform _movingObject;
     [SerializeField] MonsterDetectionEvent detectionEvent;
 
     [Header("Parameters")]
-    [SerializeField] float _TimeToTarget = 2;
+    [SerializeField] protected float _TimeToTarget = 2;
     [SerializeField] float _TimeToTargetPlayer = 1;
-    [SerializeField] AnimationCurve _moveCurve;
+    [SerializeField] protected AnimationCurve _moveCurve;
 
     
 
@@ -19,7 +19,7 @@ public class TentacleMovement : MonoBehaviour
     GameObject _target;
     Vector2 topRight;
     Vector2 bottomLeft;
-    bool attackPlayer;
+    protected bool attackPlayer;
     Transform player;
     Bounds boxBounds;
 
@@ -51,7 +51,7 @@ public class TentacleMovement : MonoBehaviour
         attackPlayer = false;
     }
 
-    IEnumerator moveToNextTarget()
+    protected virtual IEnumerator moveToNextTarget()
     {
         if (attackPlayer)
         {
