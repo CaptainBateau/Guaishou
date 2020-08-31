@@ -14,6 +14,7 @@ public class spiderMovement : MonoBehaviour
     [Header("Parameters")]
     public float stepShift = 2f;
     public float speed = 1;
+    public float _stunDuration = 0.1f;
 
     public AnimationCurve breathCurve = null;
     public float distanceToGround = 2f;
@@ -40,7 +41,8 @@ public class spiderMovement : MonoBehaviour
     float _initialSpeed = 0;
     bool newRandomCurve = true;
     float speedCurveTimer = 0;
-    bool gotHit;
+    bool gotHit = false;
+    float hitTimer = 0;
 
     private void Start()
     {
@@ -57,7 +59,7 @@ public class spiderMovement : MonoBehaviour
 
     private void OnMonsterHitHandler(object sender, MonsterDetectionEvent.MonsterHitEventArgs e)
     {
-//
+        gotHit = true;
     }
 
     private void OnPlayerNotDetectedAnymoreHandler(object sender, MonsterDetectionEvent.PlayerNotDetectedAnymoreEventArgs e)
@@ -236,8 +238,17 @@ public class spiderMovement : MonoBehaviour
         }
         else
         {
-            //if()
             _body.Translate(_dir * speed * Time.deltaTime);
+        }
+        if (gotHit && hitTimer < _stunDuration)
+        {
+            hitTimer += Time.deltaTime;
+            _body.Translate(-_dir * speed * Time.deltaTime);
+        }
+        else
+        {
+            gotHit = false;
+            hitTimer = 0;
         }
     }
 }
