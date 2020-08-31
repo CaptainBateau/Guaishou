@@ -67,6 +67,10 @@ public class WeaponController : MonoBehaviour
     public PlayerEvent _playerEvent;
 
     public ParticleSystem _shootFX;
+    Transform _shootFXTransform;
+
+    public Vector3 _recoilOffset;
+    Vector3 _recoilOffsetLerped;
 
     void Start()
     {
@@ -82,6 +86,8 @@ public class WeaponController : MonoBehaviour
             _pointLightStruct[i]._light.intensity = _pointLightStruct[i]._intensity;
         }
 
+        if(_shootFX!=null)
+            _shootFXTransform = _shootFX.gameObject.GetComponent<Transform>();
     }
 
     void Update()
@@ -90,13 +96,18 @@ public class WeaponController : MonoBehaviour
         temp.z = -_camera.transform.position.z;
         _orientation = _camera.ScreenToWorldPoint(temp);
         _orientation = _orientation - _parent.position;
-        _direction = (_camera.ScreenToWorldPoint(temp) - transform.position).normalized;
+        Debug.Log("Orientation before " + _orientation);
+        if(Time.time <= _timeWhenShoot+0.02f)
+            RecoilMovement();
+        _direction = (_camera.ScreenToWorldPoint(temp) - transform.position + _recoilOffsetLerped).normalized;
         float tempAngle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
 
         if (_orientation.x < 0)
         {
             GameState._isCharacterFlipped = true;
             _parent.transform.localScale = new Vector3(-1, 1, 1);
+            if(_shootFX!=null)
+                _shootFXTransform.localEulerAngles = new Vector3(0, 180, 0);
             if (_orientation.y < transform.localPosition.y)
                 transform.eulerAngles = new Vector3(0, 0, (Mathf.Clamp(tempAngle, -180,-180 + _aimAngleRange/2))-180);
             else
@@ -107,6 +118,8 @@ public class WeaponController : MonoBehaviour
 
             GameState._isCharacterFlipped = false;
 
+            if(_shootFX!=null)
+                _shootFXTransform.localEulerAngles = new Vector3(0, 0, 0);
             _parent.transform.localScale = new Vector3(1, 1, 1);
             transform.eulerAngles = new Vector3(0, 0, Mathf.Clamp(tempAngle, - _aimAngleRange / 2, _aimAngleRange / 2));
         }
@@ -181,6 +194,7 @@ public class WeaponController : MonoBehaviour
         if (Time.time < _timeWhenShoot)
         {
             SetIntensityPlayer();
+            //RecoilMovement();
         }
         SetMagazineLight();
     }
@@ -202,6 +216,13 @@ public class WeaponController : MonoBehaviour
         {
             _playerSpriteLights[i].intensity = Mathf.Lerp( _initialIntensity, _targetIntensity, (_timeWhenShoot - Time.time) * _timeToRecover);
         }
+    }
+
+    void RecoilMovement() 
+    {
+        _recoilOffsetLerped = new Vector3(_recoilOffset.x, Mathf.Lerp(0, _recoilOffset.y, (_timeWhenShoot - Time.time) * _timeToRecover), _recoilOffset.z);
+        Debug.Log("Orientation After " + _orientation);
+        //transform.position = new Vector3(_originalPosition.x,Mathf.Lerp(_originalPosition.y, (_originalPosition.y + _recoilOffset.y), (_timeWhenShoot - Time.time) * _timeToRecover), _originalPosition.z);
     }
 
     IEnumerator ShootWithSpread(float spreadAngle, int numberOfPellets, Quaternion transformRotation, Vector3 spawnerPosition,float powerMulti = 1f, float duration = 1f)
