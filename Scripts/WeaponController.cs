@@ -206,7 +206,8 @@ public class WeaponController : MonoBehaviour
 
     IEnumerator ShootWithSpread(float spreadAngle, int numberOfPellets, Quaternion transformRotation, Vector3 spawnerPosition,float powerMulti = 1f, float duration = 1f)
     {
-        _shootFX.Play();
+        if(_shootFX!=null)
+            _shootFX.Play();
         for (int i = 0; i < numberOfPellets; i++)
         {
             GameObject pellet = Instantiate(_projectile, spawnerPosition, transformRotation);
@@ -219,7 +220,8 @@ public class WeaponController : MonoBehaviour
             yield return new WaitForSeconds(.01f);
 
         }
-        _shootFX.Stop();
+        if(_shootFX!=null)
+            _shootFX.Stop();
     }
 
     IEnumerator Reloading()
