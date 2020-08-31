@@ -66,6 +66,8 @@ public class WeaponController : MonoBehaviour
 
     public PlayerEvent _playerEvent;
 
+    public ParticleSystem _shootFX;
+
     void Start()
     {
         _camera = Camera.main;
@@ -79,6 +81,7 @@ public class WeaponController : MonoBehaviour
         {
             _pointLightStruct[i]._light.intensity = _pointLightStruct[i]._intensity;
         }
+
     }
 
     void Update()
@@ -203,7 +206,8 @@ public class WeaponController : MonoBehaviour
 
     IEnumerator ShootWithSpread(float spreadAngle, int numberOfPellets, Quaternion transformRotation, Vector3 spawnerPosition,float powerMulti = 1f, float duration = 1f)
     {
-        for(int i = 0; i < numberOfPellets; i++)
+        _shootFX.Play();
+        for (int i = 0; i < numberOfPellets; i++)
         {
             GameObject pellet = Instantiate(_projectile, spawnerPosition, transformRotation);
             if(GameState._isCharacterFlipped)
@@ -215,6 +219,7 @@ public class WeaponController : MonoBehaviour
             yield return new WaitForSeconds(.01f);
 
         }
+        _shootFX.Stop();
     }
 
     IEnumerator Reloading()
