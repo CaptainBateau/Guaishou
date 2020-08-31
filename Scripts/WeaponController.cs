@@ -96,7 +96,7 @@ public class WeaponController : MonoBehaviour
         temp.z = -_camera.transform.position.z;
         _orientation = _camera.ScreenToWorldPoint(temp);
         _orientation = _orientation - _parent.position;
-        Debug.Log("Orientation before " + _orientation);
+
         if(Time.time <= _timeWhenShoot+0.02f)
             RecoilMovement();
         _direction = (_camera.ScreenToWorldPoint(temp) - transform.position + _recoilOffsetLerped).normalized;
@@ -136,7 +136,6 @@ public class WeaponController : MonoBehaviour
                 {
                     _toAdd = (_pointLightStruct[i]._maxLightAngle - _pointLightStruct[i]._minLightAngle) * Time.deltaTime;
                     _pointLightStruct[i]._light.pointLightInnerAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightInnerAngle -= _toAdd, _pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle);
-                   // _pointLightStruct[i]._light.pointLightOuterAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightOuterAngle -= _toAdd, _pointLightStruct[i]._minLightAngle + 10, _pointLightStruct[i]._maxLightAngle);
                     float tempRadius = Mathf.InverseLerp(_pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle, _pointLightStruct[i]._light.pointLightInnerAngle);
                     _pointLightStruct[i]._light.pointLightInnerRadius = Mathf.Lerp(_pointLightStruct[i]._maxDistance, _pointLightStruct[i]._minDistance, tempRadius);
                 }
@@ -155,7 +154,6 @@ public class WeaponController : MonoBehaviour
 
                     _toAdd = (_pointLightStruct[i]._maxLightAngle - _pointLightStruct[i]._minLightAngle) * Time.deltaTime;
                     _pointLightStruct[i]._light.pointLightInnerAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightInnerAngle += _toAdd/3, _pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle);
-                    //_pointLightStruct[i]._light.pointLightOuterAngle = Mathf.Clamp(_pointLightStruct[i]._light.pointLightOuterAngle += _toAdd/3, _pointLightStruct[i]._minLightAngle + 10, _pointLightStruct[i]._maxLightAngle);
                     float tempRadius = Mathf.InverseLerp(_pointLightStruct[i]._minLightAngle, _pointLightStruct[i]._maxLightAngle, _pointLightStruct[i]._light.pointLightInnerAngle);
                     _pointLightStruct[i]._light.pointLightInnerRadius = Mathf.Lerp(_pointLightStruct[i]._maxDistance, _pointLightStruct[i]._minDistance, tempRadius);
                 }
@@ -186,7 +184,6 @@ public class WeaponController : MonoBehaviour
                 for (int i = 0; i < _pointLightStruct.Length; i++)
                 {
                     _pointLightStruct[i]._light.pointLightInnerAngle = _pointLightStruct[i]._maxLightAngle;
-                    //_pointLightStruct[i]._light.pointLightOuterAngle = _pointLightStruct[i]._maxLightAngle;
                     _pointLightStruct[i]._light.pointLightInnerRadius = _pointLightStruct[i]._minDistance;
                 }
             }
@@ -194,7 +191,6 @@ public class WeaponController : MonoBehaviour
         if (Time.time < _timeWhenShoot)
         {
             SetIntensityPlayer();
-            //RecoilMovement();
         }
         SetMagazineLight();
     }
@@ -221,8 +217,6 @@ public class WeaponController : MonoBehaviour
     void RecoilMovement() 
     {
         _recoilOffsetLerped = new Vector3(_recoilOffset.x, Mathf.Lerp(0, _recoilOffset.y, (_timeWhenShoot - Time.time) * _timeToRecover), _recoilOffset.z);
-        Debug.Log("Orientation After " + _orientation);
-        //transform.position = new Vector3(_originalPosition.x,Mathf.Lerp(_originalPosition.y, (_originalPosition.y + _recoilOffset.y), (_timeWhenShoot - Time.time) * _timeToRecover), _originalPosition.z);
     }
 
     IEnumerator ShootWithSpread(float spreadAngle, int numberOfPellets, Quaternion transformRotation, Vector3 spawnerPosition,float powerMulti = 1f, float duration = 1f)
