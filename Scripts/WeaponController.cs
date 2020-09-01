@@ -217,6 +217,12 @@ public class WeaponController : MonoBehaviour
     void RecoilMovement() 
     {
         _recoilOffsetLerped = new Vector3(_recoilOffset.x, Mathf.Lerp(0, _recoilOffset.y, (_timeWhenShoot - Time.time) * _timeToRecover), _recoilOffset.z);
+        //if (_orientation.x < 0 && _orientation.y < transform.localPosition.y)
+        //{
+        //    //Debug.Log("ouo" + _recoilOffsetLerped);
+        //    //_recoilOffsetLerped = -_recoilOffsetLerped;
+        //    //Debug.Log("oazdo" + _recoilOffsetLerped);
+        //}
     }
 
     IEnumerator ShootWithSpread(float spreadAngle, int numberOfPellets, Quaternion transformRotation, Vector3 spawnerPosition,float powerMulti = 1f, float duration = 1f)
