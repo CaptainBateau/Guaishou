@@ -10,6 +10,7 @@ public class MonsterFX : MonoBehaviour
     [SerializeField] float dissolveDuration = 1;
     [SerializeField] ParticleSystem hitParticles;
     [SerializeField] float scaleFor20healthLost = 3;
+    [SerializeField] Transform parent;
     private void Start()
     {
         detectionEvent = GetComponent<MonsterDetectionEvent>();
@@ -22,9 +23,14 @@ public class MonsterFX : MonoBehaviour
         // spawn FX at location, fx depend on life lost
         if(hitParticles != null)
         {
-            ParticleSystem fx = Instantiate(hitParticles, e.collisionPosition, Quaternion.identity, transform);
-            float newScale = Mathf.Lerp(1, scaleFor20healthLost, (float)e.hitbox.healthLost / (float)20);
-            fx.transform.localScale = new Vector3(newScale, newScale, newScale);
+            ParticleSystem fx = null;
+            if(parent != null)
+                fx = Instantiate(hitParticles, e.collisionPosition, Quaternion.identity, parent);
+            else
+                fx = Instantiate(hitParticles, e.collisionPosition, Quaternion.identity, transform);
+
+            //float newScale = Mathf.Lerp(1, scaleFor20healthLost, (float)e.hitbox.healthLost / (float)20);
+            //fx.transform.localScale = new Vector3(newScale, newScale, newScale);
             Destroy(fx, hitParticles.main.duration);
         }
         

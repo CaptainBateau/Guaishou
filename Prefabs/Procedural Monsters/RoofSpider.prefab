@@ -5352,6 +5352,7 @@ MonoBehaviour:
   - {fileID: 6710652946313257753}
   stepShift: 0.5
   speed: 0.1
+  _stunDuration: 0.1
   breathCurve:
     serializedVersion: 2
     m_Curve:
@@ -5447,9 +5448,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dissolveDuration: 1
-  hitParticles: {fileID: 3184868286238355934, guid: 9242568d1f6fec94993ebb07b11052d4,
+  hitParticles: {fileID: 2542968571268554646, guid: 946f997cef6e03a438337a3e88da6ffc,
     type: 3}
-  scaleFor20healthLost: 3
+  scaleFor20healthLost: 1
 --- !u!1 &4815499288919577352
 GameObject:
   m_ObjectHideFlags: 0
@@ -5612,6 +5613,17 @@ MonoBehaviour:
     minDelayBetweenSounds: 1
     spatialisation: 1
     spatialisationRange: 15
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  takeMoreThan5damage:
+    clips: []
+    volume: 1
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   death:
@@ -10515,7 +10527,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -879945183
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 43ab4a6f31161844087bd3a3a98a0567, type: 3}
   m_Color: {r: 1, g: 0.6547535, b: 0.07075471, a: 0.7882353}

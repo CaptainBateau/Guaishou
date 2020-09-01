@@ -47,9 +47,9 @@ public class SpiderAudio : AudioManager
 
     private void OnMonsterHitHandler(object sender, MonsterDetectionEvent.MonsterHitEventArgs e)
     {
-        if(e.hitbox.healthLost >= 5)
-            Play(takeMoreThan5damage);
-        else
+        //if(e.hitbox.healthLost >= 5)
+        //    Play(takeMoreThan5damage);
+        //else
             Play(takeDamage);
     }
 }
