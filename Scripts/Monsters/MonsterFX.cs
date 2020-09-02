@@ -9,7 +9,7 @@ public class MonsterFX : MonoBehaviour
     MonsterDetectionEvent detectionEvent;
     [SerializeField] float dissolveDuration = 1;
     [SerializeField] ParticleSystem hitParticles;
-    [SerializeField] float scaleFor20healthLost = 3;
+    [SerializeField] float scale = 1;
     [SerializeField] Transform parent;
     private void Start()
     {
@@ -30,8 +30,8 @@ public class MonsterFX : MonoBehaviour
                 fx = Instantiate(hitParticles, e.collisionPosition, Quaternion.identity, transform);
 
             //float newScale = Mathf.Lerp(1, scaleFor20healthLost, (float)e.hitbox.healthLost / (float)20);
-            //fx.transform.localScale = new Vector3(newScale, newScale, newScale);
-            Destroy(fx, hitParticles.main.duration);
+            fx.transform.localScale = new Vector3(scale, scale, scale);
+            Destroy(fx, hitParticles.main.duration + 5f);
         }
         
     }
@@ -42,6 +42,11 @@ public class MonsterFX : MonoBehaviour
         foreach (SpriteRenderer rend in spriteRends)
         {
             StartCoroutine(DissolveAnim(rend));
+        }
+        ParticleSystem[] particles = GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem particle in particles)
+        {
+            Destroy(particle, 0.5f);
         }
     }
 
