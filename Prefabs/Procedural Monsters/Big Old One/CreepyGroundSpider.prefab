@@ -49,7 +49,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -419,7 +419,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -471,6 +471,7 @@ MonoBehaviour:
     m_Center: {x: -0.90351915, y: -0.060155034, z: 0}
     m_Extent: {x: 1.4406314, y: 1.8069929, z: 0}
   m_UseBatching: 1
+  m_AlwaysUpdate: 1
 --- !u!114 &4584064490852998537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +506,7 @@ MonoBehaviour:
   _target: {fileID: 2400984074724775158}
   anticipationPosition: {fileID: 1187186960}
   basePosition: {fileID: 1102978086}
+  _prepareDuration: 1
   _preparingAttackCurve:
     serializedVersion: 2
     m_Curve:
@@ -529,6 +531,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _attackingDuration: 1
+  _playerYOffset: 1
+  _playerRandomHitRange: 0.5
   _attackingCurve:
     serializedVersion: 2
     m_Curve:
@@ -553,6 +558,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _recoveringDuration: 1
   _recoveringCurve:
     serializedVersion: 2
     m_Curve:
@@ -730,7 +736,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -905,7 +911,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1107,7 +1113,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1355,7 +1361,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1407,6 +1413,7 @@ MonoBehaviour:
     m_Center: {x: -1.3258586, y: 1.4325942, z: 0}
     m_Extent: {x: 1.6584535, y: 1.566485, z: 0}
   m_UseBatching: 1
+  m_AlwaysUpdate: 1
 --- !u!114 &6393486639411665162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1441,6 +1448,7 @@ MonoBehaviour:
   _target: {fileID: 5077217244531380341}
   anticipationPosition: {fileID: 1756434816}
   basePosition: {fileID: 1752319525}
+  _prepareDuration: 1
   _preparingAttackCurve:
     serializedVersion: 2
     m_Curve:
@@ -1465,6 +1473,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _attackingDuration: 1
+  _playerYOffset: 1
+  _playerRandomHitRange: 0.5
   _attackingCurve:
     serializedVersion: 2
     m_Curve:
@@ -1489,6 +1500,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _recoveringDuration: 1
   _recoveringCurve:
     serializedVersion: 2
     m_Curve:
@@ -1766,7 +1778,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1911,6 +1923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9bf49297bde5de449d2a5b18a935264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _body: {fileID: 0}
   leftLegs:
   - {fileID: 7890935021405521882}
   - {fileID: 2511153247326802176}
@@ -1921,6 +1934,7 @@ MonoBehaviour:
   - {fileID: 6266611375382878751}
   stepShift: 2
   speed: 1
+  _stunDuration: 0.1
   breathCurve:
     serializedVersion: 2
     m_Curve:
@@ -1987,6 +2001,22 @@ MonoBehaviour:
   changeSpeedOnPlayerDetected: 1
   bodySpeedOnPlayerDetected: 300
   stepDistanceOnPlayerDetected: 67
+  stepDurationOnPlayerDetected: 100
+  _randomSpeed: 0
+  _randomSpeedRange: 0
+  _speedCurveDuration: 0
+  _speedCurvePoints:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _randomSpeedCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &548679875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1999,9 +2029,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f397cb414dd906d4fbf051c0b65ba804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showDebug: 0
+  _centerTransform: {fileID: 0}
+  _playerDetectionOffset: {x: 0, y: 0}
   wallDetectionDistance: 5
   playerNextToDistance: 10
   playerDetectionDistance: 20
+  _hitBoxes: []
+  _centerBetween2element: 0
+  _firstElement: {fileID: 0}
+  _secondElement: {fileID: 0}
+  _offset: {x: 0, y: 0}
+  circlePlayerDetection: 0
+  _center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3328031025512252513
 PrefabInstance:
   m_ObjectHideFlags: 0
