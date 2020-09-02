@@ -1237,6 +1237,8 @@ MonoBehaviour:
   _targetIntensity: 4
   _timeToRecover: 0.6
   _playerEvent: {fileID: 952676794}
+  _shootFX: {fileID: 0}
+  _recoilOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &3837225630922384184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,7 +1444,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: cda2814a82eedb9429f6e56caf313377, type: 3}
     - {fileID: 8300000, guid: 58dc48bdd9e19414f86ffb96d9126e2f, type: 3}
     - {fileID: 8300000, guid: 9a620cc85ef4e934288062f1d4145443, type: 3}
-    volume: 0.8
+    volume: 0.6
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
@@ -1479,6 +1481,17 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 7081d7c0baf00324d841a24ca90c5f71, type: 3}
     - {fileID: 8300000, guid: 6d6d241b2d462d348915c0f4b0ebf6d1, type: 3}
     volume: 0.15
+    randomPitch: 0
+    pitchRange: {x: 0.9, y: 1.1}
+    loop: 0
+    minDelayBetweenSounds: 0
+    spatialisation: 0
+    spatialisationRange: 0
+    soundOrigin: {fileID: 0}
+    source: {fileID: 0}
+  playerStepMetal:
+    clips: []
+    volume: 1
     randomPitch: 0
     pitchRange: {x: 0.9, y: 1.1}
     loop: 0
@@ -1978,22 +1991,22 @@ PrefabInstance:
     - target: {fileID: 1770470751233595176, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: -0.0066428185
+      value: -0.0066408813
       objectReference: {fileID: 0}
     - target: {fileID: 1770470751233595176, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.02108477
+      value: 0.021082044
       objectReference: {fileID: 0}
     - target: {fileID: 1770470751233595176, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 0.19305408
+      value: 0.19305229
       objectReference: {fileID: 0}
     - target: {fileID: 1770470751233595176, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 0.22761926
+      value: 0.22762185
       objectReference: {fileID: 0}
     - target: {fileID: 1793625068897663443, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
@@ -2063,12 +2076,12 @@ PrefabInstance:
     - target: {fileID: 2953426458332857245, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.99884087
+      value: -0.9988404
       objectReference: {fileID: 0}
     - target: {fileID: 2953426458332857245, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.048135627
+      value: 0.048143804
       objectReference: {fileID: 0}
     - target: {fileID: 2953426458332857245, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
@@ -2263,7 +2276,7 @@ PrefabInstance:
     - target: {fileID: 5849695917902734575, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.4288171
+      value: 0.4287921
       objectReference: {fileID: 0}
     - target: {fileID: 5849695917902734575, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
@@ -2278,7 +2291,7 @@ PrefabInstance:
     - target: {fileID: 5849695917902734575, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9033913
+      value: 0.9034033
       objectReference: {fileID: 0}
     - target: {fileID: 5849695917902734575, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
@@ -2433,12 +2446,12 @@ PrefabInstance:
     - target: {fileID: 6870815363434554819, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.06685682
+      value: -0.06684156
       objectReference: {fileID: 0}
     - target: {fileID: 6870815363434554819, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99776256
+      value: 0.9977636
       objectReference: {fileID: 0}
     - target: {fileID: 6870815363434554819, guid: 0f3c75139f6e1134c814cf3dbe9b2101,
         type: 3}
