@@ -5,11 +5,15 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Collider2D))]
 public class PlayerEvent : MonoBehaviour
 {
-    
+    private CheckPointSystem _checkpoint;
     bool hit;
+
     private void Start()
     {
+        _checkpoint = FindObjectOfType<CheckPointSystem>();
         OnGameOver += OnGameOverHandler;
+        if(_checkpoint.checkPointDefined)
+            transform.position = _checkpoint.lastCheckPointPos;
     }
     private void OnGameOverHandler(object sender, GameOverEventArgs e)
     {
