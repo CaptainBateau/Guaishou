@@ -48,13 +48,13 @@ public class DoorInteraction: MonoBehaviour
                 {
                     _opening = true;
                     StartCoroutine(RemoveCollider());
-                    _playerEvent.OpenDoor(new PlayerEvent.OpenDoorEventArgs { });
+                    _playerEvent.OpenDoor(new PlayerEvent.OpenDoorEventArgs {destroyDoor = false });
                 }
                 else
                 {
                     _closing = true;
                     StartCoroutine(ReactiveCollider());
-                    _playerEvent.OpenDoor(new PlayerEvent.OpenDoorEventArgs { });
+                    _playerEvent.OpenDoor(new PlayerEvent.OpenDoorEventArgs {destroyDoor = true });
                 }
             }
         }
