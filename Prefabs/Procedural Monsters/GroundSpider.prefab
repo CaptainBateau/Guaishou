@@ -888,10 +888,9 @@ MonoBehaviour:
   - {fileID: 66128240326698338}
   - {fileID: 66128240585151397}
   m_Bounds:
-    m_Center: {x: -0.026881482, y: 0.08604103, z: 0}
-    m_Extent: {x: 0.04311758, y: 0.67004895, z: 0}
+    m_Center: {x: -0.026882142, y: 0.08604103, z: 0}
+    m_Extent: {x: 0.04311788, y: 0.67004895, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &66128239831018508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,7 +1714,6 @@ MonoBehaviour:
     m_Center: {x: 1.2145793, y: 0.39396638, z: 0}
     m_Extent: {x: 0.39824647, y: 0.38128722, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &385030523743189942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2477,7 +2475,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -879945183
-  m_SortingLayer: 8
+  m_SortingLayer: 0
   m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 66525fe84583b884abcce73ccd5554cc, type: 3}
   m_Color: {r: 0.93333334, g: 0.6181106, b: 0.039215684, a: 1}
@@ -2693,7 +2691,6 @@ MonoBehaviour:
     m_Center: {x: 1.4436073, y: 0.29859746, z: 0}
     m_Extent: {x: 0.6352916, y: 0.5075244, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &2306615878022402727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3035,7 +3032,6 @@ MonoBehaviour:
     m_Center: {x: 1.2831516, y: 0.27560514, z: 0}
     m_Extent: {x: 0.79377, y: 0.5644431, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &2306615879051046852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3292,10 +3288,9 @@ MonoBehaviour:
   - {fileID: 2639661932896037809}
   - {fileID: 2639661932648062326}
   m_Bounds:
-    m_Center: {x: 0.2871927, y: 0.17979991, z: 0}
-    m_Extent: {x: 0.3229108, y: 0.60976654, z: 0}
+    m_Center: {x: 0.2871927, y: 0.17979968, z: 0}
+    m_Extent: {x: 0.3229108, y: 0.6097666, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &2639661931768493326
 GameObject:
   m_ObjectHideFlags: 0
@@ -4169,7 +4164,6 @@ MonoBehaviour:
     m_Center: {x: 0.97717136, y: -0.94122016, z: 0}
     m_Extent: {x: 0.75445247, y: 0.70842254, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &4584064490852998537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5366,10 +5360,9 @@ MonoBehaviour:
   - {fileID: 4395077726650089196}
   - {fileID: 4395077726945265707}
   m_Bounds:
-    m_Center: {x: -0.088532016, y: 0.1168319, z: 0}
-    m_Extent: {x: 0.11713685, y: 0.6607363, z: 0}
+    m_Center: {x: -0.08853178, y: 0.1168319, z: 0}
+    m_Extent: {x: 0.117137104, y: 0.6607363, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &4395077728370505602
 GameObject:
   m_ObjectHideFlags: 0
@@ -6438,7 +6431,6 @@ MonoBehaviour:
     m_Center: {x: -0.026882436, y: 0.086040914, z: 0}
     m_Extent: {x: 0.04311758, y: 0.6700491, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &4643364563636424128
 GameObject:
   m_ObjectHideFlags: 0
@@ -6742,7 +6734,6 @@ MonoBehaviour:
     m_Center: {x: -0.026882436, y: 0.08604127, z: 0}
     m_Extent: {x: 0.04311758, y: 0.67004895, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &4643364564336909893
 GameObject:
   m_ObjectHideFlags: 0
@@ -7617,7 +7608,7 @@ MonoBehaviour:
   dissolveDuration: 1
   hitParticles: {fileID: 2542968571268554646, guid: 946f997cef6e03a438337a3e88da6ffc,
     type: 3}
-  scaleFor20healthLost: 5
+  scale: 1
   parent: {fileID: 7022476998033133759}
 --- !u!1 &4909346134453778162
 GameObject:
@@ -7841,7 +7832,6 @@ MonoBehaviour:
     m_Center: {x: -0.09541184, y: 0.026103795, z: 0}
     m_Extent: {x: 0.85979325, y: 0.5677871, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &6393486639411665162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8424,7 +8414,6 @@ MonoBehaviour:
     m_Center: {x: 0.28493333, y: 0.19585538, z: 0}
     m_Extent: {x: 0.3998599, y: 0.5650379, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &6090799117526821769
 GameObject:
   m_ObjectHideFlags: 0
@@ -8972,7 +8961,6 @@ MonoBehaviour:
     m_Center: {x: 6.04339, y: -1.8893149, z: 0}
     m_Extent: {x: 0.6477051, y: 0.62892914, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &4835058753886857525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9219,7 +9207,6 @@ MonoBehaviour:
     m_Center: {x: -0.026882436, y: 0.08604127, z: 0}
     m_Extent: {x: 0.04311758, y: 0.67004895, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &6283047521629236865
 GameObject:
   m_ObjectHideFlags: 0
@@ -10762,10 +10749,9 @@ MonoBehaviour:
   - {fileID: 6752711461810455399}
   - {fileID: 6752711462014399904}
   m_Bounds:
-    m_Center: {x: -0.026882436, y: 0.08604103, z: 0}
-    m_Extent: {x: 0.04311758, y: 0.67004895, z: 0}
+    m_Center: {x: -0.026881486, y: 0.08604103, z: 0}
+    m_Extent: {x: 0.043117583, y: 0.67004895, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &6752711463178686045
 GameObject:
   m_ObjectHideFlags: 0
@@ -11142,7 +11128,7 @@ MonoBehaviour:
     loop: 0
     minDelayBetweenSounds: 60
     spatialisation: 1
-    spatialisationRange: 100
+    spatialisationRange: 10
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
   takeDamage:
@@ -11345,7 +11331,6 @@ MonoBehaviour:
     m_Center: {x: 0.82267815, y: 0.3901269, z: 0}
     m_Extent: {x: 0.56128067, y: 0.39237815, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &8023705762766764318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11687,7 +11672,6 @@ MonoBehaviour:
     m_Center: {x: -0.46578085, y: -0.22663724, z: 0}
     m_Extent: {x: 0.6161114, y: 0.6434487, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &7398665519944771359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12052,7 +12036,6 @@ MonoBehaviour:
     m_Center: {x: 0.4934706, y: 0.3577251, z: 0}
     m_Extent: {x: 0.5541499, y: 0.4091804, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &8612662140262216990
 GameObject:
   m_ObjectHideFlags: 0
@@ -13046,7 +13029,6 @@ MonoBehaviour:
     m_Center: {x: -0.026882436, y: 0.08604103, z: 0}
     m_Extent: {x: 0.04311758, y: 0.67004895, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &8812233556074193521
 GameObject:
   m_ObjectHideFlags: 0
