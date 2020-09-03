@@ -99,7 +99,10 @@ public class WeaponController : MonoBehaviour
 
         if(Time.time <= _timeWhenShoot+0.02f)
             RecoilMovement();
-        _direction = (_camera.ScreenToWorldPoint(temp) - transform.position + _recoilOffsetLerped).normalized;
+        if (_orientation.x<0 && _orientation.y < transform.localPosition.y)
+            _direction = (_camera.ScreenToWorldPoint(temp) - transform.position).normalized;
+        else
+            _direction = (_camera.ScreenToWorldPoint(temp) - transform.position + _recoilOffsetLerped).normalized;
         float tempAngle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
 
         if (_orientation.x < 0)
