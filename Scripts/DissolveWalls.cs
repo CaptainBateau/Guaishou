@@ -37,7 +37,7 @@ public class DissolveWalls : MonoBehaviour
     IEnumerator DissolveLeftToRight(SpriteRenderer rend)
     {
         float timer = 0;
-        while(timer < _duration)
+        while(timer <= _duration + 0.03f)
         {
             timer += Time.deltaTime;
             rend.material.SetFloat("_Fade", Mathf.Lerp(1,-1,timer/_duration));
@@ -49,7 +49,7 @@ public class DissolveWalls : MonoBehaviour
     IEnumerator RessolveLeftToRight(SpriteRenderer rend)
     {
         float timer = 0;
-        while (timer < _duration)
+        while (timer <= _duration + 0.03f)
         {
             timer += Time.deltaTime;
             rend.material.SetFloat("_Fade", Mathf.Lerp(-1, 1, timer / _duration));
@@ -59,7 +59,7 @@ public class DissolveWalls : MonoBehaviour
     IEnumerator DissolveRightToLeft(SpriteRenderer rend)
     {
         float timer = 0;
-        while (timer < _duration)
+        while (timer <= _duration + 0.03f)
         {
             timer += Time.deltaTime;
             rend.material.SetFloat("_Fade", Mathf.Lerp(-1, 1, timer / _duration));
@@ -70,7 +70,7 @@ public class DissolveWalls : MonoBehaviour
     IEnumerator RessolveRightToLeft(SpriteRenderer rend)
     {
         float timer = 0;
-        while (timer < _duration)
+        while (timer <= _duration + 0.03f)
         {
             timer += Time.deltaTime;
             rend.material.SetFloat("_Fade", Mathf.Lerp(1, -1, timer / _duration));
