@@ -48,6 +48,15 @@ public class StopTime : MonoBehaviour
         _isPaused = true;
     }
 
+    public void EndGame()
+    {
+        CharacterMovement characMove = FindObjectOfType<CharacterMovement>();
+        characMove._animator.SetBool("walking", false);
+        characMove.enabled = false;
+        _weaponController.enabled = false;
+        _isPaused = true;
+    }
+
     public void RestoreTime()
     {
         Debug.Log("GOGOGOGO");
