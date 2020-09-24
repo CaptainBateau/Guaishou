@@ -43,7 +43,7 @@ public class WeaponController : MonoBehaviour
     public int _pelletNumber = 3;
 
     float _spreadAngle;
-    bool _canShoot = false;
+    bool _canShoot;
 
     public float _reloadTime;
     public int _magazineCapacity = 4;

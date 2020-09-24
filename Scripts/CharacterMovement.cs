@@ -40,6 +40,20 @@ public class CharacterMovement : MonoBehaviour
         }
         else
             _animator.SetBool("walking", false);
+
+        GetSide();
+    }
+
+    void GetSide()
+    {
+        if(transform.localScale.x != _horizontalInput)
+        {
+            _animator.SetBool("walkReverse", true);
+        }
+        else
+        {
+            _animator.SetBool("walkReverse", false);
+        }
     }
 
 }
