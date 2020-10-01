@@ -42,7 +42,6 @@ public class StopTime : MonoBehaviour
 
     public void StopTimeFct()
     {
-        Debug.Log("Stop");
         Time.timeScale = 0;
         _weaponController.enabled = false;
         _isPaused = true;
@@ -59,7 +58,6 @@ public class StopTime : MonoBehaviour
 
     public void RestoreTime()
     {
-        Debug.Log("GOGOGOGO");
         Time.timeScale = 1;
         _weaponController.enabled = true;
         _isPaused = false;
