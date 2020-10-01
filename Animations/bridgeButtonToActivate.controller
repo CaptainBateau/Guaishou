@@ -54,7 +54,7 @@ AnimatorController:
   m_Name: bridgeButtonToActivate
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: triggered
+  - m_Name: Triggered
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -114,7 +114,7 @@ AnimatorStateMachine:
     m_Position: {x: 310, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -950151557447969811}
-    m_Position: {x: 345, y: 185, z: 0}
+    m_Position: {x: 330, y: 230, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -134,7 +134,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: triggered
+    m_ConditionEvent: Triggered
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -950151557447969811}
