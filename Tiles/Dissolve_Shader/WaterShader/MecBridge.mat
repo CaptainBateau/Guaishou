@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MecBridge
+  m_Shader: {fileID: -6465566751694194690, guid: 6eb720eeed3f3134095a0d2c7883a7f5,
+    type: 3}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_FFAC084D:
+        m_Texture: {fileID: 8400000, guid: 4df7f283c4d917f4f94c801f030e113e, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_781E80B1_Out_0:
+        m_Texture: {fileID: 2800000, guid: 5431e47b5fcf87d4dac852bcd1383c05, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_312DCE37: 0.268
+    - Vector1_6AC7F26D: 0.15
+    - Vector1_6B85598E: 0
+    m_Colors:
+    - Color_D13BB2E4: {r: 1, g: 1, b: 1, a: 1}
