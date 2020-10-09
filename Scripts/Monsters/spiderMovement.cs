@@ -14,7 +14,7 @@ public class spiderMovement : MonoBehaviour
     [Header("Parameters")]
     public float stepShift = 2f;
     public float speed = 1;
-    public float _stunDuration = 0.1f;
+    public float _stunDuration = 0.05f;
 
     public AnimationCurve breathCurve = null;
     public float distanceToGround = 2f;
