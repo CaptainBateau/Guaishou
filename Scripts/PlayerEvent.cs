@@ -1,19 +1,30 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider2D))]
 public class PlayerEvent : MonoBehaviour
 {
     private CheckPointSystem _checkpoint;
+    [SerializeField] float wallDetectionDistance = 0.65f;
+    WeaponController _weaponController;
+    Light2D _light2D;
     bool hit;
-
+    int initialPelletNbr;
     private void Start()
     {
+        _weaponController = GetComponentInChildren<WeaponController>();
+        _light2D = GetComponentInChildren<Light2D>();
+        initialPelletNbr = _weaponController._pelletNumber;
         _checkpoint = FindObjectOfType<CheckPointSystem>();
         OnGameOver += OnGameOverHandler;
         if(_checkpoint.checkPointDefined)
             transform.position = _checkpoint.lastCheckPointPos;
+    }
+    private void Update()
+    {
+        CheckWall();
     }
     private void OnGameOverHandler(object sender, GameOverEventArgs e)
     {
@@ -39,6 +50,34 @@ public class PlayerEvent : MonoBehaviour
             PlayerGotHit(new PlayerGotHitEventArgs { collisionPosition = collision.bounds.ClosestPoint(transform.position) });
         }
     }
+
+    private void CheckWall()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + 1.2f),
+        new Vector2(transform.right.x, transform.right.y) * transform.localScale, wallDetectionDistance, LayerMask.GetMask("Ground"));
+        if (hit)
+        {
+            _weaponController._pelletNumber = 0;
+            _light2D.enabled = false;
+            PlayerInFrontOfWall(new PlayerInFrontOfWallEventArgs { });
+        }
+        else
+        {
+            _weaponController._pelletNumber = initialPelletNbr;
+            _light2D.enabled = true;
+
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(new Vector2(transform.position.x, transform.position.y + 1.2f), new Vector2(transform.right.x, transform.right.y) * transform.localScale * wallDetectionDistance);
+    }
+
+    public class PlayerInFrontOfWallEventArgs : EventArgs { }
+    public event EventHandler<PlayerInFrontOfWallEventArgs> OnPlayerInFrontOfWall;
+    public void PlayerInFrontOfWall(PlayerInFrontOfWallEventArgs e) => OnPlayerInFrontOfWall?.Invoke(this, e);
 
     public class PlayerStepEventArgs : EventArgs { }
     public event EventHandler<PlayerStepEventArgs> OnPlayerStep;
