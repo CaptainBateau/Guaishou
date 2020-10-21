@@ -24,6 +24,11 @@ public class WeaponController : MonoBehaviour
     }
 
 
+    public float _cooldownBetweenShots;
+
+
+
+
     private float _toAdd;
 
     [Range(0, 360f)]
@@ -44,6 +49,7 @@ public class WeaponController : MonoBehaviour
 
     float _spreadAngle;
     bool _canShoot;
+    bool _loaded = true;
 
     public float _reloadTime;
     public int _magazineCapacity = 4;
@@ -129,9 +135,9 @@ public class WeaponController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            if(_magazineCapacity>0)
+            if (_magazineCapacity > 0)
                 _canShoot = true;
-            
+
 
             if (_pointLightStruct.Length > 0)
             {
@@ -167,12 +173,12 @@ public class WeaponController : MonoBehaviour
                 _canShoot = false;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && _canShoot)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && _canShoot && _loaded)
         {
             float tempValue = Mathf.InverseLerp(_maxSpreadAngle, _minSpreadAngle, _spreadAngle);
             _playerEvent.PlayerShoot(new PlayerEvent.PlayerShootEventArgs { });
             StartCoroutine(ShootWithSpread(_spreadAngle, _pelletNumber, transform.rotation, _spawner.position, Mathf.Lerp(.3f,1f,tempValue)));
-
+            StartCoroutine(WaitBetweenShots());
             _timeWhenShoot = Time.time + _timeToRecover;
 
 
@@ -257,5 +263,12 @@ public class WeaponController : MonoBehaviour
         SetMagazineLight();
         _animator.SetBool("reloading", false);
         GameState._isReloading = false;
+    }
+
+    IEnumerator WaitBetweenShots()
+    {
+        _loaded = false;
+        yield return new WaitForSeconds(_cooldownBetweenShots);
+        _loaded = true;
     }
 }
