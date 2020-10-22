@@ -4851,6 +4851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da96ff8887981f4418a5ade66385faf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _faceAnimator: {fileID: 8002554106833615107}
   detectionEvent: {fileID: 6607467423857963058}
   neckBase: {fileID: 5104195917295117590}
   targetPos: {fileID: 383126716}
@@ -5350,6 +5351,7 @@ MonoBehaviour:
   - {fileID: 6710652945743294376}
   - {fileID: 6710652946515616064}
   - {fileID: 6710652946313257753}
+  _faceAnimator: {fileID: 8002554106833615107}
   stepShift: 0.5
   speed: 0.1
   _stunDuration: 0.1
@@ -5450,7 +5452,7 @@ MonoBehaviour:
   dissolveDuration: 1
   hitParticles: {fileID: 2542968571268554646, guid: 946f997cef6e03a438337a3e88da6ffc,
     type: 3}
-  scaleFor20healthLost: 1
+  scale: 1
   parent: {fileID: 4815499288919577359}
 --- !u!1 &4815499288919577352
 GameObject:
@@ -7236,7 +7238,7 @@ GameObject:
   - component: {fileID: 886772036297818887}
   - component: {fileID: 8002554106833615107}
   m_Layer: 11
-  m_Name: bone_3
+  m_Name: RoofFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
