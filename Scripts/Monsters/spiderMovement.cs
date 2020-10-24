@@ -10,6 +10,7 @@ public class spiderMovement : MonoBehaviour
     public Transform _body;
     public List<LegStep> leftLegs;
     public List<LegStep> rightLegs;
+    [SerializeField] Animator _faceAnimator;
 
     [Header("Parameters")]
     public float stepShift = 2f;
@@ -60,6 +61,7 @@ public class spiderMovement : MonoBehaviour
     private void OnMonsterHitHandler(object sender, MonsterDetectionEvent.MonsterHitEventArgs e)
     {
         gotHit = true;
+        _faceAnimator.SetTrigger("Hit");
     }
 
     private void OnPlayerNotDetectedAnymoreHandler(object sender, MonsterDetectionEvent.PlayerNotDetectedAnymoreEventArgs e)
