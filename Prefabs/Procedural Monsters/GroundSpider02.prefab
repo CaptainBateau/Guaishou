@@ -716,7 +716,6 @@ MonoBehaviour:
     m_Center: {x: -0.026882142, y: 0.08604115, z: 0}
     m_Extent: {x: 0.043117873, y: 0.6700491, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &438118412126169739
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,7 +1459,6 @@ MonoBehaviour:
     m_Center: {x: 0.4934668, y: 0.3577251, z: 0}
     m_Extent: {x: 0.5541509, y: 0.40918028, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &853862523087888718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1845,7 +1843,6 @@ MonoBehaviour:
     m_Center: {x: -0.4657818, y: -0.22663707, z: 0}
     m_Extent: {x: 0.6161114, y: 0.64344865, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &1941758366709314383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2185,7 +2182,6 @@ MonoBehaviour:
     m_Center: {x: 0.9830382, y: 0.41716784, z: 0}
     m_Extent: {x: 0.398422, y: 0.4106465, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &1370844727965085006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3142,7 +3138,6 @@ MonoBehaviour:
     m_Center: {x: -0.02688142, y: 0.08604103, z: 0}
     m_Extent: {x: 0.04311669, y: 0.67004895, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &2443667519222264948
 GameObject:
   m_ObjectHideFlags: 0
@@ -3738,7 +3733,6 @@ MonoBehaviour:
     m_Center: {x: 6.0433893, y: -1.8893144, z: 0}
     m_Extent: {x: 0.6477051, y: 0.62892884, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &4559403916843122021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4456,7 +4450,6 @@ MonoBehaviour:
     m_Center: {x: 0.28493142, y: 0.19585526, z: 0}
     m_Extent: {x: 0.39985895, y: 0.5650378, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &2943393056640766368
 GameObject:
   m_ObjectHideFlags: 0
@@ -5446,7 +5439,6 @@ MonoBehaviour:
     m_Center: {x: -0.026883326, y: 0.08604115, z: 0}
     m_Extent: {x: 0.04311669, y: 0.6700491, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &3129451486841354961
 GameObject:
   m_ObjectHideFlags: 0
@@ -5650,7 +5642,6 @@ MonoBehaviour:
     m_Center: {x: -0.095413744, y: 0.026103318, z: 0}
     m_Extent: {x: 0.8597953, y: 0.567787, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &2658794883559607642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5932,6 +5923,7 @@ GameObject:
   - component: {fileID: 4692399569683104681}
   - component: {fileID: 4334310702152794375}
   - component: {fileID: 2532721499892259945}
+  - component: {fileID: 6399743826145933664}
   m_Layer: 11
   m_Name: GroundSpider02
   m_TagString: Monster
@@ -6010,6 +6002,7 @@ MonoBehaviour:
   - {fileID: 8922726683659112738}
   - {fileID: 6811339808578648115}
   - {fileID: 3073896125426208335}
+  _faceAnimator: {fileID: 0}
   stepShift: 0.7
   speed: 0.2
   _stunDuration: 0.1
@@ -6170,6 +6163,102 @@ MonoBehaviour:
     type: 3}
   scale: 1
   parent: {fileID: 2101787369634596079}
+--- !u!82 &6399743826145933664
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070785297643472711}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d84a16a8ef9d872498156ca595d183cb, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2
+  MaxDistance: 12
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4070785297669656248
 GameObject:
   m_ObjectHideFlags: 0
@@ -6851,7 +6940,6 @@ MonoBehaviour:
     m_Center: {x: -0.026882142, y: 0.08604115, z: 0}
     m_Extent: {x: 0.043117873, y: 0.6700491, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &4336788996137208341
 GameObject:
   m_ObjectHideFlags: 0
@@ -7591,7 +7679,6 @@ MonoBehaviour:
     m_Center: {x: -0.08853106, y: 0.11683202, z: 0}
     m_Extent: {x: 0.11713733, y: 0.66073644, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &4657186066053463928
 GameObject:
   m_ObjectHideFlags: 0
@@ -8296,7 +8383,6 @@ MonoBehaviour:
     m_Center: {x: -0.026883326, y: 0.08604115, z: 0}
     m_Extent: {x: 0.04311669, y: 0.67004895, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &4871764774300141174
 GameObject:
   m_ObjectHideFlags: 0
@@ -9322,7 +9408,6 @@ MonoBehaviour:
     m_Center: {x: 0.9771718, y: -0.94121814, z: 0}
     m_Extent: {x: 0.7544519, y: 0.70842266, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &4882477833401829849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10250,7 +10335,6 @@ MonoBehaviour:
     m_Center: {x: 0.28719556, y: 0.17979944, z: 0}
     m_Extent: {x: 0.32290888, y: 0.60976654, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &6412601883320017246
 GameObject:
   m_ObjectHideFlags: 0
@@ -10493,7 +10577,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -879945183
-  m_SortingLayer: 6
+  m_SortingLayer: 0
   m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 66525fe84583b884abcce73ccd5554cc, type: 3}
   m_Color: {r: 0.93333334, g: 0.6181106, b: 0.039215684, a: 1}
@@ -10677,7 +10761,6 @@ MonoBehaviour:
     m_Center: {x: 1.2831521, y: 0.27560514, z: 0}
     m_Extent: {x: 0.7937697, y: 0.5644431, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &6655593535141067668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11019,7 +11102,6 @@ MonoBehaviour:
     m_Center: {x: 1.4436083, y: 0.29859716, z: 0}
     m_Extent: {x: 0.6352922, y: 0.50752467, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &6655593536184502007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11760,7 +11842,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -879945183
-  m_SortingLayer: 6
+  m_SortingLayer: 0
   m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: ae08a0ffe663bd8458c76b6d982ab761, type: 3}
   m_Color: {r: 0.93333334, g: 0.6181106, b: 0.039215684, a: 0}
@@ -12145,7 +12227,6 @@ MonoBehaviour:
     m_Center: {x: 1.2109659, y: 0.40103754, z: 0}
     m_Extent: {x: 0.3997981, y: 0.39784315, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &8721276606594805734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13724,4 +13805,3 @@ MonoBehaviour:
     m_Center: {x: -0.026882734, y: 0.08604115, z: 0}
     m_Extent: {x: 0.04311728, y: 0.67004883, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1

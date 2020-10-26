@@ -597,7 +597,6 @@ MonoBehaviour:
     m_Center: {x: 1.2831523, y: 0.2756052, z: 0}
     m_Extent: {x: 0.7937695, y: 0.5644431, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &1663397890604574439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1323,10 +1322,9 @@ MonoBehaviour:
   - {fileID: 1663397891409569379}
   - {fileID: 1663397890681491896}
   m_Bounds:
-    m_Center: {x: -0.02688142, y: 0.086040914, z: 0}
-    m_Extent: {x: 0.04311669, y: 0.6700491, z: 0}
+    m_Center: {x: -0.026881423, y: 0.086040914, z: 0}
+    m_Extent: {x: 0.043116692, y: 0.6700491, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &1663397890773120291
 GameObject:
   m_ObjectHideFlags: 0
@@ -2036,7 +2034,6 @@ MonoBehaviour:
     m_Center: {x: -0.026882142, y: 0.08604127, z: 0}
     m_Extent: {x: 0.043117873, y: 0.67004895, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &1663397890999697118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2589,7 +2586,6 @@ MonoBehaviour:
     m_Center: {x: 0.9771722, y: -0.94121987, z: 0}
     m_Extent: {x: 0.7544514, y: 0.7084225, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &1663397891041038933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2757,6 +2753,7 @@ GameObject:
   - component: {fileID: 1663397891051130972}
   - component: {fileID: 1663397891051130973}
   - component: {fileID: 1663397891051130974}
+  - component: {fileID: 6229507989176011020}
   m_Layer: 11
   m_Name: GroundSpider_fast
   m_TagString: Monster
@@ -2996,6 +2993,102 @@ MonoBehaviour:
     type: 3}
   scale: 1
   parent: {fileID: 1663397892383271098}
+--- !u!82 &6229507989176011020
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663397891051130975}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d84a16a8ef9d872498156ca595d183cb, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2
+  MaxDistance: 12
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1663397891088919748
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,7 +3210,6 @@ MonoBehaviour:
     m_Center: {x: 0.4934687, y: 0.35772523, z: 0}
     m_Extent: {x: 0.5541528, y: 0.40918052, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &1663397891115529129
 GameObject:
   m_ObjectHideFlags: 0
@@ -4233,7 +4325,6 @@ MonoBehaviour:
     m_Center: {x: -0.09541279, y: 0.026103795, z: 0}
     m_Extent: {x: 0.8597943, y: 0.567787, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &1663397891300235550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5142,7 +5233,6 @@ MonoBehaviour:
     m_Center: {x: 1.4436088, y: 0.29859746, z: 0}
     m_Extent: {x: 0.6352916, y: 0.5075244, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &1663397891416520604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5372,7 +5462,6 @@ MonoBehaviour:
     m_Center: {x: -0.026882142, y: 0.08604103, z: 0}
     m_Extent: {x: 0.043117873, y: 0.67004895, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &1663397891442589415
 GameObject:
   m_ObjectHideFlags: 0
@@ -5645,7 +5734,6 @@ MonoBehaviour:
     m_Center: {x: 0.9830382, y: 0.41716772, z: 0}
     m_Extent: {x: 0.398422, y: 0.4106465, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &1663397891489808367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5830,7 +5918,6 @@ MonoBehaviour:
     m_Center: {x: -0.026885957, y: 0.08604127, z: 0}
     m_Extent: {x: 0.043117873, y: 0.67004895, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &1663397891496943449
 GameObject:
   m_ObjectHideFlags: 0
@@ -6907,7 +6994,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -879945183
-  m_SortingLayer: 6
+  m_SortingLayer: 0
   m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 66525fe84583b884abcce73ccd5554cc, type: 3}
   m_Color: {r: 0.93333334, g: 0.6181106, b: 0.039215684, a: 1}
@@ -7260,7 +7347,6 @@ MonoBehaviour:
     m_Center: {x: 0.28493142, y: 0.19585538, z: 0}
     m_Extent: {x: 0.39985895, y: 0.5650379, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &1663397891645436420
 GameObject:
   m_ObjectHideFlags: 0
@@ -7647,10 +7733,9 @@ MonoBehaviour:
   - {fileID: 1663397891639197977}
   - {fileID: 1663397891807079134}
   m_Bounds:
-    m_Center: {x: -0.02688142, y: 0.08604103, z: 0}
-    m_Extent: {x: 0.04311669, y: 0.67004895, z: 0}
+    m_Center: {x: -0.026881423, y: 0.08604103, z: 0}
+    m_Extent: {x: 0.043116692, y: 0.67004895, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &1663397891729060326
 GameObject:
   m_ObjectHideFlags: 0
@@ -8230,10 +8315,9 @@ MonoBehaviour:
   - {fileID: 1663397891191035334}
   - {fileID: 1663397892640963869}
   m_Bounds:
-    m_Center: {x: -0.088532016, y: 0.11683202, z: 0}
-    m_Extent: {x: 0.11713447, y: 0.66073644, z: 0}
+    m_Center: {x: -0.08853297, y: 0.11683202, z: 0}
+    m_Extent: {x: 0.117135435, y: 0.66073644, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &1663397891859815751
 GameObject:
   m_ObjectHideFlags: 0
@@ -8341,7 +8425,6 @@ MonoBehaviour:
     m_Center: {x: -0.4657818, y: -0.22663724, z: 0}
     m_Extent: {x: 0.6161114, y: 0.6434487, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &1663397891859815748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8619,7 +8702,6 @@ MonoBehaviour:
     m_Center: {x: -0.026879512, y: 0.086040795, z: 0}
     m_Extent: {x: 0.04311669, y: 0.67004895, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &1663397891898904179
 GameObject:
   m_ObjectHideFlags: 0
@@ -9427,7 +9509,6 @@ MonoBehaviour:
     m_Center: {x: 1.210965, y: 0.40103805, z: 0}
     m_Extent: {x: 0.399798, y: 0.39784312, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &1663397892001664954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11201,10 +11282,9 @@ MonoBehaviour:
   - {fileID: 1663397892256672906}
   - {fileID: 1663397891760497100}
   m_Bounds:
-    m_Center: {x: 0.28718984, y: 0.17979968, z: 0}
-    m_Extent: {x: 0.3229108, y: 0.60976654, z: 0}
+    m_Center: {x: 0.28718984, y: 0.17979956, z: 0}
+    m_Extent: {x: 0.3229108, y: 0.6097665, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!1 &1663397892312238625
 GameObject:
   m_ObjectHideFlags: 0
@@ -12071,7 +12151,6 @@ MonoBehaviour:
     m_Center: {x: 6.04339, y: -1.8893144, z: 0}
     m_Extent: {x: 0.64770365, y: 0.62892884, z: 0}
   m_UseBatching: 1
-  m_AlwaysUpdate: 1
 --- !u!114 &1663397892463899157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13559,7 +13638,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -879945183
-  m_SortingLayer: 6
+  m_SortingLayer: 0
   m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 45b0b97b1c525b44d88f8ae6d6d70d82, type: 3}
   m_Color: {r: 0.93333334, g: 0.6181106, b: 0.039215684, a: 0}
