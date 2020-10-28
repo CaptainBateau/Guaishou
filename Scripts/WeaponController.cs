@@ -177,7 +177,18 @@ public class WeaponController : MonoBehaviour
         {
             float tempValue = Mathf.InverseLerp(_maxSpreadAngle, _minSpreadAngle, _spreadAngle);
             _playerEvent.PlayerShoot(new PlayerEvent.PlayerShootEventArgs { });
-            StartCoroutine(ShootWithSpread(_spreadAngle, _pelletNumber, transform.rotation, _spawner.position, Mathf.Lerp(.3f,1f,tempValue)));
+            float tempMulti = Mathf.Lerp(.3f, 1f, tempValue);
+            //StartCoroutine(ShootWithSpread(_spreadAngle, _pelletNumber, transform.rotation, _spawner.position, Mathf.Lerp(.3f,1f,tempValue)));
+            if (tempMulti > .95f)
+            {
+                StartCoroutine(ShootWithSpread(0, _pelletNumber, transform.rotation, _spawner.position, tempMulti));
+            }
+            else
+            {
+                StartCoroutine(ShootWithSpread(_spreadAngle, _pelletNumber, transform.rotation, _spawner.position, tempMulti));
+            }
+
+
             StartCoroutine(WaitBetweenShots());
             _timeWhenShoot = Time.time + _timeToRecover;
 
@@ -232,7 +243,7 @@ public class WeaponController : MonoBehaviour
         //}
     }
 
-    IEnumerator ShootWithSpread(float spreadAngle, int numberOfPellets, Quaternion transformRotation, Vector3 spawnerPosition,float powerMulti = 1f, float duration = 1f)
+    IEnumerator ShootWithSpread(float spreadAngle, int numberOfPellets, Quaternion transformRotation, Vector3 spawnerPosition, float powerMulti = 1f, float duration = 1f)
     {
         if(_shootFX!=null)
             _shootFX.Play();
