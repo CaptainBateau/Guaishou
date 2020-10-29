@@ -28,7 +28,8 @@ public class PlayerEvent : MonoBehaviour
     }
     private void OnGameOverHandler(object sender, GameOverEventArgs e)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        transform.position = _checkpoint.lastCheckPointPos;
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     // je gère déjà la collision avec les monstres ici
