@@ -12,7 +12,7 @@ public class SpiderAudio : AudioManager
     // randomly played with a delay, need more var
     // Sound Idle;
     [SerializeField] Sound takeDamage = null;
-    [SerializeField] Sound takeMoreThan5damage = null;
+    [SerializeField] Sound takeDamage2 = null;
     [SerializeField] Sound death = null;
     [SerializeField] Sound attack = null;
     public virtual void Start()
@@ -51,5 +51,6 @@ public class SpiderAudio : AudioManager
         //    Play(takeMoreThan5damage);
         //else
             Play(takeDamage);
+            Play(takeDamage2);
     }
 }
