@@ -8480,11 +8480,18 @@ MonoBehaviour:
     spatialisationRange: 20
     soundOrigin: {fileID: 0}
     source: {fileID: 0}
-  takeMoreThan5damage:
-    clips: []
+  takeDamage2:
+    clips:
+    - {fileID: 8300000, guid: 1ffd483bc4fb54c4ebead74fb23e1c95, type: 3}
+    - {fileID: 8300000, guid: e777241e1747c9a41ae9d98585b4fdb5, type: 3}
+    - {fileID: 8300000, guid: bedf2e902967b3e4b8e99cc7b8502275, type: 3}
+    - {fileID: 8300000, guid: 03b17aa93ca50394799e9a93b23a6cb9, type: 3}
+    - {fileID: 8300000, guid: 3b8bc3385bf9a4643b91dedd7b6c049c, type: 3}
+    - {fileID: 8300000, guid: 3903ac06885827c4ba0714195775a6f8, type: 3}
+    - {fileID: 8300000, guid: 816788e356fe60e419cfc6681cd9f631, type: 3}
     volume: 1
     randomPitch: 0
-    pitchRange: {x: 0.9, y: 1.1}
+    pitchRange: {x: 0.8, y: 1.2}
     loop: 0
     minDelayBetweenSounds: 0
     spatialisation: 0
