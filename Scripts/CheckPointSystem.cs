@@ -19,10 +19,5 @@ public class CheckPointSystem : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-    }
-    private void Start()
-    {
-        lastCheckPointPos = FindObjectOfType<PlayerEvent>().transform.position;
     }
 }
